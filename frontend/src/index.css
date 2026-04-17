@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+/* 🌌 Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 🎨 Theme Variables */
+:root {
+  --bg: #f8fafc;
+  --text: #0f172a;
+  --muted: #475569;
+  --card: rgba(255, 255, 255, 0.6);
+  --border: rgba(0, 0, 0, 0.08);
+  --accent: #4f46e5;
+}
+
+/* 🌙 Dark Mode */
+.dark {
+  --bg: #000000;
+  --text: #ffffff;
+  --muted: #9ca3af;
+  --card: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.1);
+}
+
+/* 🌍 Base */
+body {
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(99, 102, 241, 0.08),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(99, 102, 241, 0.08),
+      transparent 40%
+    ),
+    var(--bg);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+/* 🌙 Dark override */
+.dark body {
+  background:
+    radial-gradient(circle at 20% 20%, #1e1b4b, transparent 40%),
+    radial-gradient(circle at 80% 80%, #312e81, transparent 40%), #000;
+}
+
+/* 🖱 Cursor glow */
+.cursor-glow {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.15) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 999;
+  transform: translate(-50%, -50%);
+}
+
+/* 💎 Noise */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.04;
+  pointer-events: none;
+}
+.input {
+  @apply w-full mb-3 px-4 py-2 rounded-lg bg-white/5 border border-[var(--border)] outline-none focus:border-indigo-500;
+}
+
+.btn-primary {
+  @apply px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-lg transition;
+}
