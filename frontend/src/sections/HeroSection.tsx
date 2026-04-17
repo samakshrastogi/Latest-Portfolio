@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Canvas } from "@react-three/fiber";
 import { Float, OrbitControls } from "@react-three/drei";
-import ParticlesBg from "../components/ParticlesBg";
 import MagneticButton from "../components/MagneticButton";
 
 export default function HeroSection() {
@@ -18,11 +17,6 @@ export default function HeroSection() {
             id="hero"
             className="relative min-h-screen w-full flex items-center justify-center overflow-hidden px-4 sm:px-6"
         >
-            {/* 🌌 Particles */}
-            <div className="pointer-events-none absolute inset-0 z-0">
-                <ParticlesBg />
-            </div>
-
             {/* 🌐 3D Background */}
             <div className="absolute inset-0 z-0 pointer-events-none">
                 <Canvas>
