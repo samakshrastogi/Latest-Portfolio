@@ -1,136 +1,252 @@
 import { motion } from "framer-motion";
+import SectionWrapper from "../components/SectionWrapper";
+import type { ReactNode } from "react";
 
+// 🔥 ICONS (FA FIRST)
+import {
+    FaServer,
+    FaDatabase,
+    FaChartLine,
+    FaUsers,
+    FaLock,
+    FaCogs,
+    FaLayerGroup,
+    FaCloud,
+    FaProjectDiagram,
+    FaAws,
+    FaMicrosoft,
+} from "react-icons/fa";
+
+// 🔥 FALLBACK (ONLY WHERE NEEDED)
+import { SiDjango } from "react-icons/si";
+
+const fadeUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0 },
+};
+type CardProps = {
+    title: string;
+    icon: ReactNode;
+    children: ReactNode;
+};
 export default function ExperienceSection() {
     return (
-        <section
-            id="experience"
-            className="py-20 sm:py-24 px-4 sm:px-6 bg-[var(--bg)]"
-        >
-            {/* Heading */}
-            <div className="text-center mb-12 sm:mb-16">
-                <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold bg-gradient-to-r from-[var(--text)] to-gray-400 bg-clip-text text-transparent">
-                    Experience & Architecture
-                </h2>
+        <SectionWrapper id="experience" variant="default">
 
-                <p className="text-[var(--muted)] mt-3 sm:mt-4 text-sm sm:text-base max-w-xl mx-auto">
-                    Designing scalable backend systems and full-stack applications
-                </p>
+            {/* ================= HERO ================= */}
+            <div className="text-center mb-20">
+                <motion.h2
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent"
+                >
+                    System Design & Engineering
+                </motion.h2>
+
+                <motion.p
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    transition={{ delay: 0.1 }}
+                    className="text-gray-400 mt-4 text-sm sm:text-base max-w-xl mx-auto"
+                >
+                    Building scalable backend systems, pipelines, and production-grade platforms
+                </motion.p>
             </div>
 
-            {/* Summary */}
+            {/* ================= NOKIA ================= */}
             <motion.div
-                initial={{ opacity: 0, y: 80 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="max-w-3xl mx-auto mb-12 sm:mb-16 text-center text-[var(--muted)] text-sm sm:text-base leading-relaxed"
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                className="max-w-6xl mx-auto mb-20 rounded-2xl bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border border-indigo-500/20 p-6 sm:p-8 relative overflow-hidden"
             >
-                <p>
-                    Full Stack Developer with hands-on experience in building scalable applications
-                    using modern technologies like React, Node.js, and cloud platforms.
-                    Strong expertise in designing REST APIs, authentication systems, and deploying
-                    production-ready applications.
-                </p>
-            </motion.div>
+                <div className="absolute inset-0 bg-indigo-500/10 blur-3xl opacity-20" />
 
-            {/* Grid */}
-            <div className="grid gap-6 sm:gap-8 max-w-7xl mx-auto grid-cols-1 md:grid-cols-2">
+                <div className="relative z-10">
 
-                {/* Backend Architecture */}
-                <motion.div
-                    initial={{ opacity: 0, x: -60 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="group relative rounded-2xl p-[1px] bg-gradient-to-br from-white/10 to-transparent"
-                >
-                    <div className="relative bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 sm:p-6 backdrop-blur-xl transition hover:bg-white/10">
-
-                        {/* Glow */}
-                        <div className="absolute inset-0 rounded-2xl bg-indigo-500/10 opacity-0 group-hover:opacity-100 blur-xl transition"></div>
-
-                        <h3 className="text-lg sm:text-xl font-semibold mb-4 text-indigo-500">
-                            Backend Architecture
+                    {/* HEADER */}
+                    <div className="flex flex-col sm:flex-row sm:justify-between mb-4">
+                        <h3 className="text-xl sm:text-2xl font-semibold text-white">
+                            Nokia — Software Engineering Intern
                         </h3>
+                        <span className="text-xs sm:text-sm text-gray-400">
+                            Aug 2025 → June 2026
+                        </span>
+                    </div>
 
-                        <div className="text-[var(--muted)] text-xs sm:text-sm space-y-1 sm:space-y-2 font-mono">
-                            <p>src/</p>
-                            <p>├── config/</p>
-                            <p>├── controllers/</p>
-                            <p>├── middleware/</p>
-                            <p>├── models/</p>
-                            <p>├── routes/</p>
-                            <p>├── app.ts</p>
-                            <p>└── server.ts</p>
+                    {/* HIGHLIGHT */}
+                    <div className="flex items-center gap-2 text-indigo-400 mb-4">
+                        <FaServer />
+                        <span>Built NIVR — Nokia Inventory Video Repository</span>
+                    </div>
+
+                    {/* DESC */}
+                    <p className="text-gray-300 text-sm mb-6 max-w-3xl">
+                        Designed and built a production-grade internal video system used by Nokia employees,
+                        including backend architecture, authentication, analytics, and media pipelines.
+                    </p>
+
+                    {/* FEATURES */}
+                    <div className="grid sm:grid-cols-2 gap-4 text-sm text-gray-300 mb-6">
+
+                        <div className="space-y-3">
+                            <div className="flex gap-2">
+                                <FaUsers className="text-indigo-400 mt-1" />
+                                Video interactions (likes, comments, playlists)
+                            </div>
+
+                            <div className="flex gap-2">
+                                <FaLock className="text-indigo-400 mt-1" />
+                                Azure SSO authentication
+                            </div>
+
+                            <div className="flex gap-2">
+                                <FaServer className="text-indigo-400 mt-1" />
+                                Scalable upload pipeline
+                            </div>
                         </div>
+
+                        <div className="space-y-3">
+                            <div className="flex gap-2">
+                                <FaCogs className="text-indigo-400 mt-1" />
+                                Metadata generation (transcripts, thumbnails)
+                            </div>
+
+                            <div className="flex gap-2">
+                                <FaChartLine className="text-indigo-400 mt-1" />
+                                User analytics & session tracking
+                            </div>
+
+                            <div className="flex gap-2">
+                                <FaDatabase className="text-indigo-400 mt-1" />
+                                Storage & ranking system
+                            </div>
+                        </div>
+
                     </div>
-                </motion.div>
 
-                {/* Engineering Approach */}
-                <motion.div
-                    initial={{ opacity: 0, x: 60 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="group relative rounded-2xl p-[1px] bg-gradient-to-br from-white/10 to-transparent"
-                >
-                    <div className="relative bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 sm:p-6 backdrop-blur-xl transition hover:bg-white/10">
+                    {/* TECH */}
+                    <div className="flex flex-wrap gap-3 text-sm">
 
-                        {/* Glow */}
-                        <div className="absolute inset-0 rounded-2xl bg-indigo-500/10 opacity-0 group-hover:opacity-100 blur-xl transition"></div>
-
-                        <h3 className="text-lg sm:text-xl font-semibold mb-4 text-indigo-500">
-                            Engineering Approach
-                        </h3>
-
-                        <ul className="text-[var(--muted)] text-sm space-y-2">
-                            <li>• Modular MVC architecture</li>
-                            <li>• Secure authentication (JWT, SSO)</li>
-                            <li>• Scalable REST APIs</li>
-                            <li>• Cloud integration (AWS S3, CloudFront)</li>
-                            <li>• Data security (masking & encryption)</li>
-                            <li>• AI/ML integrations (Whisper, LLMs)</li>
-                        </ul>
-                    </div>
-                </motion.div>
-
-            </div>
-
-            {/* DevOps */}
-            <motion.div
-                initial={{ opacity: 0, y: 80 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="max-w-5xl mx-auto mt-12 sm:mt-16 group relative rounded-2xl p-[1px] bg-gradient-to-br from-white/10 to-transparent"
-            >
-                <div className="relative bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 sm:p-6 backdrop-blur-xl transition hover:bg-white/10">
-
-                    {/* Glow */}
-                    <div className="absolute inset-0 rounded-2xl bg-indigo-500/10 opacity-0 group-hover:opacity-100 blur-xl transition"></div>
-
-                    <h3 className="text-lg sm:text-xl font-semibold mb-4 text-indigo-500">
-                        Deployment & DevOps
-                    </h3>
-
-                    <div className="flex flex-wrap gap-2 sm:gap-3">
                         {[
-                            "Vercel",
-                            "Netlify",
-                            "Render",
-                            "AWS S3",
-                            "CloudFront",
-                            "Azure SSO",
-                            "Google SSO",
-                            "PEM Deployment",
-                        ].map((tool) => (
+                            { icon: <SiDjango className="text-green-400" />, label: "Django" },
+                            { icon: <FaServer className="text-indigo-400" />, label: "REST APIs" },
+                            { icon: <FaDatabase className="text-blue-400" />, label: "SQLite3" },
+                            { icon: <FaAws className="text-orange-400" />, label: "AWS S3" },
+                            { icon: <FaMicrosoft className="text-blue-400" />, label: "Azure SSO" },
+                        ].map((item) => (
                             <span
-                                key={tool}
-                                className="px-3 py-1 text-xs sm:text-sm rounded-md bg-white/10 border border-[var(--border)]"
+                                key={item.label}
+                                className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-white/10 border border-white/10 hover:bg-indigo-500/20 hover:border-indigo-400/40 transition"
                             >
-                                {tool}
+                                {item.icon}
+                                {item.label}
                             </span>
                         ))}
+
                     </div>
 
                 </div>
             </motion.div>
-        </section>
+
+            {/* ================= IMPACT ================= */}
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
+                variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+                className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-5xl mx-auto mb-20 text-center"
+            >
+                {[
+                    { value: "10+", label: "Projects", icon: <FaServer /> },
+                    { value: "20+", label: "APIs", icon: <FaProjectDiagram /> },
+                    { value: "Live", label: "Systems", icon: <FaCloud /> },
+                    { value: "5+", label: "Tech", icon: <FaDatabase /> },
+                ].map((stat) => (
+                    <motion.div key={stat.label} variants={fadeUp}>
+                        <div className="flex justify-center text-indigo-400 mb-2 text-lg">
+                            {stat.icon}
+                        </div>
+                        <p className="text-2xl font-semibold text-white">{stat.value}</p>
+                        <p className="text-xs text-gray-500">{stat.label}</p>
+                    </motion.div>
+                ))}
+            </motion.div>
+
+            {/* ================= SYSTEM FLOW ================= */}
+            <motion.div
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                className="max-w-6xl mx-auto mb-20 rounded-2xl bg-white/[0.04] border border-white/10 p-8"
+            >
+                <h3 className="text-center text-lg font-semibold text-indigo-400 mb-8">
+                    System Flow
+                </h3>
+
+                <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-300">
+                    {["Client", "API", "Services", "Database", "Storage"].map((node) => (
+                        <div
+                            key={node}
+                            className="px-4 py-2 rounded-lg bg-white/10 border border-white/10"
+                        >
+                            {node}
+                        </div>
+                    ))}
+                </div>
+            </motion.div>
+
+            {/* ================= CORE ================= */}
+            <div className="grid gap-6 sm:gap-8 max-w-7xl mx-auto grid-cols-1 md:grid-cols-3">
+
+                {/* ENGINEERING */}
+                <Card title="Engineering" icon={<FaCogs />}>
+                    Modular backend architecture<br />
+                    Secure authentication<br />
+                    REST API design<br />
+                    Optimized workflows
+                </Card>
+
+                {/* SYSTEM */}
+                <Card title="System Thinking" icon={<FaLayerGroup />}>
+                    Scalable architecture<br />
+                    Clean separation of concerns<br />
+                    Efficient data handling<br />
+                    Performance-first design
+                </Card>
+
+                {/* IMPACT */}
+                <Card title="Impact" icon={<FaChartLine />}>
+                    Real user systems<br />
+                    Automated workflows<br />
+                    Data-driven insights<br />
+                    Production deployments
+                </Card>
+
+            </div>
+
+        </SectionWrapper>
+    );
+}
+
+/* ================= CARD ================= */
+function Card({ title, icon, children }: CardProps) {
+    return (
+        <motion.div
+            whileHover={{ y: -6 }}
+            className="group relative rounded-2xl bg-white/[0.04] border border-white/10 p-6"
+        >
+            <div className="absolute inset-0 bg-indigo-500/10 opacity-0 group-hover:opacity-100 blur-xl transition" />
+
+            <div className="flex items-center gap-2 mb-4 text-indigo-400">
+                {icon}
+                <h3 className="text-lg font-semibold">{title}</h3>
+            </div>
+
+            <div className="text-gray-300 text-sm space-y-2">
+                {children}
+            </div>
+        </motion.div>
     );
 }

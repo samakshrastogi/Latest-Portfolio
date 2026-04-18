@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { api } from "../api/axios"; // ✅ use central axios
+import { api } from "../api/axios";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 export default function LoginPage() {
     const [username, setUsername] = useState("");
@@ -17,8 +18,6 @@ export default function LoginPage() {
             });
 
             localStorage.setItem("token", res.data.token);
-
-            // ✅ redirect properly
             window.location.href = "/software";
 
         } catch (err: unknown) {
@@ -27,46 +26,86 @@ export default function LoginPage() {
             } else {
                 alert("Something went wrong");
             }
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
-        <div className="h-screen flex items-center justify-center bg-[var(--bg)] px-4">
+        <div className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden bg-[#02040a] text-white">
 
-            <div className="bg-[var(--card)] p-6 sm:p-8 rounded-2xl border border-[var(--border)] w-full max-w-sm">
+            {/* 🌌 Background Glow */}
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-purple-500/10 blur-3xl" />
 
-                <h2 className="text-xl sm:text-2xl mb-6 text-center font-semibold">
-                    Admin Login
-                </h2>
+            {/* 🔵 Top Glow */}
+            <div className="absolute top-[-150px] left-[-150px] w-[400px] h-[400px] bg-indigo-500/20 rounded-full blur-[120px]" />
 
-                <div className="space-y-4">
+            {/* 🟣 Bottom Glow */}
+            <div className="absolute bottom-[-150px] right-[-150px] w-[400px] h-[400px] bg-purple-500/20 rounded-full blur-[120px]" />
 
-                    <input
-                        placeholder="Username"
-                        value={username}
-                        className="input w-full"
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
+            {/* ================= CARD ================= */}
+            <motion.div
+                initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="relative z-10 w-full max-w-md"
+            >
+                {/* Glow Border */}
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 blur-xl opacity-40" />
 
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        className="input w-full"
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
+                <div className="relative bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-3xl p-8 shadow-[0_20px_80px_rgba(0,0,0,0.6)]">
 
-                    <button
-                        onClick={login}
-                        disabled={loading}
-                        className="btn-primary w-full disabled:opacity-50"
-                    >
-                        {loading ? "Logging in..." : "Login"}
-                    </button>
+                    {/* ================= HEADER ================= */}
+                    <div className="text-center mb-8">
+                        <h2 className="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+                            Admin Login
+                        </h2>
+                        <p className="text-gray-400 text-sm mt-2">
+                            Access your dashboard securely
+                        </p>
+                    </div>
 
+                    {/* ================= FORM ================= */}
+                    <div className="space-y-5">
+
+                        {/* Username */}
+                        <div className="relative">
+                            <input
+                                placeholder="Username"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white/10 transition"
+                            />
+                        </div>
+
+                        {/* Password */}
+                        <div className="relative">
+                            <input
+                                type="password"
+                                placeholder="Password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white/10 transition"
+                            />
+                        </div>
+
+                        {/* Button */}
+                        <motion.button
+                            whileTap={{ scale: 0.97 }}
+                            onClick={login}
+                            disabled={loading}
+                            className="w-full py-3 rounded-xl font-medium bg-gradient-to-r from-indigo-600 to-purple-600 hover:scale-[1.02] transition shadow-lg shadow-indigo-500/30 disabled:opacity-50"
+                        >
+                            {loading ? "Logging in..." : "Login"}
+                        </motion.button>
+                    </div>
+
+                    {/* ================= FOOTER ================= */}
+                    <div className="mt-6 text-center text-xs text-gray-500">
+                        Secure admin access • JWT Protected
+                    </div>
                 </div>
-
-            </div>
+            </motion.div>
         </div>
     );
 }

@@ -2,6 +2,30 @@ import { motion } from "framer-motion";
 import { Canvas } from "@react-three/fiber";
 import { Float, OrbitControls } from "@react-three/drei";
 import MagneticButton from "../components/MagneticButton";
+import { TypeAnimation } from "react-type-animation";
+
+// 🔥 ICONS
+import {
+    SiReact,
+    SiNodedotjs,
+    SiDjango,
+    SiMongodb,
+    SiPostgresql,
+} from "react-icons/si";
+
+import { FaAws, FaMicrosoft, FaBrain, FaServer, FaChartLine } from "react-icons/fa";
+import { TbBrain } from "react-icons/tb";
+
+const techStack = [
+    { name: "React", icon: <SiReact /> },
+    { name: "Node.js", icon: <SiNodedotjs /> },
+    { name: "Django", icon: <SiDjango /> },
+    { name: "MongoDB", icon: <SiMongodb /> },
+    { name: "PostgreSQL", icon: <SiPostgresql /> },
+    { name: "AWS S3", icon: <FaAws /> },
+    { name: "Azure SSO", icon: <FaMicrosoft /> },
+    { name: "AI", icon: <FaBrain /> },
+];
 
 export default function HeroSection() {
     const scrollToProjects = () => {
@@ -15,10 +39,13 @@ export default function HeroSection() {
     return (
         <section
             id="hero"
-            className="relative min-h-screen w-full flex items-center justify-center overflow-hidden px-4 sm:px-6"
+            className="relative min-h-screen w-full flex items-center justify-center overflow-hidden px-4 sm:px-8"
         >
+            {/* 🌐 Background Glow */}
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-purple-500/10 blur-3xl pointer-events-none" />
+
             {/* 🌐 3D Background */}
-            <div className="absolute inset-0 z-0 pointer-events-none">
+            <div className="absolute right-0 top-0 w-1/2 h-full z-0 pointer-events-none hidden md:block">
                 <Canvas>
                     <ambientLight intensity={0.5} />
                     <directionalLight position={[2, 2, 5]} />
@@ -30,98 +57,157 @@ export default function HeroSection() {
                         </mesh>
                     </Float>
 
-                    <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.8} />
+                    <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.6} />
                 </Canvas>
             </div>
 
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-[var(--bg)]/70 backdrop-blur-sm z-10 pointer-events-none" />
+            {/* ================= GRID ================= */}
+            <div className="relative z-20 grid grid-cols-1 md:grid-cols-2 items-center gap-12 max-w-7xl w-full">
 
-            {/* Content */}
-            <div className="relative z-20 text-center max-w-3xl mx-auto">
+                {/* MOBILE IMAGE */}
+                <div className="flex justify-center md:hidden">
+                    <ProfileImage />
+                </div>
 
-                {/* 🔥 PROFILE IMAGE (CENTERPIECE) */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.6 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8 }}
-                    className="relative mx-auto mb-6 sm:mb-8 w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44"
-                >
-                    {/* Glow Ring */}
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 blur-2xl opacity-40"></div>
+                {/* ================= LEFT ================= */}
+                <div className="text-center md:text-left">
 
-                    {/* Border Ring */}
-                    <div className="absolute inset-0 rounded-full p-[2px] bg-gradient-to-r from-indigo-500 to-purple-500">
-                        <div className="w-full h-full rounded-full bg-[var(--bg)] flex items-center justify-center">
-
-                            {/* Image */}
-                            <img
-                                src="images/profile.png" // 👉 put your image in public folder
-                                alt="Samaksh Rastogi"
-                                className="w-full h-full object-cover rounded-full"
-                            />
-                        </div>
-                    </div>
-                </motion.div>
-
-                {/* Glow Background */}
-                <div className="absolute -z-10 pointer-events-none blur-3xl opacity-20 bg-indigo-500 w-72 sm:w-96 h-72 sm:h-96 rounded-full top-20 left-1/2 -translate-x-1/2"></div>
-
-                {/* Name */}
-                <motion.h1
-                    initial={{ opacity: 0, y: 80 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="text-3xl sm:text-4xl md:text-6xl font-bold bg-gradient-to-r from-[var(--text)] to-gray-400 bg-clip-text text-transparent"
-                >
-                    Samaksh Rastogi
-                </motion.h1>
-
-                {/* Role */}
-                <motion.p
-                    initial={{ opacity: 0, y: 80 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2, duration: 0.8 }}
-                    className="mt-4 text-base sm:text-lg md:text-2xl text-[var(--muted)]"
-                >
-                    Full Stack Developer • Building Scalable Systems
-                </motion.p>
-
-                {/* Tagline */}
-                <motion.p
-                    initial={{ opacity: 0, y: 80 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4, duration: 0.8 }}
-                    className="mt-4 text-sm sm:text-base md:text-lg text-[var(--muted)] leading-relaxed"
-                >
-                    Specialized in React, Node.js, Cloud, and AI-driven applications with real-world deployment experience.
-                </motion.p>
-
-                {/* Buttons */}
-                <motion.div
-                    initial={{ opacity: 0, y: 80 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6, duration: 0.8 }}
-                    className="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4"
-                >
-                    <MagneticButton>
-                        <button
-                            onClick={scrollToProjects}
-                            className="w-full sm:w-auto px-6 py-3 bg-indigo-600 text-white hover:bg-indigo-700 rounded-xl font-medium transition shadow-lg shadow-indigo-500/20"
-                        >
-                            View Projects
-                        </button>
-                    </MagneticButton>
-
-                    <a
-                        href="/resume.pdf"
-                        download
-                        className="w-full sm:w-auto px-6 py-3 border border-[var(--border)] bg-white/50 dark:bg-white/5 hover:bg-white/80 dark:hover:bg-white/10 rounded-xl font-medium transition backdrop-blur text-center"
+                    {/* NAME */}
+                    <motion.h1
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-3xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent"
                     >
-                        Download Resume
-                    </a>
-                </motion.div>
+                        Samaksh Rastogi
+                    </motion.h1>
+
+                    {/* ROLE */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.3 }}
+                        className="mt-3 text-lg sm:text-xl md:text-2xl text-indigo-400 font-medium"
+                    >
+                        <TypeAnimation
+                            sequence={[
+                                "Backend Engineer",
+                                2000,
+                                "System Design Enthusiast",
+                                2000,
+                                "AI Product Builder",
+                                2000,
+                                "Building Production Systems",
+                                2000,
+                            ]}
+                            speed={50}
+                            repeat={Infinity}
+                        />
+                    </motion.div>
+
+                    {/* TAGLINE */}
+                    <p className="mt-4 text-gray-300 max-w-xl mx-auto md:mx-0 text-sm sm:text-base leading-relaxed">
+                        Building scalable backend systems and AI-powered applications used in real production environments.
+                    </p>
+
+                    {/* ================= TECH STACK ================= */}
+                    <div className="mt-6 flex flex-wrap gap-3 justify-center md:justify-start">
+                        {techStack.map((tech) => (
+                            <div
+                                key={tech.name}
+                                className="flex items-center gap-2 px-3 py-1.5 text-sm bg-white/10 border border-white/20 rounded-full hover:scale-105 hover:bg-indigo-500/20 transition"
+                            >
+                                <span className="text-indigo-400 text-base">
+                                    {tech.icon}
+                                </span>
+                                {tech.name}
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* STATUS */}
+                    <div className="mt-4 flex items-center gap-2 text-sm text-green-400">
+                        <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                        Building: AI Quiz Platform (auto question generation + analytics)
+                    </div>
+
+                    {/* ================= BUTTONS ================= */}
+                    <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <MagneticButton>
+                            <button
+                                onClick={scrollToProjects}
+                                className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-medium hover:scale-105 transition shadow-lg shadow-indigo-500/30"
+                            >
+                                Explore My Work
+                            </button>
+                        </MagneticButton>
+
+                        <a
+                            href="#contact"
+                            className="px-6 py-3 border border-white/20 rounded-xl hover:bg-white/10 transition"
+                        >
+                            Get In Touch
+                        </a>
+                    </div>
+
+                    {/* ================= STATS ================= */}
+                    <div className="mt-10 flex flex-wrap gap-6 text-gray-400 justify-center md:justify-start text-sm">
+
+                        <div className="flex items-center gap-2">
+                            <TbBrain className="text-purple-400 text-base" />
+                            <span>Built NIVR @ Nokia</span>
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                            <FaServer className="text-indigo-400 text-base" />
+                            <span>20+ APIs Designed</span>
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                            <FaChartLine className="text-green-400 text-base" />
+                            <span>Real User Analytics</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                {/* DESKTOP IMAGE */}
+                <div className="hidden md:flex justify-center">
+                    <ProfileImage />
+                </div>
             </div>
+
+            {/* SCROLL */}
+            <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ repeat: Infinity, duration: 1.5 }}
+                className="absolute bottom-6 text-gray-500 text-sm"
+            >
+                ↓ Scroll
+            </motion.div>
         </section>
+    );
+}
+
+/* ================= PROFILE ================= */
+function ProfileImage() {
+    return (
+        <motion.div
+            initial={{ opacity: 0, scale: 0.7 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="relative w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64"
+        >
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 blur-2xl opacity-40 animate-pulse"></div>
+
+            <div className="absolute inset-0 rounded-full p-[3px] bg-gradient-to-r from-indigo-500 to-purple-500">
+                <div className="w-full h-full rounded-full bg-[var(--bg)]">
+                    <img
+                        src="images/profile.png"
+                        alt="Samaksh Rastogi"
+                        className="w-full h-full object-cover rounded-full"
+                    />
+                </div>
+            </div>
+        </motion.div>
     );
 }

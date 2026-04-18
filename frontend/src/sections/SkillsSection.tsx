@@ -1,43 +1,116 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { api } from "../api/axios";
+import SectionWrapper from "../components/SectionWrapper";
+
+// 🔥 ICONS
+import {
+    SiReact,
+    SiNodedotjs,
+    SiDjango,
+    SiMongodb,
+    SiPostgresql,
+    SiTypescript,
+    SiJavascript,
+    SiHtml5,
+    SiExpress,
+    SiVercel,
+    SiNetlify,
+    SiRender,
+    SiGoogle,
+} from "react-icons/si";
+
+import {
+    FaAws,
+    FaMicrosoft,
+    FaBrain,
+    FaCss3Alt,
+    FaDatabase,
+    FaLock,
+    FaServer,
+    FaCloud,
+} from "react-icons/fa";
+
+const iconMap: Record<string, JSX.Element> = {
+    // 🔥 FRONTEND
+    react: <SiReact className="text-cyan-400" />,
+    typescript: <SiTypescript className="text-blue-500" />,
+    javascript: <SiJavascript className="text-yellow-400" />,
+    html: <SiHtml5 className="text-orange-500" />,
+    css: <FaCss3Alt className="text-blue-400" />,
+
+    // 🔥 BACKEND
+    nodejs: <SiNodedotjs className="text-green-500" />,
+    node: <SiNodedotjs className="text-green-500" />,
+    django: <SiDjango className="text-green-400" />,
+    express: <SiExpress className="text-gray-300" />,
+    "restapis": <FaServer className="text-indigo-400" />,
+
+    // 🔥 DATABASE
+    mongodb: <SiMongodb className="text-green-500" />,
+    postgresql: <SiPostgresql className="text-blue-400" />,
+    sqlite3: <FaDatabase className="text-gray-400" />,
+
+    // 🔥 CLOUD
+    aws: <FaAws className="text-orange-400" />,
+    "awss3": <FaAws className="text-orange-400" />,
+    cloudfront: <FaCloud className="text-gray-300" />,
+    azure: <FaMicrosoft className="text-blue-500" />,
+    azuresso: <FaMicrosoft className="text-blue-500" />,
+    googlesso: <SiGoogle className="text-red-400" />,
+
+    // 🔥 DEVOPS
+    vercel: <SiVercel className="text-white" />,
+    netlify: <SiNetlify className="text-cyan-400" />,
+    render: <SiRender className="text-purple-400" />,
+
+    // 🔥 AI
+    ai: <FaBrain className="text-purple-400" />,
+    llms: <FaBrain className="text-purple-400" />,
+    whisper: <FaBrain className="text-purple-400" />,
+    ollama: <FaBrain className="text-purple-400" />,
+
+    // 🔥 TOOLS
+    ffmpeg: <FaServer className="text-gray-400" />,
+    nodemailer: <FaServer className="text-gray-400" />,
+
+    // 🔥 SECURITY
+    datamasking: <FaLock className="text-red-400" />,
+    encryption: <FaLock className="text-red-400" />,
+
+    // 🔥 SYSTEM
+    spritesheets: <FaServer className="text-gray-400" />,
+    virtualenvironments: <FaServer className="text-gray-400" />,
+};
 
 // ✅ Types
 type SkillGroup = {
     _id: string;
     category: string;
     items: string[];
-    position?: number; // ✅ NEW
+    position?: number;
 };
 
-// ✅ Normalize skill name → match /icons folder
-const getIconPath = (skill: string) =>
-    `/icons/${skill
-        .toLowerCase()
-        .replace(/\s+/g, "")
-        .replace(/\./g, "")}.svg`;
 
-// 🔥 Icon Component (ONLY local, silent fail)
+
+/* ================= ICON COMPONENT ================= */
+
 function SkillIcon({ skill }: { skill: string }) {
-    const [visible, setVisible] = useState(true);
-
-    if (!visible) return null;
+    const key = skill.toLowerCase().replace(/\s+/g, "");
 
     return (
-        <img
-            src={getIconPath(skill)}
-            alt={skill}
-            className="w-4 h-4 object-contain"
-            onError={() => setVisible(false)}
-        />
+        <span className="text-sm">
+            {iconMap[key] || <span className="text-gray-500">•</span>}
+        </span>
     );
 }
+
+/* ================= MAIN ================= */
 
 export default function SkillsSection() {
     const [skills, setSkills] = useState<SkillGroup[]>([]);
     const [loading, setLoading] = useState(true);
 
-    // 📥 Fetch from DB
     useEffect(() => {
         const fetchSkills = async () => {
             try {
@@ -45,7 +118,6 @@ export default function SkillsSection() {
 
                 const data: SkillGroup[] = res.data.data || [];
 
-                // ✅ SORT BY POSITION (fallback safe)
                 const sorted = [...data].sort((a, b) => {
                     const posA = a.position ?? 9999;
                     const posB = b.position ?? 9999;
@@ -53,7 +125,6 @@ export default function SkillsSection() {
                 });
 
                 setSkills(sorted);
-
             } catch {
                 console.log("Failed to fetch skills");
             } finally {
@@ -64,63 +135,81 @@ export default function SkillsSection() {
         fetchSkills();
     }, []);
 
-    // ⏳ Loading
     if (loading) {
         return (
-            <div className="text-center py-20 text-[var(--muted)]">
+            <div className="text-center py-20 text-gray-400">
                 Loading skills...
             </div>
         );
     }
 
     return (
-        <section
-            id="skills"
-            className="py-20 sm:py-24 px-4 sm:px-6 bg-[var(--bg)]"
-        >
-            {/* ================= HEADING ================= */}
-            <div className="text-center mb-12 sm:mb-16">
-                <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold bg-gradient-to-r from-[var(--text)] to-gray-400 bg-clip-text text-transparent">
-                    Skills & Expertise
-                </h2>
+        <SectionWrapper id="skills" variant="indigo">
 
-                <p className="text-[var(--muted)] mt-3 sm:mt-4 text-sm sm:text-base max-w-xl mx-auto">
-                    Technologies and tools I use to build scalable applications
-                </p>
+            {/* ================= HEADING ================= */}
+            <div className="text-center mb-14 sm:mb-20">
+                <motion.h2
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent"
+                >
+                    Skills & Expertise
+                </motion.h2>
+
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 }}
+                    viewport={{ once: true }}
+                    className="text-gray-400 mt-4 text-sm sm:text-base max-w-xl mx-auto"
+                >
+                    Technologies and tools I use to build scalable systems
+                </motion.p>
             </div>
 
             {/* ================= GRID ================= */}
-            <div className="grid gap-6 sm:gap-8 max-w-7xl mx-auto grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-
-                {skills.map((group, index) => (
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={{
+                    hidden: {},
+                    visible: { transition: { staggerChildren: 0.08 } },
+                }}
+                className="grid gap-6 sm:gap-8 max-w-7xl mx-auto grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+            >
+                {skills.map((group) => (
                     <motion.div
                         key={group._id}
-                        initial={{ opacity: 0, y: 60 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.08 }}
-                        viewport={{ once: true }}
-                        whileHover={{ scale: 1.03 }}
-                        className="group relative rounded-2xl p-[1px] bg-gradient-to-br from-white/10 to-transparent"
+                        variants={{
+                            hidden: { opacity: 0, y: 40 },
+                            visible: { opacity: 1, y: 0 },
+                        }}
+                        whileHover={{ y: -6 }}
+                        className="group relative rounded-2xl p-[1px] bg-gradient-to-br from-white/10 via-white/5 to-transparent"
                     >
-                        <div className="relative h-full bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 sm:p-6 backdrop-blur-xl transition hover:bg-white/10">
+                        <div className="relative h-full bg-white/[0.04] border border-white/10 rounded-2xl p-6 backdrop-blur-xl transition duration-300">
 
                             {/* Glow */}
-                            <div className="absolute inset-0 pointer-events-none rounded-2xl bg-indigo-500/10 opacity-0 group-hover:opacity-100 blur-xl transition"></div>
+                            <div className="absolute inset-0 rounded-2xl bg-indigo-500/10 opacity-0 group-hover:opacity-100 blur-xl transition duration-500"></div>
 
                             {/* Category */}
-                            <h3 className="text-lg sm:text-xl font-semibold mb-4 text-indigo-500">
+                            <h3 className="text-lg sm:text-xl font-semibold mb-5 text-indigo-400">
                                 {group.category}
                             </h3>
 
                             {/* Skills */}
-                            <div className="flex flex-wrap gap-2 sm:gap-3">
+                            <div className="flex flex-wrap gap-2.5">
                                 {group.items.map((skill) => (
                                     <div
                                         key={skill}
-                                        className="flex items-center gap-2 px-3 py-1.5 text-xs sm:text-sm rounded-md bg-white/10 border border-[var(--border)] hover:bg-indigo-500/20 hover:border-indigo-500/40 transition"
+                                        className="flex items-center gap-2 px-3 py-1.5 text-xs sm:text-sm rounded-md bg-white/5 border border-white/10 hover:bg-indigo-500/20 hover:border-indigo-400/40 transition duration-300"
                                     >
                                         <SkillIcon skill={skill} />
-                                        <span>{skill}</span>
+                                        <span className="text-gray-200">
+                                            {skill}
+                                        </span>
                                     </div>
                                 ))}
                             </div>
@@ -128,8 +217,7 @@ export default function SkillsSection() {
                         </div>
                     </motion.div>
                 ))}
-
-            </div>
-        </section>
+            </motion.div>
+        </SectionWrapper>
     );
 }
