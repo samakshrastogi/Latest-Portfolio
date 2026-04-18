@@ -112,22 +112,30 @@ export default function ProjectsSection() {
                             </div>
 
                             {/* CTA */}
-                            <div className="flex gap-3">
+                            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+
                                 <a
                                     href={featured.live}
                                     target="_blank"
-                                    className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition"
+                                    className="w-full sm:w-auto text-center px-6 py-3 rounded-xl font-medium 
+        bg-gradient-to-r from-indigo-600 to-purple-600 text-white
+        hover:scale-[1.03] hover:shadow-lg hover:shadow-indigo-500/30
+        transition duration-300"
                                 >
-                                    View Live
+                                    🚀 View Live
                                 </a>
 
                                 <a
                                     href={featured.github}
                                     target="_blank"
-                                    className="px-5 py-2.5 border border-white/10 hover:bg-white/10 rounded-lg transition"
+                                    className="w-full sm:w-auto text-center px-6 py-3 rounded-xl font-medium 
+        border border-white/15 bg-white/5 backdrop-blur-md
+        hover:bg-white/10 hover:border-white/30
+        transition duration-300"
                                 >
-                                    Source Code
+                                    💻 Source Code
                                 </a>
+
                             </div>
                         </div>
                     </div>
@@ -190,21 +198,30 @@ export default function ProjectsSection() {
                                 ))}
                             </div>
 
-                            <div className="flex gap-3 text-sm">
+                            <div className="flex gap-2 mt-3">
+
                                 <a
                                     href={project.live}
                                     target="_blank"
-                                    className="text-indigo-400 hover:underline"
+                                    className="flex-1 text-center px-3 py-2 text-xs sm:text-sm rounded-lg 
+        bg-indigo-600/90 text-white
+        hover:bg-indigo-500 hover:scale-[1.02]
+        transition"
                                 >
                                     Live
                                 </a>
+
                                 <a
                                     href={project.github}
                                     target="_blank"
-                                    className="text-gray-400 hover:text-white"
+                                    className="flex-1 text-center px-3 py-2 text-xs sm:text-sm rounded-lg 
+        border border-white/15 bg-white/5
+        hover:bg-white/10 hover:border-white/30
+        transition"
                                 >
                                     Code
                                 </a>
+
                             </div>
                         </div>
                     </motion.div>
