@@ -6,7 +6,7 @@ type Variant = "default" | "indigo" | "purple";
 interface SectionWrapperProps {
     children: ReactNode;
     variant?: Variant;
-    id?: string; // ✅ IMPORTANT (for navigation)
+    id?: string;
 }
 
 export default function SectionWrapper({
@@ -15,7 +15,6 @@ export default function SectionWrapper({
     id,
 }: SectionWrapperProps) {
 
-    // 🎨 Variant styles
     const variants = {
         default: {
             bg: "bg-white/5",
@@ -39,12 +38,12 @@ export default function SectionWrapper({
     return (
         <section
             id={id}
-            className="relative py-24 px-4 sm:px-6 scroll-mt-32"
+            className="relative pt-6 sm:pt-10 pb-16 sm:pb-20 px-4 sm:px-6 scroll-mt-24"
         >
-            {/* 🔗 TOP DIVIDER */}
+            {/* TOP DIVIDER */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-            {/* 🌟 MAIN CONTAINER */}
+            {/* CONTAINER */}
             <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -52,14 +51,14 @@ export default function SectionWrapper({
                 viewport={{ once: true }}
                 className={`
                     relative max-w-6xl mx-auto
-                    rounded-2xl p-6 sm:p-10
+                    rounded-2xl p-5 sm:p-8 md:p-10
                     backdrop-blur-xl border shadow-xl
                     transition duration-300 ease-out
                     hover:scale-[1.01]
                     ${current.bg} ${current.border}
                 `}
             >
-                {/* 🔥 HOVER GLOW */}
+                {/* GLOW */}
                 <div
                     className={`
                         absolute inset-0 rounded-2xl
@@ -70,7 +69,6 @@ export default function SectionWrapper({
                     `}
                 />
 
-                {/* CONTENT */}
                 <div className="relative z-10">
                     {children}
                 </div>

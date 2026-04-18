@@ -153,21 +153,30 @@ export default function HeroSection() {
                     </div>
 
                     {/* STATS */}
-                    <div className="mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-6 text-gray-400 justify-center md:justify-start text-xs sm:text-sm">
+                    <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-md sm:max-w-none mx-auto md:mx-0">
 
-                        <div className="flex items-center gap-2 justify-center md:justify-start">
-                            <TbBrain className="text-purple-400" />
-                            <span>Built NIVR @ Nokia</span>
+                        {/* ITEM */}
+                        <div className="flex items-center justify-center md:justify-start gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10">
+                            <TbBrain className="text-purple-400 text-sm" />
+                            <span className="text-xs sm:text-sm text-gray-300 whitespace-nowrap">
+                                Built NIVR @ Nokia
+                            </span>
                         </div>
 
-                        <div className="flex items-center gap-2 justify-center md:justify-start">
-                            <FaServer className="text-indigo-400" />
-                            <span>20+ APIs Designed</span>
+                        {/* ITEM */}
+                        <div className="flex items-center justify-center md:justify-start gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10">
+                            <FaServer className="text-indigo-400 text-sm" />
+                            <span className="text-xs sm:text-sm text-gray-300 whitespace-nowrap">
+                                20+ APIs Designed
+                            </span>
                         </div>
 
-                        <div className="flex items-center gap-2 justify-center md:justify-start">
-                            <FaChartLine className="text-green-400" />
-                            <span>Real User Analytics</span>
+                        {/* ITEM */}
+                        <div className="flex items-center justify-center md:justify-start gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10">
+                            <FaChartLine className="text-green-400 text-sm" />
+                            <span className="text-xs sm:text-sm text-gray-300 whitespace-nowrap">
+                                Real User Analytics
+                            </span>
                         </div>
 
                     </div>
@@ -183,7 +192,7 @@ export default function HeroSection() {
             <motion.div
                 animate={{ y: [0, 10, 0] }}
                 transition={{ repeat: Infinity, duration: 1.5 }}
-                className="absolute bottom-6 text-gray-500 text-xs sm:text-sm"
+                className="hidden sm:block absolute bottom-6 text-gray-500 text-xs sm:text-sm"
             >
                 ↓ Scroll
             </motion.div>

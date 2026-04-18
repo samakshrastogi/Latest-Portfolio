@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SectionWrapper from "../components/SectionWrapper";
+import { FiExternalLink } from "react-icons/fi";
+import { FaGithub } from "react-icons/fa";
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -112,28 +114,32 @@ export default function ProjectsSection() {
                             </div>
 
                             {/* CTA */}
-                            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto z-100">
 
                                 <a
-                                    href={featured.live}
+                                    href={featured.live || "#"}
                                     target="_blank"
-                                    className="w-full sm:w-auto text-center px-6 py-3 rounded-xl font-medium 
+                                    rel="noopener noreferrer"
+                                    className="flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 rounded-xl font-medium 
         bg-gradient-to-r from-indigo-600 to-purple-600 text-white
         hover:scale-[1.03] hover:shadow-lg hover:shadow-indigo-500/30
         transition duration-300"
                                 >
-                                    🚀 View Live
+                                    <FiExternalLink className="text-lg" />
+                                    View Live
                                 </a>
 
                                 <a
-                                    href={featured.github}
+                                    href={featured.github || "#"}
                                     target="_blank"
-                                    className="w-full sm:w-auto text-center px-6 py-3 rounded-xl font-medium 
+                                    rel="noopener noreferrer"
+                                    className="flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 rounded-xl font-medium 
         border border-white/15 bg-white/5 backdrop-blur-md
         hover:bg-white/10 hover:border-white/30
         transition duration-300"
                                 >
-                                    💻 Source Code
+                                    <FaGithub className="text-lg" />
+                                    Source Code
                                 </a>
 
                             </div>
@@ -201,24 +207,28 @@ export default function ProjectsSection() {
                             <div className="flex gap-2 mt-3">
 
                                 <a
-                                    href={project.live}
+                                    href={project.live || "#"}
                                     target="_blank"
-                                    className="flex-1 text-center px-3 py-2 text-xs sm:text-sm rounded-lg 
+                                    rel="noopener noreferrer"
+                                    className="flex items-center justify-center gap-1 flex-1 px-3 py-2 text-xs sm:text-sm rounded-lg 
         bg-indigo-600/90 text-white
         hover:bg-indigo-500 hover:scale-[1.02]
         transition"
                                 >
+                                    <FiExternalLink />
                                     Live
                                 </a>
 
                                 <a
-                                    href={project.github}
+                                    href={project.github || "#"}
                                     target="_blank"
-                                    className="flex-1 text-center px-3 py-2 text-xs sm:text-sm rounded-lg 
+                                    rel="noopener noreferrer"
+                                    className="flex items-center justify-center gap-1 flex-1 px-3 py-2 text-xs sm:text-sm rounded-lg 
         border border-white/15 bg-white/5
         hover:bg-white/10 hover:border-white/30
         transition"
                                 >
+                                    <FaGithub />
                                     Code
                                 </a>
 
