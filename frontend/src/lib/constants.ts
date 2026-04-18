@@ -52,7 +52,7 @@ export const projects = [
             "Built a scalable full-stack application with authentication, REST APIs, and cloud deployment.",
         tech: ["React", "Node.js", "MongoDB", "AWS", "JWT"],
         live: "https://sk-cinema.vercel.app/",
-        github: "ab",
+        github: "abc",
     },
     {
         title: "AI Media Processing System",

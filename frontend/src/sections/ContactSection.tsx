@@ -35,7 +35,7 @@ export default function ContactSection() {
                 <motion.h2
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent"
+                    className="text-3xl sm:text-4xl md:text-5xl font-bold bg-linear-to-r from-white to-gray-400 bg-clip-text text-transparent"
                 >
                     Let’s Build Something Exceptional
                 </motion.h2>
@@ -50,13 +50,12 @@ export default function ContactSection() {
                 </motion.p>
             </div>
 
-            {/* MAIN CARD */}
+            {/* CARD */}
             <motion.div
                 onMouseMove={handleMouseMove}
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ scale: 1.01 }}
-                className="relative max-w-2xl mx-auto rounded-2xl p-[1px] bg-gradient-to-br from-indigo-500/30 to-purple-500/30"
+                className="relative max-w-2xl mx-auto rounded-2xl p-px bg-linear-to-br from-indigo-500/30 to-purple-500/30"
             >
                 <div className="relative rounded-2xl bg-black/60 backdrop-blur-xl border border-white/10 p-6 sm:p-8 text-center overflow-hidden">
 
@@ -97,7 +96,7 @@ export default function ContactSection() {
                     <a
                         href={`mailto:${email}`}
                         className="mt-6 inline-block w-full sm:w-auto px-6 py-3 rounded-xl font-medium text-white 
-                        bg-gradient-to-r from-indigo-600 to-purple-600
+                        bg-linear-to-r from-indigo-600 to-purple-600
                         hover:scale-[1.02] hover:shadow-lg hover:shadow-indigo-500/30
                         transition"
                     >
@@ -112,6 +111,7 @@ export default function ContactSection() {
 
                         <button
                             onClick={copyEmail}
+                            aria-label="Copy email"
                             className="p-2 rounded-lg bg-white/10 hover:bg-indigo-500/20 transition"
                         >
                             <FiCopy size={14} />
@@ -122,8 +122,8 @@ export default function ContactSection() {
                         )}
                     </div>
 
-                    {/* ACTION BUTTONS */}
-                    <div className="mt-6 grid grid-cols-2 sm:grid-cols-2 gap-3">
+                    {/* BUTTON GRID */}
+                    <div className="mt-6 grid grid-cols-2 gap-3">
 
                         <a
                             href={`mailto:${email}`}
@@ -146,6 +146,7 @@ export default function ContactSection() {
                         <a
                             href="https://github.com/samakshrastogi"
                             target="_blank"
+                            rel="noopener noreferrer"
                             className="flex items-center justify-center gap-2 px-4 py-2 text-sm rounded-lg 
                             bg-white/5 border border-white/10 hover:bg-white/10 transition"
                         >
@@ -156,6 +157,7 @@ export default function ContactSection() {
                         <a
                             href="https://linkedin.com/in/samaksh-rastogi-9638b9254"
                             target="_blank"
+                            rel="noopener noreferrer"
                             className="flex items-center justify-center gap-2 px-4 py-2 text-sm rounded-lg 
                             bg-white/5 border border-white/10 hover:bg-white/10 transition"
                         >
