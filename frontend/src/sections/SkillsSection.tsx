@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { api } from "../api/axios";
 import SectionWrapper from "../components/SectionWrapper";
+import type { ReactNode } from "react";
 
 // 🔥 ICONS
 import {
@@ -31,7 +32,7 @@ import {
     FaCloud,
 } from "react-icons/fa";
 
-const iconMap: Record<string, JSX.Element> = {
+const iconMap: Record<string, ReactNode> =  {
     // 🔥 FRONTEND
     react: <SiReact className="text-cyan-400" />,
     typescript: <SiTypescript className="text-blue-500" />,
