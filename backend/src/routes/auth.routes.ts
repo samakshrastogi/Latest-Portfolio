@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 const router = express.Router();
 
 // 🔐 Fixed credentials
-const USERNAME = "samako";
+const USERNAME = "samako2804";
 const PASSWORD = "samako@2804";
 
 router.post("/login", (req, res) => {
