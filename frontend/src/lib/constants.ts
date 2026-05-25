@@ -1,17 +1,43 @@
-export const skills = [
+export type Project = {
+    id: string;
+    title: string;
+    description: string;
+    tech: string[];
+    live: string;
+    github: string;
+    image?: string;
+    position?: number;
+};
+
+export type SkillGroup = {
+    id: string;
+    category: string;
+    items: string[];
+    position?: number;
+};
+
+// Replace these arrays with your own portfolio data when ready.
+export const skills: SkillGroup[] = [
     {
+        id: "frontend",
         category: "Frontend",
         items: ["React", "TypeScript", "HTML", "CSS", "JavaScript"],
+        position: 1,
     },
     {
+        id: "backend",
         category: "Backend",
         items: ["Node.js", "Django", "REST APIs"],
+        position: 2,
     },
     {
+        id: "database",
         category: "Database",
         items: ["MongoDB", "PostgreSQL", "SQLite3"],
+        position: 3,
     },
     {
+        id: "cloud-devops",
         category: "Cloud & DevOps",
         items: [
             "AWS S3",
@@ -23,51 +49,72 @@ export const skills = [
             "Render",
             "PEM Deployment",
         ],
+        position: 4,
     },
     {
+        id: "ai-ml",
         category: "AI / ML",
-        items: [
-            "Whisper",
-            "Ollama",
-            "LLMs",
-            "FFmpeg",
-            "Nodemailer",
-        ],
+        items: ["Whisper", "Ollama", "LLMs", "FFmpeg", "Nodemailer"],
+        position: 5,
     },
     {
-        category: "Security & Systems",
+        id: "security-systems",
+        category: "Security and Systems",
         items: [
             "Data Masking",
             "Encryption",
-            "Spritesheets",
-            "Virtual Environments (venv)",
+            "SpriteSheets",
         ],
+        position: 6,
     },
 ];
 
-export const projects = [
+export const projects: Project[] = [
     {
-        title: "Full Stack SaaS Platform",
+        id: "sk-crawlpulse",
+        title: "SK CrawlPulse",
         description:
-            "Built a scalable full-stack application with authentication, REST APIs, and cloud deployment.",
-        tech: ["React", "Node.js", "MongoDB", "AWS", "JWT"],
-        live: "https://sk-cinema.vercel.app/",
-        github: "abcd",
+            "An autonomous AI-powered QA and website analysis platform that crawls live web applications, maps user journeys, and generates structured test scenarios across functional, API, UI/UX, and edge-case coverage.",
+        tech: ["Playwright", "Node.js", "MongoDB", "SSE", "Mermaid"],
+        live: "https://sk-hub.com/crawlpulse",
+        github: "#",
+        position: 1,
     },
     {
-        title: "AI Media Processing System",
+        id: "sk-mailpilot",
+        title: "SK MailPilot",
         description:
-            "Integrated Whisper, FFmpeg, and LLMs for audio/video processing and intelligent outputs.",
-        tech: ["Python", "Whisper", "FFmpeg", "Ollama"],
-        live: "#",
+            "An AI-driven Gmail workspace that transforms inbox management into an intelligent workflow system with automated triage, smart replies, approvals, and task orchestration.",
+        live: "https://sk-hub.com/mailpilot",
+        tech: [
+            "Node.js",
+            "MongoDB",
+            "Redis",
+            "LangChain",
+            "LangGraph",
+            "Ollama",
+            "BullMQ",
+            "Gmail API",
+            "SSE",
+        ],
         github: "#",
+        position: 2,
     },
     {
-        title: "SSO Authentication System",
+        id: "sk-mediaflow",
+        title: "SK MediaFlow",
         description:
-            "Implemented Azure and Google SSO login with secure token handling and role-based access.",
-        tech: ["Node.js", "Azure", "Google Auth", "JWT"],
-        live: "#",
+            "A full-stack media platform for streaming and content management with automated video processing, AI metadata generation, and secure delivery pipelines.",
+        tech: [
+            "AWS S3",
+            "CloudFront",
+            "Redis",
+            "Socket.IO",
+            "FFmpeg",
+            "Ollama",
+        ],
+        live: "https://sk-hub.com/mediaflow",
         github: "#",
+        position: 3,
     },
 ];

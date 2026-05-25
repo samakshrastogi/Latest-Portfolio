@@ -3,8 +3,6 @@ import { Canvas } from "@react-three/fiber";
 import { Float, OrbitControls } from "@react-three/drei";
 import MagneticButton from "../components/MagneticButton";
 import { TypeAnimation } from "react-type-animation";
-
-// ICONS
 import {
     SiReact,
     SiNodedotjs,
@@ -12,7 +10,6 @@ import {
     SiMongodb,
     SiPostgresql,
 } from "react-icons/si";
-
 import { FaAws, FaMicrosoft, FaBrain, FaServer, FaChartLine } from "react-icons/fa";
 import { TbBrain } from "react-icons/tb";
 
@@ -39,54 +36,25 @@ export default function HeroSection() {
     return (
         <section
             id="hero"
-            className="relative min-h-screen w-full flex items-center justify-center overflow-hidden px-4 sm:px-6 md:px-8 pt-24 md:pt-28"
+            className="relative flex min-h-screen w-full items-center overflow-hidden px-5 pt-24 sm:px-6 md:px-8 md:pt-28"
         >
-            {/* BACKGROUND GLOW */}
-            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-purple-500/10 blur-3xl pointer-events-none" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-purple-500/10 blur-3xl" />
 
-            {/* 3D BACKGROUND */}
-            <div className="absolute right-0 top-0 w-[40%] h-full z-0 pointer-events-none hidden lg:block">
-                <Canvas>
-                    <ambientLight intensity={0.5} />
-                    <directionalLight position={[2, 2, 5]} />
-
-                    <Float speed={1.5} rotationIntensity={1} floatIntensity={1.5}>
-                        <mesh>
-                            <sphereGeometry args={[1.2, 32, 32]} />
-                            <meshStandardMaterial color="#6366f1" wireframe />
-                        </mesh>
-                    </Float>
-
-                    <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.6} />
-                </Canvas>
-            </div>
-
-            {/* MAIN GRID */}
-            <div className="relative z-20 grid grid-cols-1 md:grid-cols-2 items-center gap-10 sm:gap-12 md:gap-16 max-w-7xl w-full mx-auto">
-
-                {/* MOBILE IMAGE */}
-                <div className="flex justify-center md:hidden">
-                    <ProfileImage />
-                </div>
-
-                {/* LEFT CONTENT */}
-                <div className="text-center md:text-left">
-
-                    {/* NAME */}
+            <div className="relative z-20 mx-auto grid w-full max-w-7xl items-center gap-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(340px,0.85fr)] lg:gap-16">
+                <div className="max-w-3xl text-left">
                     <motion.h1
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-2xl sm:text-4xl md:text-6xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent"
+                        className="bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl md:text-6xl lg:text-7xl"
                     >
                         Samaksh Rastogi
                     </motion.h1>
 
-                    {/* ROLE */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.3 }}
-                        className="mt-3 text-base sm:text-lg md:text-2xl text-indigo-400 font-medium"
+                        className="mt-5 text-xl font-medium text-indigo-400 sm:text-2xl md:text-3xl"
                     >
                         <TypeAnimation
                             sequence={[
@@ -104,19 +72,17 @@ export default function HeroSection() {
                         />
                     </motion.div>
 
-                    {/* TAGLINE */}
-                    <p className="mt-4 text-gray-300 max-w-xl mx-auto md:mx-0 text-sm sm:text-base leading-relaxed">
+                    <p className="mt-6 max-w-3xl text-base leading-relaxed text-gray-300 sm:text-lg">
                         Building scalable backend systems and AI-powered applications used in real production environments.
                     </p>
 
-                    {/* TECH STACK */}
-                    <div className="mt-6 flex flex-wrap gap-2 sm:gap-3 justify-center md:justify-start">
+                    <div className="mt-8 flex flex-wrap gap-3">
                         {techStack.map((tech) => (
                             <div
                                 key={tech.name}
-                                className="flex items-center gap-2 px-3 py-1 text-xs sm:text-sm bg-white/10 border border-white/20 rounded-full hover:scale-105 hover:bg-indigo-500/20 transition"
+                                className="flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-4 py-2 text-sm text-gray-100 transition hover:scale-[1.03] hover:border-indigo-400/40 hover:bg-indigo-500/10"
                             >
-                                <span className="text-indigo-400 text-sm sm:text-base">
+                                <span className="text-base text-indigo-400">
                                     {tech.icon}
                                 </span>
                                 {tech.name}
@@ -124,21 +90,18 @@ export default function HeroSection() {
                         ))}
                     </div>
 
-                    {/* STATUS */}
-                    <div className="mt-4 flex items-start sm:items-center gap-2 text-xs sm:text-sm text-green-400 justify-center md:justify-start text-center md:text-left">
-                        <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse mt-1 sm:mt-0"></span>
+                    <div className="mt-6 flex items-start gap-3 text-sm text-emerald-400 sm:items-center sm:text-base">
+                        <span className="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse sm:mt-0"></span>
                         <span>
                             Building: AI Quiz Platform (auto question generation + analytics)
                         </span>
                     </div>
 
-                    {/* BUTTONS */}
-                    <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto justify-center md:justify-start">
-
+                    <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
                         <MagneticButton>
                             <button
                                 onClick={scrollToProjects}
-                                className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-medium hover:scale-105 transition shadow-lg shadow-indigo-500/30"
+                                className="rounded-2xl bg-gradient-to-r from-indigo-600 to-fuchsia-600 px-8 py-4 text-lg font-medium text-white shadow-lg shadow-indigo-500/30 transition hover:scale-[1.03]"
                             >
                                 Explore My Work
                             </button>
@@ -146,53 +109,45 @@ export default function HeroSection() {
 
                         <a
                             href="#contact"
-                            className="w-full sm:w-auto px-6 py-3 border border-white/20 rounded-xl hover:bg-white/10 transition text-center"
+                            className="rounded-2xl border border-white/15 bg-white/[0.03] px-8 py-4 text-center text-lg text-white transition hover:bg-white/[0.08]"
                         >
                             Get In Touch
                         </a>
                     </div>
 
-                    {/* STATS */}
-                    <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-md sm:max-w-none mx-auto md:mx-0">
-
-                        {/* ITEM */}
-                        <div className="flex items-center justify-center md:justify-start gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10">
-                            <TbBrain className="text-purple-400 text-sm" />
-                            <span className="text-xs sm:text-sm text-gray-300 whitespace-nowrap">
+                    <div className="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                        <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.05] px-4 py-3">
+                            <TbBrain className="text-sm text-purple-400" />
+                            <span className="whitespace-nowrap text-sm text-gray-300">
                                 Built NIVR @ Nokia
                             </span>
                         </div>
 
-                        {/* ITEM */}
-                        <div className="flex items-center justify-center md:justify-start gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10">
-                            <FaServer className="text-indigo-400 text-sm" />
-                            <span className="text-xs sm:text-sm text-gray-300 whitespace-nowrap">
+                        <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.05] px-4 py-3">
+                            <FaServer className="text-sm text-indigo-400" />
+                            <span className="whitespace-nowrap text-sm text-gray-300">
                                 20+ APIs Designed
                             </span>
                         </div>
 
-                        {/* ITEM */}
-                        <div className="flex items-center justify-center md:justify-start gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10">
-                            <FaChartLine className="text-green-400 text-sm" />
-                            <span className="text-xs sm:text-sm text-gray-300 whitespace-nowrap">
+                        <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.05] px-4 py-3">
+                            <FaChartLine className="text-sm text-green-400" />
+                            <span className="whitespace-nowrap text-sm text-gray-300">
                                 Real User Analytics
                             </span>
                         </div>
-
                     </div>
                 </div>
 
-                {/* DESKTOP IMAGE */}
-                <div className="hidden md:flex justify-center">
+                <div className="flex justify-center lg:justify-end">
                     <ProfileImage />
                 </div>
             </div>
 
-            {/* SCROLL INDICATOR */}
             <motion.div
                 animate={{ y: [0, 10, 0] }}
                 transition={{ repeat: Infinity, duration: 1.5 }}
-                className="hidden sm:block absolute bottom-6 text-gray-500 text-xs sm:text-sm"
+                className="absolute bottom-6 hidden text-xs text-gray-500 sm:block"
             >
                 ↓ Scroll
             </motion.div>
@@ -200,23 +155,43 @@ export default function HeroSection() {
     );
 }
 
-/* PROFILE IMAGE */
 function ProfileImage() {
     return (
         <motion.div
             initial={{ opacity: 0, scale: 0.7 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="relative w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64"
+            className="relative flex h-[280px] w-[280px] items-center justify-center sm:h-[360px] sm:w-[360px] lg:h-[420px] lg:w-[420px]"
         >
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 blur-2xl opacity-40 animate-pulse"></div>
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 rounded-full bg-fuchsia-600/20 blur-3xl" />
 
-            <div className="absolute inset-0 rounded-full p-[3px] bg-gradient-to-r from-indigo-500 to-purple-500">
-                <div className="w-full h-full rounded-full bg-[var(--bg)]">
+            <div className="pointer-events-none absolute right-0 top-0 hidden h-[72%] w-[72%] lg:block">
+                <Canvas camera={{ position: [0, 0, 4] }}>
+                    <ambientLight intensity={0.45} />
+                    <directionalLight position={[2, 2, 5]} intensity={1} />
+
+                    <Float speed={1.5} rotationIntensity={0.8} floatIntensity={1.2}>
+                        <mesh>
+                            <sphereGeometry args={[1.55, 32, 32]} />
+                            <meshStandardMaterial color="#4f46e5" wireframe />
+                        </mesh>
+                    </Float>
+
+                    <OrbitControls
+                        enablePan={false}
+                        enableZoom={false}
+                        autoRotate
+                        autoRotateSpeed={0.7}
+                    />
+                </Canvas>
+            </div>
+
+            <div className="relative z-10 h-[66%] w-[66%] min-h-[210px] min-w-[210px] rounded-full border-[3px] border-violet-400 bg-gradient-to-r from-indigo-500 to-fuchsia-500 p-[3px] shadow-[0_0_40px_rgba(139,92,246,0.28)] sm:min-h-[250px] sm:min-w-[250px]">
+                <div className="h-full w-full rounded-full bg-[var(--bg)]">
                     <img
                         src="images/profile.png"
                         alt="Samaksh Rastogi"
-                        className="w-full h-full object-cover rounded-full"
+                        className="h-full w-full rounded-full object-cover"
                     />
                 </div>
             </div>

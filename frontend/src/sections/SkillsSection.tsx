@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { api } from "../api/axios";
 import SectionWrapper from "../components/SectionWrapper";
 import type { ReactNode } from "react";
+import { skills as skillData, type SkillGroup } from "../lib/constants";
 
 // 🔥 ICONS
 import {
@@ -84,16 +83,6 @@ const iconMap: Record<string, ReactNode> =  {
     virtualenvironments: <FaServer className="text-gray-400" />,
 };
 
-// ✅ Types
-type SkillGroup = {
-    _id: string;
-    category: string;
-    items: string[];
-    position?: number;
-};
-
-
-
 /* ================= ICON COMPONENT ================= */
 
 function SkillIcon({ skill }: { skill: string }) {
@@ -109,40 +98,11 @@ function SkillIcon({ skill }: { skill: string }) {
 /* ================= MAIN ================= */
 
 export default function SkillsSection() {
-    const [skills, setSkills] = useState<SkillGroup[]>([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchSkills = async () => {
-            try {
-                const res = await api.get("/skills");
-
-                const data: SkillGroup[] = res.data.data || [];
-
-                const sorted = [...data].sort((a, b) => {
-                    const posA = a.position ?? 9999;
-                    const posB = b.position ?? 9999;
-                    return posA - posB;
-                });
-
-                setSkills(sorted);
-            } catch {
-                console.log("Failed to fetch skills");
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchSkills();
-    }, []);
-
-    if (loading) {
-        return (
-            <div className="text-center py-20 text-gray-400">
-                Loading skills...
-            </div>
-        );
-    }
+    const skills: SkillGroup[] = [...skillData].sort((a, b) => {
+        const posA = a.position ?? 9999;
+        const posB = b.position ?? 9999;
+        return posA - posB;
+    });
 
     return (
         <SectionWrapper id="skills" variant="indigo">
@@ -182,7 +142,7 @@ export default function SkillsSection() {
             >
                 {skills.map((group) => (
                     <motion.div
-                        key={group._id}
+                        key={group.id}
                         variants={{
                             hidden: { opacity: 0, y: 40 },
                             visible: { opacity: 1, y: 0 },

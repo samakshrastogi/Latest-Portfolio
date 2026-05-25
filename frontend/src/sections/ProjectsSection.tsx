@@ -1,46 +1,15 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import SectionWrapper from "../components/SectionWrapper";
 import { FiExternalLink } from "react-icons/fi";
 import { FaGithub } from "react-icons/fa";
-
-const API = import.meta.env.VITE_API_URL;
-
-type Project = {
-    _id?: string;
-    title: string;
-    description: string;
-    tech: string[];
-    live: string;
-    github: string;
-    image?: string;
-    position?: number;
-};
+import { projects as projectData, type Project } from "../lib/constants";
 
 export default function ProjectsSection() {
-    const [projects, setProjects] = useState<Project[]>([]);
-
-    useEffect(() => {
-        const fetchProjects = async () => {
-            try {
-                const res = await axios.get(`${API}/projects`);
-                const data: Project[] = res.data.data || [];
-
-                const sorted = [...data].sort((a, b) => {
-                    const posA = a.position ?? 9999;
-                    const posB = b.position ?? 9999;
-                    return posA - posB;
-                });
-
-                setProjects(sorted);
-            } catch {
-                console.log("Failed to fetch projects");
-            }
-        };
-
-        fetchProjects();
-    }, []);
+    const projects: Project[] = [...projectData].sort((a, b) => {
+        const posA = a.position ?? 9999;
+        const posB = b.position ?? 9999;
+        return posA - posB;
+    });
 
     const featured = projects[0];
     const rest = projects.slice(1);
@@ -162,13 +131,13 @@ export default function ProjectsSection() {
             >
                 {rest.map((project) => (
                     <motion.div
-                        key={project._id}
+                        key={project.id}
                         variants={{
                             hidden: { opacity: 0, y: 40 },
                             visible: { opacity: 1, y: 0 },
                         }}
                         whileHover={{ y: -6 }}
-                        className="group rounded-2xl overflow-hidden border border-white/10 bg-white/[0.04]"
+                        className="group flex h-full flex-col rounded-2xl overflow-hidden border border-white/10 bg-white/[0.04]"
                     >
                         {/* IMAGE */}
                         <div className="relative h-44 overflow-hidden">
@@ -184,7 +153,7 @@ export default function ProjectsSection() {
                         </div>
 
                         {/* CONTENT */}
-                        <div className="p-5">
+                        <div className="flex flex-1 flex-col p-5">
                             <h3 className="text-lg font-semibold text-white mb-2">
                                 {project.title}
                             </h3>
@@ -204,7 +173,7 @@ export default function ProjectsSection() {
                                 ))}
                             </div>
 
-                            <div className="flex gap-2 mt-3">
+                            <div className="mt-auto flex gap-2 pt-3">
 
                                 <a
                                     href={project.live || "#"}
