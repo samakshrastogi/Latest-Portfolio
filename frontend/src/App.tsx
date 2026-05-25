@@ -1,6 +1,8 @@
+import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import CursorGlow from "./components/CursorGlow";
 import ScrollProgress from "./components/ScrollProgress";
+import logo from "./assets/logo.png";
 
 import HeroSection from "./sections/HeroSection";
 import SkillsSection from "./sections/SkillsSection";
@@ -10,6 +12,32 @@ import ContactSection from "./sections/ContactSection";
 
 // 🔥 Main Portfolio Layout
 export default function App() {
+  useEffect(() => {
+    const favicon = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
+    if (!favicon) return;
+
+    const image = new Image();
+    image.src = logo;
+
+    image.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = 64;
+      canvas.height = 64;
+
+      const context = canvas.getContext("2d");
+      if (!context) return;
+
+      context.beginPath();
+      context.arc(32, 32, 32, 0, Math.PI * 2);
+      context.closePath();
+      context.clip();
+      context.drawImage(image, 0, 0, 64, 64);
+
+      favicon.href = canvas.toDataURL("image/png");
+      favicon.type = "image/png";
+    };
+  }, []);
+
   return (
     <div className="relative text-white overflow-x-hidden">
       <Navbar />
