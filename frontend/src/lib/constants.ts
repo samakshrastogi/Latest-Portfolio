@@ -76,7 +76,7 @@ export const projects: Project[] = [
         description:
             "An autonomous AI-powered QA and website analysis platform that crawls live web applications, maps user journeys, and generates structured test scenarios across functional, API, UI/UX, and edge-case coverage.",
         tech: ["Playwright", "Node.js", "MongoDB", "SSE", "Mermaid"],
-        live: "https://sk-hub.com/crawlpulse",
+        live: "https://crawlpulse.sk-hub.in",
         github: "#",
         position: 1,
     },
@@ -85,7 +85,7 @@ export const projects: Project[] = [
         title: "SK MailPilot",
         description:
             "An AI-driven Gmail workspace that transforms inbox management into an intelligent workflow system with automated triage, smart replies, approvals, and task orchestration.",
-        live: "https://sk-hub.com/mailpilot",
+        live: "https://mailpilot.sk-hub.in",
         tech: [
             "Node.js",
             "MongoDB",
@@ -113,7 +113,7 @@ export const projects: Project[] = [
             "FFmpeg",
             "Ollama",
         ],
-        live: "https://sk-hub.com/mediaflow",
+        live: "https://mediaflow.sk-hub.in",
         github: "#",
         position: 3,
     },
