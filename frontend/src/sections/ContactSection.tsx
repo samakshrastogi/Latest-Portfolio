@@ -104,21 +104,21 @@ export default function ContactSection() {
                     </a>
 
                     {/* EMAIL COPY */}
-                    <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-2">
-                        <div className="w-full sm:w-auto px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-gray-300 text-center break-all">
+                    <div className="mt-6 flex items-center justify-center gap-2">
+                        <div className="min-w-0 flex-1 px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-gray-300 text-center truncate sm:flex-none sm:px-4">
                             {email}
                         </div>
 
                         <button
                             onClick={copyEmail}
                             aria-label="Copy email"
-                            className="p-2 rounded-lg bg-white/10 hover:bg-indigo-500/20 transition"
+                            className="shrink-0 p-2 rounded-lg bg-white/10 hover:bg-indigo-500/20 transition"
                         >
                             <FiCopy size={14} />
                         </button>
 
                         {copied && (
-                            <span className="text-green-400 text-xs">Copied</span>
+                            <span className="shrink-0 text-green-400 text-xs">Copied</span>
                         )}
                     </div>
 

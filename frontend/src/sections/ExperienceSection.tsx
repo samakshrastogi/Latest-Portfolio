@@ -15,6 +15,8 @@ import {
     FaProjectDiagram,
     FaAws,
     FaMicrosoft,
+    FaArrowDown,
+    FaArrowRight,
 } from "react-icons/fa";
 
 // 🔥 FALLBACK (ONLY WHERE NEEDED)
@@ -24,6 +26,8 @@ const fadeUp = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0 },
 };
+const systemFlow = ["Client", "API", "Services", "Database", "Storage"];
+
 type CardProps = {
     title: string;
     icon: ReactNode;
@@ -179,19 +183,25 @@ export default function ExperienceSection() {
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
-                className="max-w-6xl mx-auto mb-20 rounded-2xl bg-white/[0.04] border border-white/10 p-8"
+                className="max-w-6xl mx-auto mb-20 rounded-2xl bg-white/[0.04] border border-white/10 p-5 sm:p-8"
             >
                 <h3 className="text-center text-lg font-semibold text-indigo-400 mb-8">
                     System Flow
                 </h3>
 
-                <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-300">
-                    {["Client", "API", "Services", "Database", "Storage"].map((node) => (
-                        <div
-                            key={node}
-                            className="px-4 py-2 rounded-lg bg-white/10 border border-white/10"
-                        >
-                            {node}
+                <div className="mx-auto flex max-w-xs flex-col items-stretch gap-2 text-sm text-gray-300 sm:max-w-none sm:flex-row sm:items-center sm:justify-center sm:gap-3">
+                    {systemFlow.map((node, index) => (
+                        <div key={node} className="contents">
+                            <div className="flex items-center justify-center rounded-xl border border-white/10 bg-white/10 px-4 py-2.5 font-medium shadow-[0_10px_30px_rgba(79,70,229,0.08)] sm:min-w-24">
+                                {node}
+                            </div>
+
+                            {index < systemFlow.length - 1 && (
+                                <div className="flex justify-center text-indigo-400/80">
+                                    <FaArrowDown className="sm:hidden" />
+                                    <FaArrowRight className="hidden sm:block" />
+                                </div>
+                            )}
                         </div>
                     ))}
                 </div>

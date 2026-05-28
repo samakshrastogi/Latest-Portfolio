@@ -41,7 +41,7 @@ export default function HeroSection() {
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-purple-500/10 blur-3xl" />
 
             <div className="relative z-20 mx-auto grid w-full max-w-7xl items-center gap-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(340px,0.85fr)] lg:gap-16">
-                <div className="max-w-3xl text-left">
+                <div className="order-2 max-w-3xl text-left lg:order-1">
                     <motion.h1
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -97,11 +97,11 @@ export default function HeroSection() {
                         </span>
                     </div>
 
-                    <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-                        <MagneticButton>
+                    <div className="mt-10 flex flex-row items-center gap-3 sm:gap-4">
+                        <MagneticButton className="min-w-0 flex-[1.25] sm:flex-none">
                             <button
                                 onClick={scrollToProjects}
-                                className="rounded-2xl bg-gradient-to-r from-indigo-600 to-fuchsia-600 px-8 py-4 text-lg font-medium text-white shadow-lg shadow-indigo-500/30 transition hover:scale-[1.03]"
+                                className="w-full whitespace-nowrap rounded-xl bg-gradient-to-r from-indigo-600 to-fuchsia-600 px-3 py-3 text-sm font-medium text-white shadow-lg shadow-indigo-500/30 transition hover:scale-[1.03] min-[380px]:px-4 sm:rounded-2xl sm:px-8 sm:py-4 sm:text-lg"
                             >
                                 Explore My Work
                             </button>
@@ -109,7 +109,7 @@ export default function HeroSection() {
 
                         <a
                             href="#contact"
-                            className="rounded-2xl border border-white/15 bg-white/[0.03] px-8 py-4 text-center text-lg text-white transition hover:bg-white/[0.08]"
+                            className="min-w-0 flex-1 whitespace-nowrap rounded-xl border border-white/15 bg-white/[0.03] px-3 py-3 text-center text-sm font-medium text-white transition hover:bg-white/[0.08] min-[380px]:px-4 sm:flex-none sm:rounded-2xl sm:px-8 sm:py-4 sm:text-lg"
                         >
                             Get In Touch
                         </a>
@@ -139,7 +139,7 @@ export default function HeroSection() {
                     </div>
                 </div>
 
-                <div className="flex justify-center lg:justify-end">
+                <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
                     <ProfileImage />
                 </div>
             </div>

@@ -2,9 +2,10 @@ import { useRef } from "react";
 
 type MagneticButtonProps = {
     children: React.ReactNode;
+    className?: string;
 };
 
-export default function MagneticButton({ children }: MagneticButtonProps) {
+export default function MagneticButton({ children, className = "" }: MagneticButtonProps) {
     const ref = useRef<HTMLDivElement>(null);
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -28,7 +29,7 @@ export default function MagneticButton({ children }: MagneticButtonProps) {
             ref={ref}
             onMouseMove={handleMouseMove}
             onMouseLeave={reset}
-            className="inline-block transition-transform duration-200"
+            className={`inline-block transition-transform duration-200 ${className}`}
         >
             {children}
         </div>

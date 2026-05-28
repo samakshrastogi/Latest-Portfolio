@@ -83,32 +83,34 @@ export default function ProjectsSection() {
                             </div>
 
                             {/* CTA */}
-                            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto z-100">
+                            <div className="flex w-full flex-row gap-3 z-100 sm:w-auto">
 
                                 <a
                                     href={featured.live || "#"}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 rounded-xl font-medium 
+                                    className="flex min-w-0 flex-1 items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium sm:w-auto sm:flex-none sm:rounded-xl sm:px-6 sm:py-3 sm:text-base 
         bg-gradient-to-r from-indigo-600 to-purple-600 text-white
         hover:scale-[1.03] hover:shadow-lg hover:shadow-indigo-500/30
         transition duration-300"
                                 >
-                                    <FiExternalLink className="text-lg" />
-                                    View Live
+                                    <FiExternalLink className="text-base sm:text-lg" />
+                                    <span className="sm:hidden">Live</span>
+                                    <span className="hidden sm:inline">View Live</span>
                                 </a>
 
                                 <a
                                     href={featured.github || "#"}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 rounded-xl font-medium 
+                                    className="flex min-w-0 flex-1 items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium sm:w-auto sm:flex-none sm:rounded-xl sm:px-6 sm:py-3 sm:text-base 
         border border-white/15 bg-white/5 backdrop-blur-md
         hover:bg-white/10 hover:border-white/30
         transition duration-300"
                                 >
-                                    <FaGithub className="text-lg" />
-                                    Source Code
+                                    <FaGithub className="text-base sm:text-lg" />
+                                    <span className="sm:hidden">Code</span>
+                                    <span className="hidden sm:inline">Source Code</span>
                                 </a>
 
                             </div>
@@ -179,12 +181,12 @@ export default function ProjectsSection() {
                                     href={project.live || "#"}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center justify-center gap-1 flex-1 px-3 py-2 text-xs sm:text-sm rounded-lg 
-        bg-indigo-600/90 text-white
+                                    className="flex flex-1 items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium 
+        bg-gradient-to-r from-indigo-600 to-purple-600 text-white
         hover:bg-indigo-500 hover:scale-[1.02]
         transition"
                                 >
-                                    <FiExternalLink />
+                                    <FiExternalLink className="text-base" />
                                     Live
                                 </a>
 
@@ -192,12 +194,12 @@ export default function ProjectsSection() {
                                     href={project.github || "#"}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center justify-center gap-1 flex-1 px-3 py-2 text-xs sm:text-sm rounded-lg 
-        border border-white/15 bg-white/5
+                                    className="flex flex-1 items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium 
+        border border-white/15 bg-white/5 backdrop-blur-md
         hover:bg-white/10 hover:border-white/30
         transition"
                                 >
-                                    <FaGithub />
+                                    <FaGithub className="text-base" />
                                     Code
                                 </a>
 
