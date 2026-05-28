@@ -62,9 +62,13 @@ export default function ProjectsSection() {
                         {/* CONTENT */}
                         <div className="p-6 sm:p-10 flex flex-col justify-center">
 
-                            <h3 className="text-2xl sm:text-3xl font-semibold text-white mb-4">
+                            <h3 className="text-2xl sm:text-3xl font-semibold text-white mb-2">
                                 {featured.title}
                             </h3>
+
+                            <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-indigo-300 sm:text-sm">
+                                {featured.date}
+                            </p>
 
                             <p className="text-gray-300 mb-6 leading-relaxed">
                                 {featured.description}
@@ -156,9 +160,13 @@ export default function ProjectsSection() {
 
                         {/* CONTENT */}
                         <div className="flex flex-1 flex-col p-5">
-                            <h3 className="text-lg font-semibold text-white mb-2">
+                            <h3 className="text-lg font-semibold text-white mb-1">
                                 {project.title}
                             </h3>
+
+                            <p className="mb-3 text-xs font-medium uppercase tracking-[0.16em] text-indigo-300">
+                                {project.date}
+                            </p>
 
                             <p className="text-gray-400 text-sm mb-4">
                                 {project.description}

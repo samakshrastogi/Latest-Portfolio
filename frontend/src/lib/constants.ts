@@ -2,6 +2,7 @@ export type Project = {
     id: string;
     title: string;
     description: string;
+    date: string;
     tech: string[];
     live: string;
     github: string;
@@ -75,6 +76,7 @@ export const projects: Project[] = [
         title: "SK CrawlPulse",
         description:
             "An autonomous AI-powered QA and website analysis platform that crawls live web applications, maps user journeys, and generates structured test scenarios across functional, API, UI/UX, and edge-case coverage.",
+        date: "04/2026 - Present",
         tech: ["Playwright", "Node.js", "MongoDB", "SSE", "Mermaid"],
         live: "https://crawlpulse.sk-hub.in",
         github: "#",
@@ -85,6 +87,7 @@ export const projects: Project[] = [
         title: "SK MailPilot",
         description:
             "An AI-driven Gmail workspace that transforms inbox management into an intelligent workflow system with automated triage, smart replies, approvals, and task orchestration.",
+        date: "04/2026 - 04/2026",
         live: "https://mailpilot.sk-hub.in",
         tech: [
             "Node.js",
@@ -105,6 +108,7 @@ export const projects: Project[] = [
         title: "SK MediaFlow",
         description:
             "A full-stack media platform for streaming and content management with automated video processing, AI metadata generation, and secure delivery pipelines.",
+        date: "02/2026 - 05/2026",
         tech: [
             "AWS S3",
             "CloudFront",

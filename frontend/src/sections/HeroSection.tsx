@@ -93,7 +93,7 @@ export default function HeroSection() {
                     <div className="mt-6 flex items-start gap-3 text-sm text-emerald-400 sm:items-center sm:text-base">
                         <span className="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse sm:mt-0"></span>
                         <span>
-                            Building: AI Quiz Platform (auto question generation + analytics)
+                            Currently building: SK CrawlPulse (AI-powered QA and website analysis platform)
                         </span>
                     </div>
 

@@ -41,6 +41,7 @@ const iconMap: Record<string, ReactNode> =  {
 
     // 🔥 BACKEND
     nodejs: <SiNodedotjs className="text-green-500" />,
+    "node.js": <SiNodedotjs className="text-green-500" />,
     node: <SiNodedotjs className="text-green-500" />,
     django: <SiDjango className="text-green-400" />,
     express: <SiExpress className="text-gray-300" />,
@@ -63,6 +64,7 @@ const iconMap: Record<string, ReactNode> =  {
     vercel: <SiVercel className="text-white" />,
     netlify: <SiNetlify className="text-cyan-400" />,
     render: <SiRender className="text-purple-400" />,
+    pemdeployment: <FaLock className="text-amber-400" />,
 
     // 🔥 AI
     ai: <FaBrain className="text-purple-400" />,
