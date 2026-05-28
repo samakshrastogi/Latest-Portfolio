@@ -15,7 +15,6 @@ import {
     FaProjectDiagram,
     FaAws,
     FaMicrosoft,
-    FaArrowDown,
     FaArrowRight,
     FaCheck,
 } from "react-icons/fa";
@@ -186,23 +185,22 @@ export default function ExperienceSection() {
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
-                className="max-w-6xl mx-auto mb-20 rounded-2xl bg-white/[0.04] border border-white/10 p-5 sm:p-8"
+                className="max-w-6xl mx-auto mb-14 rounded-2xl bg-white/[0.04] border border-white/10 p-4 sm:mb-20 sm:p-8"
             >
-                <h3 className="text-center text-lg font-semibold text-indigo-400 mb-8">
+                <h3 className="text-center text-base font-semibold text-indigo-400 mb-4 sm:mb-8 sm:text-lg">
                     System Flow
                 </h3>
 
-                <div className="mx-auto flex max-w-xs flex-col items-stretch gap-2 text-sm text-gray-300 sm:max-w-none sm:flex-row sm:items-center sm:justify-center sm:gap-3">
+                <div className="mx-auto flex max-w-sm flex-wrap items-center justify-center gap-2 text-xs text-gray-300 sm:max-w-none sm:flex-nowrap sm:gap-3 sm:text-sm">
                     {systemFlow.map((node, index) => (
-                        <div key={node} className="contents">
-                            <div className="flex items-center justify-center rounded-xl border border-white/10 bg-white/10 px-4 py-2.5 font-medium shadow-[0_10px_30px_rgba(79,70,229,0.08)] sm:min-w-24">
+                        <div key={node} className="flex items-center gap-2">
+                            <div className="flex items-center justify-center rounded-lg border border-white/10 bg-white/10 px-3 py-2 font-medium shadow-[0_10px_30px_rgba(79,70,229,0.08)] sm:min-w-24 sm:rounded-xl sm:px-4 sm:py-2.5">
                                 {node}
                             </div>
 
                             {index < systemFlow.length - 1 && (
-                                <div className="flex justify-center text-indigo-400/80">
-                                    <FaArrowDown className="sm:hidden" />
-                                    <FaArrowRight className="hidden sm:block" />
+                                <div className="text-indigo-400/80">
+                                    <FaArrowRight />
                                 </div>
                             )}
                         </div>

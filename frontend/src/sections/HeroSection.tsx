@@ -76,16 +76,18 @@ export default function HeroSection() {
                         Building scalable backend systems and AI-powered applications used in real production environments.
                     </p>
 
-                    <div className="mt-8 flex flex-wrap gap-3">
+                    <div className="mt-8 grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:gap-3">
                         {techStack.map((tech) => (
                             <div
                                 key={tech.name}
-                                className="flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-4 py-2 text-sm text-gray-100 transition hover:scale-[1.03] hover:border-indigo-400/40 hover:bg-indigo-500/10"
+                                className="flex min-w-0 items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.06] px-3 py-2 text-sm text-gray-100 transition hover:scale-[1.03] hover:border-indigo-400/40 hover:bg-indigo-500/10 sm:justify-start sm:rounded-full sm:px-4"
                             >
                                 <span className="text-base text-indigo-400">
                                     {tech.icon}
                                 </span>
-                                {tech.name}
+                                <span className="truncate">
+                                    {tech.name}
+                                </span>
                             </div>
                         ))}
                     </div>

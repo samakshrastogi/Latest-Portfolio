@@ -3,6 +3,7 @@ import SectionWrapper from "../components/SectionWrapper";
 import { FiExternalLink } from "react-icons/fi";
 import { FaGithub } from "react-icons/fa";
 import { projects as projectData, type Project } from "../lib/constants";
+import { useState } from "react";
 
 export default function ProjectsSection() {
     const projects: Project[] = [...projectData].sort((a, b) => {
@@ -70,9 +71,10 @@ export default function ProjectsSection() {
                                 {featured.date}
                             </p>
 
-                            <p className="text-gray-300 mb-6 leading-relaxed">
-                                {featured.description}
-                            </p>
+                            <ProjectDescription
+                                description={featured.description}
+                                className="mb-6 text-gray-300"
+                            />
 
                             {/* TECH */}
                             <div className="flex flex-wrap gap-2 mb-6">
@@ -122,7 +124,7 @@ export default function ProjectsSection() {
                     </div>
 
                     {/* Glow */}
-                    <div className="absolute inset-0 bg-purple-500/10 opacity-0 group-hover:opacity-100 blur-2xl transition" />
+                    <div className="pointer-events-none absolute inset-0 bg-purple-500/10 opacity-0 group-hover:opacity-100 blur-2xl transition" />
                 </motion.div>
             )}
 
@@ -168,9 +170,10 @@ export default function ProjectsSection() {
                                 {project.date}
                             </p>
 
-                            <p className="text-gray-400 text-sm mb-4">
-                                {project.description}
-                            </p>
+                            <ProjectDescription
+                                description={project.description}
+                                className="mb-4 text-sm text-gray-400"
+                            />
 
                             <div className="flex flex-wrap gap-2 mb-4">
                                 {project.tech.map((t) => (
@@ -217,5 +220,47 @@ export default function ProjectsSection() {
                 ))}
             </motion.div>
         </SectionWrapper>
+    );
+}
+
+function ProjectDescription({
+    description,
+    className = "",
+}: {
+    description: string;
+    className?: string;
+}) {
+    const [expanded, setExpanded] = useState(false);
+
+    return (
+        <div className={`relative leading-relaxed ${className}`}>
+            <p
+                className={
+                    expanded
+                        ? ""
+                        : "overflow-hidden pr-24 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]"
+                }
+            >
+                {description}
+            </p>
+
+            {!expanded ? (
+                <button
+                    type="button"
+                    onClick={() => setExpanded(true)}
+                    className="absolute bottom-0 right-0 bg-gradient-to-l from-[#2b1a46] via-[#2b1a46] to-transparent pl-8 text-sm font-medium text-indigo-300 transition hover:text-indigo-200"
+                >
+                    See more
+                </button>
+            ) : (
+                <button
+                    type="button"
+                    onClick={() => setExpanded(false)}
+                    className="mt-1 text-sm font-medium text-indigo-300 transition hover:text-indigo-200"
+                >
+                    See less
+                </button>
+            )}
+        </div>
     );
 }
