@@ -17,6 +17,7 @@ import {
     FaMicrosoft,
     FaArrowDown,
     FaArrowRight,
+    FaCheck,
 } from "react-icons/fa";
 
 // 🔥 FALLBACK (ONLY WHERE NEEDED)
@@ -29,9 +30,11 @@ const fadeUp = {
 const systemFlow = ["Client", "API", "Services", "Database", "Storage"];
 
 type CardProps = {
+    index: string;
     title: string;
+    subtitle: string;
     icon: ReactNode;
-    children: ReactNode;
+    items: string[];
 };
 export default function ExperienceSection() {
     return (
@@ -210,29 +213,44 @@ export default function ExperienceSection() {
             {/* ================= CORE ================= */}
             <div className="grid gap-6 sm:gap-8 max-w-7xl mx-auto grid-cols-1 md:grid-cols-3">
 
-                {/* ENGINEERING */}
-                <Card title="Engineering" icon={<FaCogs />}>
-                    Modular backend architecture<br />
-                    Secure authentication<br />
-                    REST API design<br />
-                    Optimized workflows
-                </Card>
+                <Card
+                    index="01"
+                    title="Engineering"
+                    subtitle="Backend foundations for production systems"
+                    icon={<FaCogs />}
+                    items={[
+                        "Modular backend architecture",
+                        "Secure authentication",
+                        "REST API design",
+                        "Optimized workflows",
+                    ]}
+                />
 
-                {/* SYSTEM */}
-                <Card title="System Thinking" icon={<FaLayerGroup />}>
-                    Scalable architecture<br />
-                    Clean separation of concerns<br />
-                    Efficient data handling<br />
-                    Performance-first design
-                </Card>
+                <Card
+                    index="02"
+                    title="System Thinking"
+                    subtitle="Design decisions that scale cleanly"
+                    icon={<FaLayerGroup />}
+                    items={[
+                        "Scalable architecture",
+                        "Clean separation of concerns",
+                        "Efficient data handling",
+                        "Performance-first design",
+                    ]}
+                />
 
-                {/* IMPACT */}
-                <Card title="Impact" icon={<FaChartLine />}>
-                    Real user systems<br />
-                    Automated workflows<br />
-                    Data-driven insights<br />
-                    Production deployments
-                </Card>
+                <Card
+                    index="03"
+                    title="Impact"
+                    subtitle="Engineering tied to measurable outcomes"
+                    icon={<FaChartLine />}
+                    items={[
+                        "Real user systems",
+                        "Automated workflows",
+                        "Data-driven insights",
+                        "Production deployments",
+                    ]}
+                />
 
             </div>
 
@@ -241,21 +259,39 @@ export default function ExperienceSection() {
 }
 
 /* ================= CARD ================= */
-function Card({ title, icon, children }: CardProps) {
+function Card({ index, title, subtitle, icon, items }: CardProps) {
     return (
         <motion.div
             whileHover={{ y: -6 }}
-            className="group relative rounded-2xl bg-white/[0.04] border border-white/10 p-6"
+            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-5 transition duration-300 sm:p-6"
         >
-            <div className="absolute inset-0 bg-indigo-500/10 opacity-0 group-hover:opacity-100 blur-xl transition" />
-
-            <div className="flex items-center gap-2 mb-4 text-indigo-400">
-                {icon}
-                <h3 className="text-lg font-semibold">{title}</h3>
+            <div className="absolute inset-0 bg-indigo-500/10 opacity-0 blur-xl transition duration-500 group-hover:opacity-100" />
+            <div className="absolute right-4 top-4 rounded-full border border-indigo-400/20 bg-indigo-500/10 px-2.5 py-1 text-xs font-semibold text-indigo-300">
+                {index}
             </div>
 
-            <div className="text-gray-300 text-sm space-y-2">
-                {children}
+            <div className="relative">
+                <div className="mb-2 flex items-center gap-2 text-indigo-300">
+                    <span className="grid h-8 w-8 place-items-center rounded-lg bg-indigo-500/15 text-sm">
+                        {icon}
+                    </span>
+                    <h3 className="pr-12 text-lg font-semibold text-indigo-300">{title}</h3>
+                </div>
+
+                <p className="mb-5 max-w-xs text-xs leading-relaxed text-gray-400 sm:text-sm">
+                    {subtitle}
+                </p>
+
+                <ul className="space-y-2.5 text-sm text-gray-200">
+                    {items.map((item) => (
+                        <li key={item} className="flex items-start gap-2.5">
+                            <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-emerald-400/10 text-[10px] text-emerald-300">
+                                <FaCheck />
+                            </span>
+                            <span className="leading-relaxed">{item}</span>
+                        </li>
+                    ))}
+                </ul>
             </div>
         </motion.div>
     );
