@@ -1,296 +1,174 @@
 import { motion } from "framer-motion";
 import SectionWrapper from "../components/SectionWrapper";
-import type { ReactNode } from "react";
-
-// 🔥 ICONS (FA FIRST)
 import {
-    FaServer,
-    FaDatabase,
-    FaChartLine,
-    FaUsers,
-    FaLock,
-    FaCogs,
-    FaLayerGroup,
-    FaCloud,
-    FaProjectDiagram,
     FaAws,
+    FaChartLine,
+    FaDatabase,
+    FaLock,
     FaMicrosoft,
-    FaArrowRight,
-    FaCheck,
+    FaServer,
+    FaVideo,
 } from "react-icons/fa";
-
-// 🔥 FALLBACK (ONLY WHERE NEEDED)
 import { SiDjango } from "react-icons/si";
 
 const fadeUp = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0 },
 };
-const systemFlow = ["Client", "API", "Services", "Database", "Storage"];
 
-type CardProps = {
-    index: string;
-    title: string;
-    subtitle: string;
-    icon: ReactNode;
-    items: string[];
-};
+const experiencePoints = [
+    {
+        icon: <FaVideo />,
+        label: "Video interactions",
+    },
+    {
+        icon: <FaLock />,
+        label: "Azure SSO authentication",
+    },
+    {
+        icon: <FaServer />,
+        label: "Scalable upload pipeline",
+    },
+    {
+        icon: <FaServer />,
+        label: "Metadata generation",
+    },
+    {
+        icon: <FaChartLine />,
+        label: "User analytics",
+    },
+    {
+        icon: <FaDatabase />,
+        label: "Storage & ranking system",
+    },
+];
+
+const techStack = [
+    { icon: <SiDjango className="text-green-400" />, label: "Django" },
+    { icon: <FaServer className="text-indigo-400" />, label: "REST APIs" },
+    { icon: <FaDatabase className="text-blue-400" />, label: "SQLite3" },
+    { icon: <FaAws className="text-orange-400" />, label: "AWS S3" },
+    { icon: <FaMicrosoft className="text-blue-400" />, label: "Azure SSO" },
+];
+
 export default function ExperienceSection() {
     return (
         <SectionWrapper id="experience" variant="default">
-
-            {/* ================= HERO ================= */}
-            <div className="text-center mb-20">
+            <div className="mb-7 text-center sm:mb-14">
                 <motion.h2
                     variants={fadeUp}
                     initial="hidden"
                     whileInView="visible"
-                    className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent"
+                    viewport={{ once: true }}
+                    className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl md:text-5xl"
                 >
-                    System Design & Engineering
+                    Experience
                 </motion.h2>
 
                 <motion.p
                     variants={fadeUp}
                     initial="hidden"
                     whileInView="visible"
+                    viewport={{ once: true }}
                     transition={{ delay: 0.1 }}
-                    className="text-gray-400 mt-4 text-sm sm:text-base max-w-xl mx-auto"
+                    className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-gray-400 sm:mt-4 sm:text-base"
                 >
-                    Building scalable backend systems, pipelines, and production-grade platforms
+                    Production engineering for internal tools used by real teams.
                 </motion.p>
             </div>
 
-            {/* ================= NOKIA ================= */}
             <motion.div
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
-                className="max-w-6xl mx-auto mb-20 rounded-2xl bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border border-indigo-500/20 p-6 sm:p-8 relative overflow-hidden"
+                viewport={{ once: true }}
+                className="group relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-indigo-400/20 bg-gradient-to-br from-indigo-500/25 via-purple-500/15 to-white/[0.05] p-px"
             >
-                <div className="absolute inset-0 bg-indigo-500/10 blur-3xl opacity-20" />
+                <div className="absolute inset-0 bg-indigo-500/10 opacity-0 blur-2xl transition duration-500 group-hover:opacity-100" />
 
-                <div className="relative z-10">
+                <div className="relative rounded-3xl bg-black/40 p-3.5 backdrop-blur-xl sm:p-8 md:p-10">
+                    <div className="absolute left-6 top-8 hidden h-[calc(100%-4rem)] w-px bg-gradient-to-b from-indigo-400/70 via-indigo-400/20 to-transparent sm:block" />
 
-                    {/* HEADER */}
-                    <div className="flex flex-col sm:flex-row sm:justify-between mb-4">
-                        <h3 className="text-xl sm:text-2xl font-semibold text-white">
-                            Nokia — Software Engineering Intern
-                        </h3>
-                        <span className="text-xs sm:text-sm text-gray-400">
-                            Aug 2025 → June 2026
-                        </span>
-                    </div>
+                    <div className="relative sm:pl-8">
+                        <span className="absolute left-[-37px] top-1 hidden h-3 w-3 rounded-full bg-indigo-400 shadow-[0_0_20px_rgba(129,140,248,0.8)] sm:block" />
 
-                    {/* HIGHLIGHT */}
-                    <div className="flex items-center gap-2 text-indigo-400 mb-4">
-                        <FaServer />
-                        <span>Built NIVR — Nokia Inventory Video Repository</span>
-                    </div>
-
-                    {/* DESC */}
-                    <p className="text-gray-300 text-sm mb-6 max-w-3xl">
-                        Designed and built a production-grade internal video system used by Nokia employees,
-                        including backend architecture, authentication, analytics, and media pipelines.
-                    </p>
-
-                    {/* FEATURES */}
-                    <div className="grid sm:grid-cols-2 gap-4 text-sm text-gray-300 mb-6">
-
-                        <div className="space-y-3">
-                            <div className="flex gap-2">
-                                <FaUsers className="text-indigo-400 mt-1" />
-                                Video interactions (likes, comments, playlists)
-                            </div>
-
-                            <div className="flex gap-2">
-                                <FaLock className="text-indigo-400 mt-1" />
-                                Azure SSO authentication
-                            </div>
-
-                            <div className="flex gap-2">
-                                <FaServer className="text-indigo-400 mt-1" />
-                                Scalable upload pipeline
-                            </div>
-                        </div>
-
-                        <div className="space-y-3">
-                            <div className="flex gap-2">
-                                <FaCogs className="text-indigo-400 mt-1" />
-                                Metadata generation (transcripts, thumbnails)
-                            </div>
-
-                            <div className="flex gap-2">
-                                <FaChartLine className="text-indigo-400 mt-1" />
-                                User analytics & session tracking
-                            </div>
-
-                            <div className="flex gap-2">
-                                <FaDatabase className="text-indigo-400 mt-1" />
-                                Storage & ranking system
-                            </div>
-                        </div>
-
-                    </div>
-
-                    {/* TECH */}
-                    <div className="flex flex-wrap gap-3 text-sm">
-
-                        {[
-                            { icon: <SiDjango className="text-green-400" />, label: "Django" },
-                            { icon: <FaServer className="text-indigo-400" />, label: "REST APIs" },
-                            { icon: <FaDatabase className="text-blue-400" />, label: "SQLite3" },
-                            { icon: <FaAws className="text-orange-400" />, label: "AWS S3" },
-                            { icon: <FaMicrosoft className="text-blue-400" />, label: "Azure SSO" },
-                        ].map((item) => (
-                            <span
-                                key={item.label}
-                                className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-white/10 border border-white/10 hover:bg-indigo-500/20 hover:border-indigo-400/40 transition"
-                            >
-                                {item.icon}
-                                {item.label}
-                            </span>
-                        ))}
-
-                    </div>
-
-                </div>
-            </motion.div>
-
-            {/* ================= IMPACT ================= */}
-            <motion.div
-                initial="hidden"
-                whileInView="visible"
-                variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-                className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-5xl mx-auto mb-20 text-center"
-            >
-                {[
-                    { value: "10+", label: "Projects", icon: <FaServer /> },
-                    { value: "20+", label: "APIs", icon: <FaProjectDiagram /> },
-                    { value: "Live", label: "Systems", icon: <FaCloud /> },
-                    { value: "5+", label: "Tech", icon: <FaDatabase /> },
-                ].map((stat) => (
-                    <motion.div key={stat.label} variants={fadeUp}>
-                        <div className="flex justify-center text-indigo-400 mb-2 text-lg">
-                            {stat.icon}
-                        </div>
-                        <p className="text-2xl font-semibold text-white">{stat.value}</p>
-                        <p className="text-xs text-gray-500">{stat.label}</p>
-                    </motion.div>
-                ))}
-            </motion.div>
-
-            {/* ================= SYSTEM FLOW ================= */}
-            <motion.div
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                className="max-w-6xl mx-auto mb-14 rounded-2xl bg-white/[0.04] border border-white/10 p-4 sm:mb-20 sm:p-8"
-            >
-                <h3 className="text-center text-base font-semibold text-indigo-400 mb-4 sm:mb-8 sm:text-lg">
-                    System Flow
-                </h3>
-
-                <div className="mx-auto flex max-w-sm flex-wrap items-center justify-center gap-2 text-xs text-gray-300 sm:max-w-none sm:flex-nowrap sm:gap-3 sm:text-sm">
-                    {systemFlow.map((node, index) => (
-                        <div key={node} className="flex items-center gap-2">
-                            <div className="flex items-center justify-center rounded-lg border border-white/10 bg-white/10 px-3 py-2 font-medium shadow-[0_10px_30px_rgba(79,70,229,0.08)] sm:min-w-24 sm:rounded-xl sm:px-4 sm:py-2.5">
-                                {node}
-                            </div>
-
-                            {index < systemFlow.length - 1 && (
-                                <div className="text-indigo-400/80">
-                                    <FaArrowRight />
+                        <div className="mb-3 flex flex-col gap-3 sm:mb-5 sm:flex-row sm:items-start sm:justify-between">
+                            <div>
+                                <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-indigo-300 sm:text-xs sm:tracking-[0.24em]">
+                                    Professional Experience
+                                </p>
+                                <h3 className="max-w-xl text-lg font-semibold leading-tight text-white min-[380px]:text-xl sm:text-3xl">
+                                    Nokia — Student Intern
+                                </h3>
+                                <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] sm:mt-3 sm:gap-2 sm:text-xs">
+                                    <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-gray-300 sm:px-3">
+                                        Aug 2025 - June 2026
+                                    </span>
+                                    <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1 text-emerald-300 sm:px-3">
+                                        Production system
+                                    </span>
+                                    <span className="w-fit rounded-full border border-indigo-400/20 bg-indigo-500/10 px-2.5 py-1 font-medium text-indigo-300 sm:hidden">
+                                        Internship
+                                    </span>
                                 </div>
-                            )}
+                            </div>
+
+                            <span className="hidden w-fit rounded-full border border-indigo-400/20 bg-indigo-500/10 px-3 py-1 text-xs font-medium text-indigo-300 sm:inline-flex">
+                                Internship
+                            </span>
                         </div>
-                    ))}
+
+                        <div className="mb-3 rounded-xl border border-white/10 bg-white/[0.04] p-3 sm:mb-5 sm:rounded-2xl sm:p-4">
+                            <div className="mb-1.5 flex items-start gap-2.5 text-indigo-300 sm:mb-3 sm:gap-3">
+                                <FaServer className="mt-1 shrink-0" />
+                                <p className="text-sm font-medium leading-relaxed min-[380px]:text-base sm:text-lg">
+                                    Built NIVR — Nokia Inventory Video Repository
+                                </p>
+                            </div>
+
+                            <p className="text-xs leading-relaxed text-gray-300 min-[380px]:text-sm">
+                                Internal video platform covering backend architecture, auth,
+                                analytics, and media pipelines.
+                            </p>
+                        </div>
+
+                        <div className="mb-4 grid grid-cols-2 gap-2 text-xs text-gray-300 min-[380px]:text-sm sm:mb-7 sm:gap-3">
+                            {experiencePoints.map((point) => (
+                                <div
+                                    key={point.label}
+                                    className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] px-2.5 py-2 sm:items-start sm:gap-3 sm:rounded-xl sm:px-3 sm:py-2.5"
+                                >
+                                    <span className="shrink-0 text-indigo-400 sm:mt-0.5">
+                                        {point.icon}
+                                    </span>
+                                    <span className="leading-snug">
+                                        {point.label}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div>
+                            <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-gray-500 sm:mb-3 sm:text-xs">
+                                Tech used
+                            </p>
+                            <div className="grid grid-cols-2 gap-2 text-xs min-[380px]:text-sm sm:flex sm:flex-wrap sm:gap-3">
+                                {techStack.map((item) => (
+                                    <span
+                                        key={item.label}
+                                        className="flex min-w-0 items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/10 px-2.5 py-1.5 text-gray-100 transition hover:border-indigo-400/40 hover:bg-indigo-500/20 sm:justify-start sm:px-3 sm:py-2"
+                                    >
+                                        {item.icon}
+                                        <span className="truncate">
+                                            {item.label}
+                                        </span>
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </motion.div>
-
-            {/* ================= CORE ================= */}
-            <div className="grid gap-6 sm:gap-8 max-w-7xl mx-auto grid-cols-1 md:grid-cols-3">
-
-                <Card
-                    index="01"
-                    title="Engineering"
-                    subtitle="Backend foundations for production systems"
-                    icon={<FaCogs />}
-                    items={[
-                        "Modular backend architecture",
-                        "Secure authentication",
-                        "REST API design",
-                        "Optimized workflows",
-                    ]}
-                />
-
-                <Card
-                    index="02"
-                    title="System Thinking"
-                    subtitle="Design decisions that scale cleanly"
-                    icon={<FaLayerGroup />}
-                    items={[
-                        "Scalable architecture",
-                        "Clean separation of concerns",
-                        "Efficient data handling",
-                        "Performance-first design",
-                    ]}
-                />
-
-                <Card
-                    index="03"
-                    title="Impact"
-                    subtitle="Engineering tied to measurable outcomes"
-                    icon={<FaChartLine />}
-                    items={[
-                        "Real user systems",
-                        "Automated workflows",
-                        "Data-driven insights",
-                        "Production deployments",
-                    ]}
-                />
-
-            </div>
-
         </SectionWrapper>
-    );
-}
-
-/* ================= CARD ================= */
-function Card({ index, title, subtitle, icon, items }: CardProps) {
-    return (
-        <motion.div
-            whileHover={{ y: -6 }}
-            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-5 transition duration-300 sm:p-6"
-        >
-            <div className="absolute inset-0 bg-indigo-500/10 opacity-0 blur-xl transition duration-500 group-hover:opacity-100" />
-            <div className="absolute right-4 top-4 rounded-full border border-indigo-400/20 bg-indigo-500/10 px-2.5 py-1 text-xs font-semibold text-indigo-300">
-                {index}
-            </div>
-
-            <div className="relative">
-                <div className="mb-2 flex items-center gap-2 text-indigo-300">
-                    <span className="grid h-8 w-8 place-items-center rounded-lg bg-indigo-500/15 text-sm">
-                        {icon}
-                    </span>
-                    <h3 className="pr-12 text-lg font-semibold text-indigo-300">{title}</h3>
-                </div>
-
-                <p className="mb-5 max-w-xs text-xs leading-relaxed text-gray-400 sm:text-sm">
-                    {subtitle}
-                </p>
-
-                <ul className="space-y-2.5 text-sm text-gray-200">
-                    {items.map((item) => (
-                        <li key={item} className="flex items-start gap-2.5">
-                            <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-emerald-400/10 text-[10px] text-emerald-300">
-                                <FaCheck />
-                            </span>
-                            <span className="leading-relaxed">{item}</span>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        </motion.div>
     );
 }

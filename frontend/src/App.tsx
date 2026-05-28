@@ -8,6 +8,7 @@ import HeroSection from "./sections/HeroSection";
 import SkillsSection from "./sections/SkillsSection";
 import ProjectsSection from "./sections/ProjectsSection";
 import ExperienceSection from "./sections/ExperienceSection";
+import SystemsSection from "./sections/SystemsSection";
 import ContactSection from "./sections/ContactSection";
 
 // 🔥 Main Portfolio Layout
@@ -58,6 +59,7 @@ export default function App() {
         <SkillsSection />
         <ProjectsSection />
         <ExperienceSection />
+        <SystemsSection />
         <ContactSection />
       </main>
     </div>

@@ -79,7 +79,7 @@ export const projects: Project[] = [
         date: "04/2026 - Present",
         tech: ["Playwright", "Node.js", "MongoDB", "SSE", "Mermaid"],
         live: "https://crawlpulse.sk-hub.in",
-        github: "#",
+        github: "https://github.com/samakshrastogi/SK-CrawlPulse",
         position: 1,
     },
     {
@@ -100,7 +100,7 @@ export const projects: Project[] = [
             "Gmail API",
             "SSE",
         ],
-        github: "#",
+        github: "https://github.com/samakshrastogi/SK-MAILPILOT",
         position: 2,
     },
     {
@@ -118,7 +118,7 @@ export const projects: Project[] = [
             "Ollama",
         ],
         live: "https://mediaflow.sk-hub.in",
-        github: "#",
+        github: "https://github.com/samakshrastogi/SK-MediaFlow",
         position: 3,
     },
 ];
