@@ -7,6 +7,8 @@ export type Project = {
     live: string;
     github: string;
     image?: string;
+    status?: string;
+    refreshPreview?: boolean;
     position?: number;
 };
 
@@ -80,6 +82,7 @@ export const projects: Project[] = [
         tech: ["Playwright", "Node.js", "MongoDB", "SSE", "Mermaid"],
         live: "https://crawlpulse.sk-hub.in",
         github: "https://github.com/samakshrastogi/SK-CrawlPulse",
+        status: "Working",
         position: 1,
     },
     {
@@ -88,7 +91,8 @@ export const projects: Project[] = [
         description:
             "An AI-driven Gmail workspace that transforms inbox management into an intelligent workflow system with automated triage, smart replies, approvals, and task orchestration.",
         date: "04/2026 - 04/2026",
-        live: "https://mailpilot.sk-hub.in",
+        live: "https://mailpilot.sk-hub.in/",
+        refreshPreview: true,
         tech: [
             "Node.js",
             "MongoDB",

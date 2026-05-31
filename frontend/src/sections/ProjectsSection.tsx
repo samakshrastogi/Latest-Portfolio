@@ -5,6 +5,25 @@ import { FaGithub } from "react-icons/fa";
 import { projects as projectData, type Project } from "../lib/constants";
 import { useState } from "react";
 
+function getProjectPreviewUrl(project: Project) {
+    if (project.image) {
+        return project.image;
+    }
+
+    const params = new URLSearchParams({
+        url: project.live,
+        screenshot: "true",
+        meta: "false",
+        embed: "screenshot.url",
+    });
+
+    if (project.refreshPreview) {
+        params.set("force", "true");
+    }
+
+    return `https://api.microlink.io/?${params.toString()}`;
+}
+
 export default function ProjectsSection() {
     const projects: Project[] = [...projectData].sort((a, b) => {
         const posA = a.position ?? 9999;
@@ -50,14 +69,13 @@ export default function ProjectsSection() {
                         {/* IMAGE */}
                         <div className="relative overflow-hidden">
                             <img
-                                src={`https://api.microlink.io/?url=${encodeURIComponent(
-                                    featured.live
-                                )}&screenshot=true&meta=false&embed=screenshot.url`}
+                                src={getProjectPreviewUrl(featured)}
                                 className="w-full h-full object-cover transition duration-700 group-hover:scale-105"
                                 alt="preview"
                             />
 
                             <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
+                            {featured.status && <ProjectStatusBadge status={featured.status} />}
                         </div>
 
                         {/* CONTENT */}
@@ -150,14 +168,13 @@ export default function ProjectsSection() {
                         {/* IMAGE */}
                         <div className="relative h-44 overflow-hidden">
                             <img
-                                src={`https://api.microlink.io/?url=${encodeURIComponent(
-                                    project.live
-                                )}&screenshot=true&meta=false&embed=screenshot.url`}
+                                src={getProjectPreviewUrl(project)}
                                 className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
                                 alt="preview"
                             />
 
                             <div className="absolute inset-0 bg-black/40" />
+                            {project.status && <ProjectStatusBadge status={project.status} />}
                         </div>
 
                         {/* CONTENT */}
@@ -220,6 +237,15 @@ export default function ProjectsSection() {
                 ))}
             </motion.div>
         </SectionWrapper>
+    );
+}
+
+function ProjectStatusBadge({ status }: { status: string }) {
+    return (
+        <div className="absolute right-4 top-4 z-10 inline-flex items-center gap-2 rounded-full border border-emerald-300/40 bg-emerald-400/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-100 shadow-lg shadow-emerald-950/30 backdrop-blur-md">
+            <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_12px_rgba(110,231,183,0.9)]" />
+            {status}
+        </div>
     );
 }
 
