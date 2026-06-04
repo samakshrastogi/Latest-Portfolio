@@ -262,7 +262,7 @@ export default function SkillsSection() {
                             Core Stack
                         </p>
                         <p className="mt-1 text-xs leading-relaxed text-gray-500 sm:text-sm">
-                            Primary technologies used across projects and professional experience.
+                            Primary technologies used across projects and work experience.
                         </p>
                     </div>
                     <span className="w-fit rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-medium text-gray-300">

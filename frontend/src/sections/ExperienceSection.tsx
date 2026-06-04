@@ -145,7 +145,7 @@ export default function ExperienceSection() {
                         <div className="mb-3 flex flex-col gap-3 sm:mb-5 sm:flex-row sm:items-start sm:justify-between">
                             <div>
                                 <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-indigo-300 sm:text-xs sm:tracking-[0.24em]">
-                                    Professional Experience
+                                    Work Experience
                                 </p>
                                 <h3 className="max-w-xl text-lg font-semibold leading-tight text-white min-[380px]:text-xl sm:text-3xl">
                                     Nokia — Student Intern
