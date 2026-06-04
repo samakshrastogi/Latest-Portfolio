@@ -37,7 +37,7 @@ export default function ContactSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     className="mx-auto max-w-sm bg-linear-to-r from-white to-gray-400 bg-clip-text text-3xl font-bold leading-tight text-transparent sm:max-w-xl sm:text-4xl md:text-5xl"
                 >
-                    Let’s Build Together
+                    Let’s Connect
                 </motion.h2>
 
                 <motion.p
@@ -46,7 +46,7 @@ export default function ContactSection() {
                     transition={{ delay: 0.1 }}
                     className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-gray-400 sm:max-w-xl sm:text-base"
                 >
-                    Eager to join a new organization and contribute to reliable production systems.
+                    Open to opportunities where I can contribute to scalable, reliable production systems.
                 </motion.p>
             </div>
 
@@ -68,7 +68,7 @@ export default function ContactSection() {
                     <div className="relative rounded-2xl border border-white/10 bg-linear-to-br from-white/[0.07] to-white/[0.03] px-4 py-4 text-left">
                         <div className="mb-3 flex items-center justify-between gap-3">
                             <p className="text-sm font-semibold text-white sm:text-base">
-                                Ready to contribute
+                                Open to Opportunities
                             </p>
 
                             <span className="shrink-0 rounded-full border border-indigo-400/20 bg-indigo-500/10 px-3 py-1 text-xs font-medium text-indigo-300">
@@ -78,8 +78,8 @@ export default function ContactSection() {
 
                         <div>
                             <p className="text-xs leading-relaxed text-gray-300 sm:text-sm">
-                                I am looking to join a team where I can build backend systems,
-                                APIs, full-stack products, and production-ready workflows.
+                                I am seeking a role where I can apply my experience in backend systems,
+                                API development, full-stack applications, and production-grade workflows.
                             </p>
                         </div>
                     </div>
@@ -89,12 +89,12 @@ export default function ContactSection() {
                         <div className="flex min-w-0 items-center justify-center gap-2 rounded-xl border border-emerald-400/15 bg-emerald-400/10 px-2.5 py-2 text-emerald-300">
                             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
                             <span className="whitespace-nowrap">
-                                Available
+                                Available for Roles
                             </span>
                         </div>
                         <div className="rounded-xl border border-white/10 bg-white/5 px-2.5 py-2 text-gray-300">
                             <span className="whitespace-nowrap">
-                                Fast reply
+                                Timely Response
                             </span>
                         </div>
                     </div>
@@ -107,7 +107,7 @@ export default function ContactSection() {
                         hover:scale-[1.02] hover:shadow-lg hover:shadow-indigo-500/30
                         transition"
                     >
-                        Start Building
+                        Contact Me
                     </a>
 
                     {/* EMAIL COPY */}

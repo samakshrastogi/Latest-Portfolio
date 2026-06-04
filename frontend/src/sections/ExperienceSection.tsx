@@ -1,54 +1,104 @@
 import { motion } from "framer-motion";
 import SectionWrapper from "../components/SectionWrapper";
 import {
-    FaAws,
-    FaChartLine,
-    FaDatabase,
-    FaLock,
-    FaMicrosoft,
-    FaServer,
+    FaBell,
+    FaNetworkWired,
     FaVideo,
 } from "react-icons/fa";
-import { SiDjango } from "react-icons/si";
 
 const fadeUp = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0 },
 };
 
-const experiencePoints = [
+const experienceProjects = [
     {
         icon: <FaVideo />,
-        label: "Video interactions",
+        title: "NIVR",
+        subtitle: "Nokia Inventory Video Repository",
+        phase: "01",
+        date: "Nov 2025 - Mar 2026",
+        description:
+            "Internal Django-based video repository for network infrastructure learning content, with browsing, search, playback, uploads, playlists, feedback, and user engagement tracking. It includes admin workflows for content moderation, category management, analytics, audit history, notifications, and superuser approval governance.",
+        tags: ["Video repository", "Playback", "Playlists", "Admin governance"],
+        tech: [
+            "Python",
+            "Django",
+            "SQLite",
+            "Django templates",
+            "Vanilla JavaScript",
+            "CSS",
+            "S3/storage integrations",
+            "OpenCV/Pillow",
+            "spaCy",
+            "sentence-transformers",
+            "faster-whisper",
+            "PyTorch",
+            "ffmpeg",
+        ],
     },
     {
-        icon: <FaLock />,
-        label: "Azure SSO authentication",
+        icon: <FaNetworkWired />,
+        title: "STSI",
+        subtitle: "Simplified Technical Support Interface",
+        phase: "02",
+        date: "Apr 2026 - May 2026",
+        description:
+            "Django-based Nokia support portal for optical and network operations workflows, centralizing health checks, log collection, RCA, alarm troubleshooting, node information, report analysis, offline utilities, knowledge repositories, schedulers, and admin-managed access workflows.",
+        tags: ["Operations", "RCA", "Schedulers", "Knowledge base"],
+        tech: [
+            "Python",
+            "Django 4.2",
+            "Django REST Framework",
+            "SQLite",
+            "Django templates",
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Bootstrap",
+            "Pandas",
+            "NumPy",
+            "OpenPyXL",
+            "Plotly",
+            "Matplotlib",
+            "Paramiko/AsyncSSH",
+            "Celery",
+            "APScheduler",
+            "Gunicorn",
+            "WhiteNoise",
+        ],
     },
     {
-        icon: <FaServer />,
-        label: "Scalable upload pipeline",
+        icon: <FaBell />,
+        title: "TSHID",
+        subtitle: "Hot Issues Dashboard",
+        phase: "03",
+        date: "Jun 2026",
+        description:
+            "Django-based web application for tracking, managing, and reporting critical customer and product issues, including issue registration, comments, status and severity tracking, approvals, roles, email notifications, exports, dashboards, analytics, REST APIs, admin tools, and Nokia-branded templates.",
+        tags: ["Issue tracking", "Approvals", "Email alerts", "Reports"],
+        tech: [
+            "Python",
+            "Django 4.2",
+            "Django REST Framework",
+            "SQLite",
+            "Django templates",
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Bootstrap",
+            "Pandas",
+            "NumPy",
+            "OpenPyXL",
+            "Plotly",
+            "Matplotlib",
+            "Paramiko/AsyncSSH",
+            "Celery",
+            "APScheduler",
+            "Gunicorn",
+            "WhiteNoise",
+        ],
     },
-    {
-        icon: <FaServer />,
-        label: "Metadata generation",
-    },
-    {
-        icon: <FaChartLine />,
-        label: "User analytics",
-    },
-    {
-        icon: <FaDatabase />,
-        label: "Storage & ranking system",
-    },
-];
-
-const techStack = [
-    { icon: <SiDjango className="text-green-400" />, label: "Django" },
-    { icon: <FaServer className="text-indigo-400" />, label: "REST APIs" },
-    { icon: <FaDatabase className="text-blue-400" />, label: "SQLite3" },
-    { icon: <FaAws className="text-orange-400" />, label: "AWS S3" },
-    { icon: <FaMicrosoft className="text-blue-400" />, label: "Azure SSO" },
 ];
 
 export default function ExperienceSection() {
@@ -82,7 +132,7 @@ export default function ExperienceSection() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="group relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-indigo-400/20 bg-gradient-to-br from-indigo-500/25 via-purple-500/15 to-white/[0.05] p-px"
+                className="group relative mx-auto max-w-6xl overflow-hidden rounded-3xl border border-indigo-400/20 bg-gradient-to-br from-indigo-500/25 via-purple-500/15 to-white/[0.05] p-px"
             >
                 <div className="absolute inset-0 bg-indigo-500/10 opacity-0 blur-2xl transition duration-500 group-hover:opacity-100" />
 
@@ -118,54 +168,86 @@ export default function ExperienceSection() {
                             </span>
                         </div>
 
-                        <div className="mb-3 rounded-xl border border-white/10 bg-white/[0.04] p-3 sm:mb-5 sm:rounded-2xl sm:p-4">
-                            <div className="mb-1.5 flex items-start gap-2.5 text-indigo-300 sm:mb-3 sm:gap-3">
-                                <FaServer className="mt-1 shrink-0" />
-                                <p className="text-sm font-medium leading-relaxed min-[380px]:text-base sm:text-lg">
-                                    Built NIVR — Nokia Inventory Video Repository
-                                </p>
-                            </div>
+                        <div className="relative mb-5 space-y-4 sm:mb-7 sm:space-y-5">
+                            <div className="absolute left-5 top-5 hidden h-[calc(100%-2.5rem)] w-px bg-gradient-to-b from-indigo-400/70 via-indigo-400/25 to-transparent sm:block" />
 
-                            <p className="text-xs leading-relaxed text-gray-300 min-[380px]:text-sm">
-                                Internal video platform covering backend architecture, auth,
-                                analytics, and media pipelines.
-                            </p>
-                        </div>
-
-                        <div className="mb-4 grid grid-cols-2 gap-2 text-xs text-gray-300 min-[380px]:text-sm sm:mb-7 sm:gap-3">
-                            {experiencePoints.map((point) => (
-                                <div
-                                    key={point.label}
-                                    className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] px-2.5 py-2 sm:items-start sm:gap-3 sm:rounded-xl sm:px-3 sm:py-2.5"
+                            {experienceProjects.map((project, index) => (
+                                <motion.div
+                                    key={project.title}
+                                    variants={fadeUp}
+                                    whileHover={{ y: -4 }}
+                                    className="relative flex flex-col gap-3 sm:flex-row sm:gap-5"
                                 >
-                                    <span className="shrink-0 text-indigo-400 sm:mt-0.5">
-                                        {point.icon}
-                                    </span>
-                                    <span className="leading-snug">
-                                        {point.label}
-                                    </span>
-                                </div>
+                                    <div className="flex shrink-0 items-center gap-3 sm:w-24 sm:flex-col sm:items-start">
+                                        <span className="grid h-10 w-10 place-items-center rounded-full border border-indigo-300/40 bg-indigo-500 text-sm font-semibold text-white shadow-[0_0_24px_rgba(99,102,241,0.55)]">
+                                            {project.phase}
+                                        </span>
+                                        {index < experienceProjects.length - 1 && (
+                                            <span className="h-px flex-1 bg-indigo-400/25 sm:hidden" />
+                                        )}
+                                    </div>
+
+                                    <div className="flex flex-1 flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition duration-300 hover:border-indigo-400/30 hover:bg-white/[0.06] sm:p-5">
+                                        <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                                            <div className="flex min-w-0 items-start gap-3">
+                                                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-indigo-400/20 bg-indigo-500/15 text-indigo-300">
+                                                    {project.icon}
+                                                </span>
+                                                <div className="min-w-0">
+                                                    <h4 className="text-base font-semibold text-white sm:text-xl">
+                                                        {project.title}
+                                                    </h4>
+                                                    <p className="text-xs font-medium uppercase tracking-[0.16em] text-indigo-300">
+                                                        {project.subtitle}
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div className="flex flex-wrap gap-2">
+                                                <span className="w-fit rounded-full border border-white/10 bg-black/20 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-gray-300">
+                                                    Project {project.phase}
+                                                </span>
+                                                <span className="w-fit rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald-200">
+                                                    {project.date}
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <p className="mb-4 text-xs leading-relaxed text-gray-300 min-[380px]:text-sm sm:text-[15px]">
+                                            {project.description}
+                                        </p>
+
+                                        <div className="flex flex-wrap gap-2">
+                                            {project.tags.map((tag) => (
+                                                <span
+                                                    key={tag}
+                                                    className="rounded-md border border-white/10 bg-white/5 px-2 py-1 text-[11px] font-medium text-gray-200"
+                                                >
+                                                    {tag}
+                                                </span>
+                                            ))}
+                                        </div>
+
+                                        <div className="mt-4 border-t border-white/10 pt-3">
+                                            <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-gray-500">
+                                                Tech used
+                                            </p>
+                                            <div className="flex flex-wrap gap-1.5">
+                                                {project.tech.map((tech) => (
+                                                    <span
+                                                        key={tech}
+                                                        className="rounded border border-indigo-400/15 bg-indigo-500/10 px-1.5 py-0.5 text-[10px] font-medium text-indigo-100"
+                                                    >
+                                                        {tech}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </motion.div>
                             ))}
                         </div>
 
-                        <div>
-                            <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-gray-500 sm:mb-3 sm:text-xs">
-                                Tech used
-                            </p>
-                            <div className="grid grid-cols-2 gap-2 text-xs min-[380px]:text-sm sm:flex sm:flex-wrap sm:gap-3">
-                                {techStack.map((item) => (
-                                    <span
-                                        key={item.label}
-                                        className="flex min-w-0 items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/10 px-2.5 py-1.5 text-gray-100 transition hover:border-indigo-400/40 hover:bg-indigo-500/20 sm:justify-start sm:px-3 sm:py-2"
-                                    >
-                                        {item.icon}
-                                        <span className="truncate">
-                                            {item.label}
-                                        </span>
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
                     </div>
                 </div>
             </motion.div>

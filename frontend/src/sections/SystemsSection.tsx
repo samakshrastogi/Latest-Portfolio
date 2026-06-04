@@ -19,10 +19,10 @@ const fadeUp = {
 };
 
 const stats = [
-    { value: "10+", label: "Projects", icon: <FaServer /> },
-    { value: "20+", label: "APIs", icon: <FaProjectDiagram /> },
-    { value: "Live", label: "Systems", icon: <FaCloud /> },
-    { value: "5+", label: "Tech", icon: <FaDatabase /> },
+    { value: "6+", label: "Projects", icon: <FaServer /> },
+    { value: "100+", label: "Backend Endpoints", icon: <FaProjectDiagram /> },
+    { value: "3", label: "Internal Systems", icon: <FaCloud /> },
+    { value: "30+", label: "Technologies", icon: <FaDatabase /> },
 ];
 
 const systemFlow = ["Client", "API", "Services", "Database", "Storage"];

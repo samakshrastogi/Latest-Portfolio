@@ -8,20 +8,23 @@ import {
     SiNodedotjs,
     SiDjango,
     SiMongodb,
-    SiPostgresql,
+    SiPython,
+    SiTypescript,
 } from "react-icons/si";
-import { FaAws, FaMicrosoft, FaBrain, FaServer, FaChartLine } from "react-icons/fa";
+import { FaAws, FaBrain, FaCodeBranch, FaDatabase, FaServer, FaChartLine } from "react-icons/fa";
 import { TbBrain } from "react-icons/tb";
 
 const techStack = [
+    { name: "TypeScript", icon: <SiTypescript /> },
     { name: "React", icon: <SiReact /> },
+    { name: "Python", icon: <SiPython /> },
     { name: "Node.js", icon: <SiNodedotjs /> },
     { name: "Django", icon: <SiDjango /> },
     { name: "MongoDB", icon: <SiMongodb /> },
-    { name: "PostgreSQL", icon: <SiPostgresql /> },
+    { name: "SQLite", icon: <FaDatabase /> },
     { name: "AWS S3", icon: <FaAws /> },
-    { name: "Azure SSO", icon: <FaMicrosoft /> },
-    { name: "AI", icon: <FaBrain /> },
+    { name: "AI / ML", icon: <FaBrain /> },
+    { name: "REST APIs", icon: <FaCodeBranch /> },
 ];
 
 export default function HeroSection() {
@@ -45,7 +48,7 @@ export default function HeroSection() {
                     <motion.h1
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl md:text-6xl lg:text-7xl"
+                        className="bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text pb-2 text-4xl font-bold leading-[1.12] text-transparent sm:text-5xl md:text-6xl lg:text-7xl"
                     >
                         Samaksh Rastogi
                     </motion.h1>
@@ -58,13 +61,15 @@ export default function HeroSection() {
                     >
                         <TypeAnimation
                             sequence={[
+                                "Full-Stack Developer",
+                                2000,
                                 "Backend Engineer",
                                 2000,
-                                "System Design Enthusiast",
+                                "Django & REST API Developer",
                                 2000,
                                 "AI Product Builder",
                                 2000,
-                                "Building Production Systems",
+                                "Production Systems Developer",
                                 2000,
                             ]}
                             speed={50}
@@ -73,7 +78,7 @@ export default function HeroSection() {
                     </motion.div>
 
                     <p className="mt-6 max-w-3xl text-base leading-relaxed text-gray-300 sm:text-lg">
-                        Building scalable backend systems and AI-powered applications used in real production environments.
+                        Building full-stack platforms, Django-based internal tools, and AI-powered products across support workflows, media systems, automation, and analytics.
                     </p>
 
                     <div className="mt-8 grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:gap-3">
@@ -121,21 +126,21 @@ export default function HeroSection() {
                         <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.05] px-4 py-3">
                             <TbBrain className="text-sm text-purple-400" />
                             <span className="whitespace-nowrap text-sm text-gray-300">
-                                Built NIVR @ Nokia
+                                3 Nokia Internal Systems
                             </span>
                         </div>
 
                         <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.05] px-4 py-3">
                             <FaServer className="text-sm text-indigo-400" />
                             <span className="whitespace-nowrap text-sm text-gray-300">
-                                20+ APIs Designed
+                                100+ Backend Endpoints
                             </span>
                         </div>
 
                         <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.05] px-4 py-3">
                             <FaChartLine className="text-sm text-green-400" />
                             <span className="whitespace-nowrap text-sm text-gray-300">
-                                Real User Analytics
+                                AI, Analytics & Reports
                             </span>
                         </div>
                     </div>
@@ -146,13 +151,6 @@ export default function HeroSection() {
                 </div>
             </div>
 
-            <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5 }}
-                className="absolute bottom-6 hidden text-xs text-gray-500 sm:block"
-            >
-                ↓ Scroll
-            </motion.div>
         </section>
     );
 }
@@ -191,7 +189,7 @@ function ProfileImage() {
             <div className="relative z-10 h-[66%] w-[66%] min-h-[210px] min-w-[210px] rounded-full border-[3px] border-violet-400 bg-gradient-to-r from-indigo-500 to-fuchsia-500 p-[3px] shadow-[0_0_40px_rgba(139,92,246,0.28)] sm:min-h-[250px] sm:min-w-[250px]">
                 <div className="h-full w-full rounded-full bg-[var(--bg)]">
                     <img
-                        src="images/profile.png"
+                        src="images/profile.jpeg"
                         alt="Samaksh Rastogi"
                         className="h-full w-full rounded-full object-cover"
                     />

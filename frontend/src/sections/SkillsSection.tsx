@@ -18,6 +18,15 @@ import {
     SiNetlify,
     SiRender,
     SiGoogle,
+    SiBootstrap,
+    SiPython,
+    SiRedis,
+    SiSocketdotio,
+    SiMermaid,
+    SiPandas,
+    SiNumpy,
+    SiPlotly,
+    SiPytorch,
 } from "react-icons/si";
 
 import {
@@ -30,6 +39,8 @@ import {
     FaServer,
     FaCloud,
     FaLayerGroup,
+    FaChartLine,
+    FaCodeBranch,
 } from "react-icons/fa";
 
 const categoryMeta: Record<string, { icon: ReactNode }> = {
@@ -48,6 +59,12 @@ const categoryMeta: Record<string, { icon: ReactNode }> = {
     "ai-ml": {
         icon: <FaBrain />,
     },
+    "data-viz": {
+        icon: <FaChartLine />,
+    },
+    "apis-realtime": {
+        icon: <FaCodeBranch />,
+    },
     "security-systems": {
         icon: <FaLock />,
     },
@@ -60,23 +77,33 @@ const iconMap: Record<string, ReactNode> = {
     javascript: <SiJavascript className="text-yellow-400" />,
     html: <SiHtml5 className="text-orange-500" />,
     css: <FaCss3Alt className="text-blue-400" />,
+    bootstrap: <SiBootstrap className="text-purple-400" />,
+    djangotemplates: <SiDjango className="text-green-400" />,
 
     // 🔥 BACKEND
+    python: <SiPython className="text-yellow-300" />,
     nodejs: <SiNodedotjs className="text-green-500" />,
     "node.js": <SiNodedotjs className="text-green-500" />,
     node: <SiNodedotjs className="text-green-500" />,
     django: <SiDjango className="text-green-400" />,
+    djangorestframework: <SiDjango className="text-green-400" />,
     express: <SiExpress className="text-gray-300" />,
     "restapis": <FaServer className="text-indigo-400" />,
+    celery: <FaServer className="text-green-400" />,
+    apscheduler: <FaServer className="text-indigo-300" />,
+    "paramiko/asyncssh": <FaServer className="text-blue-300" />,
 
     // 🔥 DATABASE
     mongodb: <SiMongodb className="text-green-500" />,
     postgresql: <SiPostgresql className="text-blue-400" />,
+    sqlite: <FaDatabase className="text-gray-400" />,
     sqlite3: <FaDatabase className="text-gray-400" />,
+    redis: <SiRedis className="text-red-400" />,
 
     // 🔥 CLOUD
     aws: <FaAws className="text-orange-400" />,
     "awss3": <FaAws className="text-orange-400" />,
+    "s3/storageintegrations": <FaAws className="text-orange-400" />,
     cloudfront: <FaCloud className="text-gray-300" />,
     azure: <FaMicrosoft className="text-blue-500" />,
     azuresso: <FaMicrosoft className="text-blue-500" />,
@@ -87,12 +114,36 @@ const iconMap: Record<string, ReactNode> = {
     netlify: <SiNetlify className="text-cyan-400" />,
     render: <SiRender className="text-purple-400" />,
     pemdeployment: <FaLock className="text-amber-400" />,
+    gunicorn: <FaServer className="text-green-300" />,
+    whitenoise: <FaCloud className="text-gray-300" />,
 
     // 🔥 AI
     ai: <FaBrain className="text-purple-400" />,
     llms: <FaBrain className="text-purple-400" />,
     whisper: <FaBrain className="text-purple-400" />,
+    "faster-whisper": <FaBrain className="text-purple-400" />,
     ollama: <FaBrain className="text-purple-400" />,
+    langchain: <FaBrain className="text-emerald-300" />,
+    langgraph: <FaBrain className="text-emerald-300" />,
+    "opencv/pillow": <FaBrain className="text-blue-300" />,
+    spacy: <FaBrain className="text-cyan-300" />,
+    "sentence-transformers": <FaBrain className="text-purple-300" />,
+    pytorch: <SiPytorch className="text-orange-400" />,
+
+    // 🔥 DATA
+    pandas: <SiPandas className="text-blue-300" />,
+    numpy: <SiNumpy className="text-blue-400" />,
+    openpyxl: <FaChartLine className="text-emerald-300" />,
+    plotly: <SiPlotly className="text-cyan-300" />,
+    matplotlib: <FaChartLine className="text-yellow-300" />,
+
+    // 🔥 APIS / REALTIME
+    playwright: <FaCodeBranch className="text-green-400" />,
+    sse: <FaCodeBranch className="text-indigo-300" />,
+    "socket.io": <SiSocketdotio className="text-white" />,
+    bullmq: <FaCodeBranch className="text-red-300" />,
+    gmailapi: <SiGoogle className="text-red-400" />,
+    mermaid: <SiMermaid className="text-pink-300" />,
 
     // 🔥 TOOLS
     ffmpeg: <FaServer className="text-gray-400" />,
