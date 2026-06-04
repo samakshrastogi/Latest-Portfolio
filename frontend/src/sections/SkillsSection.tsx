@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import SectionWrapper from "../components/SectionWrapper";
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { skills as skillData, type SkillGroup } from "../lib/constants";
 
 // 🔥 ICONS
@@ -70,6 +70,21 @@ const categoryMeta: Record<string, { icon: ReactNode }> = {
     },
 };
 
+const coreStack = [
+    "Python",
+    "Django",
+    "Django REST Framework",
+    "React",
+    "TypeScript",
+    "Node.js",
+    "MongoDB",
+    "SQLite",
+    "AWS S3",
+    "AI / ML",
+];
+
+const INITIAL_VISIBLE_SKILLS = 8;
+
 const iconMap: Record<string, ReactNode> = {
     // 🔥 FRONTEND
     react: <SiReact className="text-cyan-400" />,
@@ -119,9 +134,11 @@ const iconMap: Record<string, ReactNode> = {
 
     // 🔥 AI
     ai: <FaBrain className="text-purple-400" />,
+    "ai/ml": <FaBrain className="text-purple-400" />,
     llms: <FaBrain className="text-purple-400" />,
     whisper: <FaBrain className="text-purple-400" />,
     "faster-whisper": <FaBrain className="text-purple-400" />,
+    "whisper/faster-whisper": <FaBrain className="text-purple-400" />,
     ollama: <FaBrain className="text-purple-400" />,
     langchain: <FaBrain className="text-emerald-300" />,
     langgraph: <FaBrain className="text-emerald-300" />,
@@ -170,14 +187,43 @@ function SkillIcon({ skill }: { skill: string }) {
     );
 }
 
+function SkillChip({
+    skill,
+    variant = "default",
+}: {
+    skill: string;
+    variant?: "default" | "core";
+}) {
+    const className =
+        variant === "core"
+            ? "flex items-center gap-2 rounded-xl border border-indigo-300/25 bg-indigo-500/15 px-3 py-2 text-xs font-medium text-indigo-50 transition duration-300 hover:border-indigo-300/45 hover:bg-indigo-500/25 sm:text-sm"
+            : "flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs text-gray-200 transition duration-300 hover:border-indigo-400/40 hover:bg-indigo-500/20 sm:px-3 sm:text-sm";
+
+    return (
+        <div className={className}>
+            <SkillIcon skill={skill} />
+            <span className="whitespace-nowrap">{skill}</span>
+        </div>
+    );
+}
+
 /* ================= MAIN ================= */
 
 export default function SkillsSection() {
+    const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>({});
+
     const skills: SkillGroup[] = [...skillData].sort((a, b) => {
         const posA = a.position ?? 9999;
         const posB = b.position ?? 9999;
         return posA - posB;
     });
+
+    const toggleGroup = (id: string) => {
+        setExpandedGroups((current) => ({
+            ...current,
+            [id]: !current[id],
+        }));
+    };
 
     return (
         <SectionWrapper id="skills" variant="indigo">
@@ -204,6 +250,33 @@ export default function SkillsSection() {
                 </motion.p>
             </div>
 
+            <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="mx-auto mb-6 max-w-7xl sm:mb-8"
+            >
+                <div className="mb-3 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+                    <div>
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-indigo-300 sm:text-xs">
+                            Core Stack
+                        </p>
+                        <p className="mt-1 text-xs leading-relaxed text-gray-500 sm:text-sm">
+                            Primary technologies used across projects and professional experience.
+                        </p>
+                    </div>
+                    <span className="w-fit rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-medium text-gray-300">
+                        {coreStack.length} highlighted
+                    </span>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                    {coreStack.map((skill) => (
+                        <SkillChip key={skill} skill={skill} variant="core" />
+                    ))}
+                </div>
+            </motion.div>
+
             {/* ================= GRID ================= */}
             <motion.div
                 initial="hidden"
@@ -219,6 +292,11 @@ export default function SkillsSection() {
                     const meta = categoryMeta[group.id] ?? {
                         icon: <FaLayerGroup />,
                     };
+                    const isExpanded = expandedGroups[group.id] ?? false;
+                    const visibleSkills = isExpanded
+                        ? group.items
+                        : group.items.slice(0, INITIAL_VISIBLE_SKILLS);
+                    const hiddenCount = group.items.length - visibleSkills.length;
 
                     return (
                     <motion.div
@@ -254,18 +332,23 @@ export default function SkillsSection() {
 
                             {/* Skills */}
                             <div className="relative flex flex-wrap gap-2">
-                                {group.items.map((skill) => (
-                                    <div
-                                        key={skill}
-                                        className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs text-gray-200 transition duration-300 hover:border-indigo-400/40 hover:bg-indigo-500/20 sm:px-3 sm:text-sm"
-                                    >
-                                        <SkillIcon skill={skill} />
-                                        <span className="whitespace-nowrap">
-                                            {skill}
-                                        </span>
-                                    </div>
+                                {visibleSkills.map((skill) => (
+                                    <SkillChip key={skill} skill={skill} />
                                 ))}
                             </div>
+
+                            {group.items.length > INITIAL_VISIBLE_SKILLS && (
+                                <button
+                                    type="button"
+                                    aria-expanded={isExpanded}
+                                    onClick={() => toggleGroup(group.id)}
+                                    className="relative mt-5 inline-flex min-h-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-xs font-medium text-indigo-200 transition hover:border-indigo-400/40 hover:bg-indigo-500/15"
+                                >
+                                    {isExpanded
+                                        ? "Show less"
+                                        : `Show ${hiddenCount} more`}
+                                </button>
+                            )}
 
                         </div>
                     </motion.div>

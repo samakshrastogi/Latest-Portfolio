@@ -53,7 +53,7 @@ export const skills: SkillGroup[] = [
     {
         id: "database",
         category: "Database",
-        items: ["MongoDB", "PostgreSQL", "SQLite", "SQLite3", "Redis"],
+        items: ["MongoDB", "PostgreSQL", "SQLite", "Redis"],
         position: 3,
     },
     {
@@ -61,7 +61,6 @@ export const skills: SkillGroup[] = [
         category: "Cloud & DevOps",
         items: [
             "AWS S3",
-            "S3/storage integrations",
             "CloudFront",
             "Azure SSO",
             "Google SSO",
@@ -78,8 +77,7 @@ export const skills: SkillGroup[] = [
         id: "ai-ml",
         category: "AI / ML & Media",
         items: [
-            "Whisper",
-            "faster-whisper",
+            "Whisper / faster-whisper",
             "Ollama",
             "LLMs",
             "LangChain",
