@@ -1,6 +1,8 @@
-import { useEffect, useRef, useState } from "react";
-import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Mail, Menu, X } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import logo from "../assets/logo.png";
 
 const navItems = [
     { label: "Home", id: "hero" },
@@ -11,181 +13,118 @@ const navItems = [
     { label: "Contact", id: "contact" },
 ];
 
+const profileActions = [
+    { label: "GitHub", href: "https://github.com/samakshrastogi", icon: FaGithub },
+    { label: "LinkedIn", href: "https://linkedin.com/in/samaksh-rastogi-9638b9254", icon: FaLinkedin },
+    { label: "Email", href: "mailto:samakshrastogi885@gmail.com", icon: Mail },
+];
+
 export default function Navbar() {
     const [active, setActive] = useState("hero");
     const [open, setOpen] = useState(false);
-    const [visible, setVisible] = useState(true);
+    const [scrolled, setScrolled] = useState(false);
 
-    const lastScroll = useRef(0);
-    const indicatorRef = useRef<HTMLSpanElement>(null);
-    const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
-    const glowRef = useRef<HTMLDivElement>(null);
-
-    // 🔥 Scroll logic (hide/show + active section)
     useEffect(() => {
-        const handleScroll = () => {
-            const current = window.scrollY;
-
-            if (current > lastScroll.current && current > 80) {
-                setVisible(false);
-            } else {
-                setVisible(true);
+        const update = () => {
+            setScrolled(window.scrollY > 12);
+            for (const item of navItems) {
+                const section = document.getElementById(item.id);
+                if (!section) continue;
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 130 && rect.bottom >= 130) setActive(item.id);
             }
-            lastScroll.current = current;
-
-            navItems.forEach((item) => {
-                const el = document.getElementById(item.id);
-                if (!el) return;
-
-                const rect = el.getBoundingClientRect();
-                if (rect.top <= 120 && rect.bottom >= 120) {
-                    setActive(item.id);
-                }
-            });
         };
-
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
+        update();
+        window.addEventListener("scroll", update, { passive: true });
+        return () => window.removeEventListener("scroll", update);
     }, []);
 
-    // 🔥 Sliding indicator
     useEffect(() => {
-        const index = navItems.findIndex((i) => i.id === active);
-        const el = itemRefs.current[index];
+        document.body.style.overflow = open ? "hidden" : "";
+        return () => { document.body.style.overflow = ""; };
+    }, [open]);
 
-        if (el && indicatorRef.current) {
-            indicatorRef.current.style.width = `${el.offsetWidth}px`;
-            indicatorRef.current.style.left = `${el.offsetLeft}px`;
-        }
-    }, [active]);
-
-    // 🔥 Cursor glow (desktop only feel)
-    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        if (glowRef.current) {
-            glowRef.current.style.left = `${x}px`;
-            glowRef.current.style.top = `${y}px`;
-        }
-    };
-
-    // 🔥 Scroll with offset
     const scrollTo = (id: string) => {
-        const el = document.getElementById(id);
-        if (!el) return;
-
-        const y = el.getBoundingClientRect().top + window.scrollY - 100;
-
-        window.scrollTo({
-            top: y,
-            behavior: "smooth",
-        });
-
+        const section = document.getElementById(id);
+        if (!section) return;
+        const y = section.getBoundingClientRect().top + window.scrollY - 92;
+        window.scrollTo({ top: y, behavior: "smooth" });
         setOpen(false);
     };
 
     return (
         <>
-            {/* ================= DESKTOP / MAIN NAV ================= */}
-            <div
-                className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${visible ? "translate-y-0 opacity-100" : "-translate-y-20 opacity-0"
-                    }`}
-            >
-                <motion.div
-                    onMouseMove={handleMouseMove}
-                    whileHover={{ scale: 1.02 }}
-                    className="relative flex items-center gap-6 px-6 py-3 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 shadow-lg overflow-hidden"
-                >
-                    {/* Glow */}
-                    <div
-                        ref={glowRef}
-                        className="pointer-events-none absolute w-40 h-40 bg-indigo-500/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"
-                    />
+            <header className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${scrolled ? "border-slate-900/10 bg-white/85 shadow-[0_12px_40px_rgba(15,23,42,0.08)] backdrop-blur-2xl" : "border-transparent bg-white/60 backdrop-blur-xl"}`}>
+                <div className="mx-auto flex h-16 max-w-[1500px] items-center gap-3 px-4 sm:px-6">
+                    <button type="button" onClick={() => scrollTo("hero")} className="flex min-w-fit items-center gap-2.5" aria-label="Go to portfolio home">
+                        <img src={logo} alt="" className="h-9 w-9 rounded-xl object-cover shadow-sm" />
+                        <span className="hidden text-sm font-black tracking-tight text-slate-950 sm:block">Samaksh Rastogi</span>
+                    </button>
 
-                    {/* Logo */}
-                    <div className="font-semibold text-white whitespace-nowrap">
-                        Samaksh.dev
-                    </div>
-
-                    {/* Desktop Nav */}
-                    <div className="hidden md:flex relative items-center gap-6">
-                        <span
-                            ref={indicatorRef}
-                            className="absolute bottom-0 h-[2px] bg-indigo-500 transition-all duration-300"
-                        />
-
-                        {navItems.map((item, i) => (
-                            <motion.button
+                    <nav className="mx-auto hidden items-center rounded-2xl border border-slate-900/10 bg-white/80 p-1 shadow-sm lg:flex" aria-label="Portfolio sections">
+                        {navItems.map((item) => (
+                            <button
+                                type="button"
                                 key={item.id}
-                                ref={(el) => {
-                                    itemRefs.current[i] = el;
-                                }}
                                 onClick={() => scrollTo(item.id)}
-                                whileHover={{ y: -2 }}
-                                className={`relative text-sm transition ${active === item.id
-                                        ? "text-white"
-                                        : "text-gray-400 hover:text-white"
-                                    }`}
+                                className={`rounded-xl px-3 py-2 text-xs font-bold transition ${active === item.id ? "bg-slate-950 text-white shadow-md" : "text-slate-500 hover:bg-slate-100 hover:text-slate-950"}`}
                             >
                                 {item.label}
-                            </motion.button>
-                        ))}
-                    </div>
-
-                    {/* Mobile Toggle */}
-                    <button
-                        onClick={() => setOpen(true)}
-                        className="md:hidden p-2 rounded-lg bg-white/5 border border-white/10"
-                        aria-label="humburger"
-                    >
-                        <Menu size={20} />
-                    </button>
-                </motion.div>
-            </div>
-
-            {/* ================= MOBILE FULLSCREEN MENU ================= */}
-            <AnimatePresence>
-                {open && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-xl md:hidden"
-                    >
-                        {/* Close */}
-                        <div className="absolute top-6 right-6">
-                            <button
-                                onClick={() => setOpen(false)}
-                                className="p-2 rounded-lg bg-white/10 border border-white/10"
-                                aria-label="close"
-                            >
-                                <X size={22} />
                             </button>
-                        </div>
+                        ))}
+                    </nav>
 
-                        {/* Menu Items */}
-                        <div className="h-full flex flex-col justify-center items-center gap-8">
-                            {navItems.map((item, index) => (
-                                <motion.button
-                                    key={item.id}
-                                    onClick={() => scrollTo(item.id)}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: index * 0.08 }}
-                                    className={`text-2xl font-medium transition ${active === item.id
-                                        ? "text-white"
-                                        : "text-gray-400 hover:text-white"
-                                        }`}
-                                >
-                                    {item.label}
-                                </motion.button>
-                            ))}
-                        </div>
+                    <div className="ml-auto flex items-center gap-2 lg:ml-0">
+                        {profileActions.map((action) => (
+                            <a key={action.label} href={action.href} target={action.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" aria-label={action.label} className="hidden h-10 w-10 items-center justify-center rounded-2xl border border-slate-900/10 bg-white/85 text-slate-600 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-700 sm:flex">
+                                <action.icon size={17} />
+                            </a>
+                        ))}
+                        <button type="button" onClick={() => setOpen(true)} className="grid h-10 w-10 place-items-center rounded-2xl border border-slate-900/10 bg-white text-slate-700 shadow-sm lg:hidden" aria-label="Open navigation">
+                            <Menu size={19} />
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <AnimatePresence>
+                {open ? (
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[100] bg-slate-950/30 p-3 backdrop-blur-md lg:hidden" onClick={() => setOpen(false)}>
+                        <motion.div initial={{ opacity: 0, y: -20, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -20, scale: 0.98 }} onClick={(event) => event.stopPropagation()} className="mx-auto max-w-md rounded-[2rem] border border-slate-900/10 bg-white p-4 shadow-2xl">
+                            <div className="flex items-center justify-between px-2 py-1">
+                                <div className="flex items-center gap-2.5">
+                                    <img src={logo} alt="" className="h-9 w-9 rounded-xl object-cover" />
+                                    <span className="font-black text-slate-950">Portfolio</span>
+                                </div>
+                                <button type="button" onClick={() => setOpen(false)} className="grid h-10 w-10 place-items-center rounded-xl bg-slate-100 text-slate-600" aria-label="Close navigation"><X size={18} /></button>
+                            </div>
+                            <nav className="mt-4 grid gap-1" aria-label="Mobile portfolio sections">
+                                {navItems.map((item) => (
+                                    <button type="button" key={item.id} onClick={() => scrollTo(item.id)} className={`rounded-xl px-4 py-3 text-left text-sm font-bold ${active === item.id ? "bg-slate-950 text-white" : "text-slate-600 hover:bg-slate-100"}`}>
+                                        {item.label}
+                                    </button>
+                                ))}
+                            </nav>
+                            <div className="mt-4 grid grid-cols-3 gap-2 border-t border-slate-900/10 pt-4">
+                                {profileActions.map((action) => (
+                                    <a key={action.label} href={action.href} target={action.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="flex items-center justify-center gap-2 rounded-xl bg-indigo-50 px-2 py-3 text-xs font-bold text-indigo-700">
+                                        <action.icon size={15} /> {action.label}
+                                    </a>
+                                ))}
+                            </div>
+                        </motion.div>
                     </motion.div>
-                )}
+                ) : null}
             </AnimatePresence>
+
+            <aside className="fixed bottom-5 right-4 z-40 hidden flex-col gap-2 sm:flex" aria-label="Quick profile links">
+                {profileActions.map((action, index) => (
+                    <motion.a key={action.label} href={action.href} target={action.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 + index * 0.08 }} className="group flex h-12 w-12 items-center justify-end overflow-hidden rounded-2xl border border-slate-900/10 bg-white/90 px-3 text-slate-700 shadow-[0_18px_45px_rgba(15,23,42,0.14)] backdrop-blur-xl transition-all hover:w-32 hover:gap-2 hover:bg-slate-950 hover:text-white" aria-label={action.label}>
+                        <span className="hidden whitespace-nowrap text-xs font-bold group-hover:inline">{action.label}</span>
+                        <action.icon size={19} className="shrink-0" />
+                    </motion.a>
+                ))}
+            </aside>
         </>
     );
 }

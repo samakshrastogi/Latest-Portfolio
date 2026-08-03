@@ -17,9 +17,9 @@ export default function SectionWrapper({
 
     const variants = {
         default: {
-            bg: "bg-white/5",
-            border: "border-white/10",
-            glow: "bg-white/10",
+            bg: "bg-white/80",
+            border: "border-slate-900/10",
+            glow: "bg-slate-100",
         },
         indigo: {
             bg: "bg-indigo-500/5",
@@ -41,7 +41,7 @@ export default function SectionWrapper({
             className="relative pt-6 sm:pt-10 pb-16 sm:pb-20 px-4 sm:px-6 scroll-mt-24"
         >
             {/* TOP DIVIDER */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-slate-900/10 to-transparent" />
 
             {/* CONTAINER */}
             <motion.div
@@ -52,7 +52,7 @@ export default function SectionWrapper({
                 className={`
                     relative max-w-6xl mx-auto
                     rounded-2xl p-5 sm:p-8 md:p-10
-                    backdrop-blur-xl border shadow-xl
+                    backdrop-blur-xl border shadow-[0_24px_80px_rgba(15,23,42,0.08)]
                     transition duration-300 ease-out
                     hover:scale-[1.01]
                     ${current.bg} ${current.border}

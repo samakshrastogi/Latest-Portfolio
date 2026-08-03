@@ -110,7 +110,7 @@ export default function ExperienceSection() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl md:text-5xl"
+                    className="bg-gradient-to-r from-slate-950 to-slate-500 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl md:text-5xl"
                 >
                     Experience
                 </motion.h2>
@@ -121,7 +121,7 @@ export default function ExperienceSection() {
                     whileInView="visible"
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 }}
-                    className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-gray-400 sm:mt-4 sm:text-base"
+                    className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-slate-500 sm:mt-4 sm:text-base"
                 >
                     Production engineering for internal tools used by real teams.
                 </motion.p>
@@ -136,7 +136,7 @@ export default function ExperienceSection() {
             >
                 <div className="absolute inset-0 bg-indigo-500/10 opacity-0 blur-2xl transition duration-500 group-hover:opacity-100" />
 
-                <div className="relative rounded-3xl bg-black/40 p-3.5 backdrop-blur-xl sm:p-8 md:p-10">
+                <div className="relative rounded-3xl bg-white/80 p-3.5 backdrop-blur-xl sm:p-8 md:p-10">
                     <div className="absolute left-6 top-8 hidden h-[calc(100%-4rem)] w-px bg-gradient-to-b from-indigo-400/70 via-indigo-400/20 to-transparent sm:block" />
 
                     <div className="relative sm:pl-8">
@@ -147,11 +147,11 @@ export default function ExperienceSection() {
                                 <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-indigo-300 sm:text-xs sm:tracking-[0.24em]">
                                     Work Experience
                                 </p>
-                                <h3 className="max-w-xl text-lg font-semibold leading-tight text-white min-[380px]:text-xl sm:text-3xl">
+                                <h3 className="max-w-xl text-lg font-semibold leading-tight text-slate-950 min-[380px]:text-xl sm:text-3xl">
                                     Nokia — Student Intern
                                 </h3>
                                 <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] sm:mt-3 sm:gap-2 sm:text-xs">
-                                    <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-gray-300 sm:px-3">
+                                    <span className="rounded-full border border-slate-900/10 bg-white/80 px-2.5 py-1 text-slate-600 sm:px-3">
                                         Aug 2025 - June 2026
                                     </span>
                                     <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1 text-emerald-300 sm:px-3">
@@ -187,14 +187,14 @@ export default function ExperienceSection() {
                                         )}
                                     </div>
 
-                                    <div className="flex flex-1 flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition duration-300 hover:border-indigo-400/30 hover:bg-white/[0.06] sm:p-5">
+                                    <div className="flex flex-1 flex-col rounded-2xl border border-slate-900/10 bg-white/80 p-4 transition duration-300 hover:border-indigo-400/30 hover:bg-white/85 sm:p-5">
                                         <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                                             <div className="flex min-w-0 items-start gap-3">
                                                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-indigo-400/20 bg-indigo-500/15 text-indigo-300">
                                                     {project.icon}
                                                 </span>
                                                 <div className="min-w-0">
-                                                    <h4 className="text-base font-semibold text-white sm:text-xl">
+                                                    <h4 className="text-base font-semibold text-slate-950 sm:text-xl">
                                                         {project.title}
                                                     </h4>
                                                     <p className="text-xs font-medium uppercase tracking-[0.16em] text-indigo-300">
@@ -204,7 +204,7 @@ export default function ExperienceSection() {
                                             </div>
 
                                             <div className="flex flex-wrap gap-2">
-                                                <span className="w-fit rounded-full border border-white/10 bg-black/20 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-gray-300">
+                                                <span className="w-fit rounded-full border border-slate-900/10 bg-slate-100 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-600">
                                                     Project {project.phase}
                                                 </span>
                                                 <span className="w-fit rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald-200">
@@ -213,7 +213,7 @@ export default function ExperienceSection() {
                                             </div>
                                         </div>
 
-                                        <p className="mb-4 text-xs leading-relaxed text-gray-300 min-[380px]:text-sm sm:text-[15px]">
+                                        <p className="mb-4 text-xs leading-relaxed text-slate-600 min-[380px]:text-sm sm:text-[15px]">
                                             {project.description}
                                         </p>
 
@@ -221,15 +221,15 @@ export default function ExperienceSection() {
                                             {project.tags.map((tag) => (
                                                 <span
                                                     key={tag}
-                                                    className="rounded-md border border-white/10 bg-white/5 px-2 py-1 text-[11px] font-medium text-gray-200"
+                                                    className="rounded-md border border-slate-900/10 bg-white/80 px-2 py-1 text-[11px] font-medium text-slate-700"
                                                 >
                                                     {tag}
                                                 </span>
                                             ))}
                                         </div>
 
-                                        <div className="mt-4 border-t border-white/10 pt-3">
-                                            <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-gray-500">
+                                        <div className="mt-4 border-t border-slate-900/10 pt-3">
+                                            <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
                                                 Tech used
                                             </p>
                                             <div className="flex flex-wrap gap-1.5">

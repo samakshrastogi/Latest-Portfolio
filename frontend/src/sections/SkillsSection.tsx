@@ -102,7 +102,7 @@ const iconMap: Record<string, ReactNode> = {
     node: <SiNodedotjs className="text-green-500" />,
     django: <SiDjango className="text-green-400" />,
     djangorestframework: <SiDjango className="text-green-400" />,
-    express: <SiExpress className="text-gray-300" />,
+    express: <SiExpress className="text-slate-600" />,
     "restapis": <FaServer className="text-indigo-400" />,
     celery: <FaServer className="text-green-400" />,
     apscheduler: <FaServer className="text-indigo-300" />,
@@ -111,26 +111,26 @@ const iconMap: Record<string, ReactNode> = {
     // 🔥 DATABASE
     mongodb: <SiMongodb className="text-green-500" />,
     postgresql: <SiPostgresql className="text-blue-400" />,
-    sqlite: <FaDatabase className="text-gray-400" />,
-    sqlite3: <FaDatabase className="text-gray-400" />,
+    sqlite: <FaDatabase className="text-slate-500" />,
+    sqlite3: <FaDatabase className="text-slate-500" />,
     redis: <SiRedis className="text-red-400" />,
 
     // 🔥 CLOUD
     aws: <FaAws className="text-orange-400" />,
     "awss3": <FaAws className="text-orange-400" />,
     "s3/storageintegrations": <FaAws className="text-orange-400" />,
-    cloudfront: <FaCloud className="text-gray-300" />,
+    cloudfront: <FaCloud className="text-slate-600" />,
     azure: <FaMicrosoft className="text-blue-500" />,
     azuresso: <FaMicrosoft className="text-blue-500" />,
     googlesso: <SiGoogle className="text-red-400" />,
 
     // 🔥 DEVOPS
-    vercel: <SiVercel className="text-white" />,
+    vercel: <SiVercel className="text-slate-950" />,
     netlify: <SiNetlify className="text-cyan-400" />,
     render: <SiRender className="text-purple-400" />,
     pemdeployment: <FaLock className="text-amber-400" />,
     gunicorn: <FaServer className="text-green-300" />,
-    whitenoise: <FaCloud className="text-gray-300" />,
+    whitenoise: <FaCloud className="text-slate-600" />,
 
     // 🔥 AI
     ai: <FaBrain className="text-purple-400" />,
@@ -157,22 +157,22 @@ const iconMap: Record<string, ReactNode> = {
     // 🔥 APIS / REALTIME
     playwright: <FaCodeBranch className="text-green-400" />,
     sse: <FaCodeBranch className="text-indigo-300" />,
-    "socket.io": <SiSocketdotio className="text-white" />,
+    "socket.io": <SiSocketdotio className="text-slate-950" />,
     bullmq: <FaCodeBranch className="text-red-300" />,
     gmailapi: <SiGoogle className="text-red-400" />,
     mermaid: <SiMermaid className="text-pink-300" />,
 
     // 🔥 TOOLS
-    ffmpeg: <FaServer className="text-gray-400" />,
-    nodemailer: <FaServer className="text-gray-400" />,
+    ffmpeg: <FaServer className="text-slate-500" />,
+    nodemailer: <FaServer className="text-slate-500" />,
 
     // 🔥 SECURITY
     datamasking: <FaLock className="text-red-400" />,
     encryption: <FaLock className="text-red-400" />,
 
     // 🔥 SYSTEM
-    spritesheets: <FaServer className="text-gray-400" />,
-    virtualenvironments: <FaServer className="text-gray-400" />,
+    spritesheets: <FaServer className="text-slate-500" />,
+    virtualenvironments: <FaServer className="text-slate-500" />,
 };
 
 /* ================= ICON COMPONENT ================= */
@@ -182,7 +182,7 @@ function SkillIcon({ skill }: { skill: string }) {
 
     return (
         <span className="text-base">
-            {iconMap[key] || <span className="text-gray-500">•</span>}
+            {iconMap[key] || <span className="text-slate-500">•</span>}
         </span>
     );
 }
@@ -197,7 +197,7 @@ function SkillChip({
     const className =
         variant === "core"
             ? "flex items-center gap-2 rounded-xl border border-indigo-300/25 bg-indigo-500/15 px-3 py-2 text-xs font-medium text-indigo-50 transition duration-300 hover:border-indigo-300/45 hover:bg-indigo-500/25 sm:text-sm"
-            : "flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs text-gray-200 transition duration-300 hover:border-indigo-400/40 hover:bg-indigo-500/20 sm:px-3 sm:text-sm";
+            : "flex items-center gap-2 rounded-lg border border-slate-900/10 bg-white/80 px-2.5 py-1.5 text-xs text-slate-700 transition duration-300 hover:border-indigo-400/40 hover:bg-indigo-500/20 sm:px-3 sm:text-sm";
 
     return (
         <div className={className}>
@@ -234,7 +234,7 @@ export default function SkillsSection() {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent"
+                    className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-slate-950 to-slate-500 bg-clip-text text-transparent"
                 >
                     Skills & Expertise
                 </motion.h2>
@@ -244,7 +244,7 @@ export default function SkillsSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
                     viewport={{ once: true }}
-                    className="text-gray-400 mt-4 text-sm leading-relaxed sm:text-base max-w-lg mx-auto"
+                    className="text-slate-500 mt-4 text-sm leading-relaxed sm:text-base max-w-lg mx-auto"
                 >
                     Technologies and tools I use to build scalable systems
                 </motion.p>
@@ -261,11 +261,11 @@ export default function SkillsSection() {
                         <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-indigo-300 sm:text-xs">
                             Core Stack
                         </p>
-                        <p className="mt-1 text-xs leading-relaxed text-gray-500 sm:text-sm">
+                        <p className="mt-1 text-xs leading-relaxed text-slate-500 sm:text-sm">
                             Primary technologies used across projects and work experience.
                         </p>
                     </div>
-                    <span className="w-fit rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-medium text-gray-300">
+                    <span className="w-fit rounded-full border border-slate-900/10 bg-white/80 px-2.5 py-1 text-xs font-medium text-slate-600">
                         {coreStack.length} highlighted
                     </span>
                 </div>
@@ -308,7 +308,7 @@ export default function SkillsSection() {
                         whileHover={{ y: -6 }}
                         className="group relative rounded-2xl p-[1px] bg-gradient-to-br from-indigo-400/25 via-white/10 to-transparent"
                     >
-                        <div className="relative h-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-xl transition duration-300 sm:p-6">
+                        <div className="relative h-full overflow-hidden rounded-2xl border border-slate-900/10 bg-white/80 p-5 backdrop-blur-xl transition duration-300 sm:p-6">
 
                             {/* Glow */}
                             <div className="absolute inset-0 rounded-2xl bg-indigo-500/10 opacity-0 group-hover:opacity-100 blur-xl transition duration-500"></div>
@@ -325,7 +325,7 @@ export default function SkillsSection() {
                                     </h3>
                                 </div>
 
-                                <span className="shrink-0 rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-medium text-gray-300">
+                                <span className="shrink-0 rounded-full border border-slate-900/10 bg-white/80 px-2.5 py-1 text-xs font-medium text-slate-600">
                                     {group.items.length}
                                 </span>
                             </div>
@@ -342,7 +342,7 @@ export default function SkillsSection() {
                                     type="button"
                                     aria-expanded={isExpanded}
                                     onClick={() => toggleGroup(group.id)}
-                                    className="relative mt-5 inline-flex min-h-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-xs font-medium text-indigo-200 transition hover:border-indigo-400/40 hover:bg-indigo-500/15"
+                                    className="relative mt-5 inline-flex min-h-9 items-center justify-center rounded-lg border border-slate-900/10 bg-white/80 px-3 py-2 text-xs font-medium text-indigo-200 transition hover:border-indigo-400/40 hover:bg-indigo-500/15"
                                 >
                                     {isExpanded
                                         ? "Show less"

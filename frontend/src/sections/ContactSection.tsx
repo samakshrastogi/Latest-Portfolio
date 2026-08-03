@@ -35,7 +35,7 @@ export default function ContactSection() {
                 <motion.h2
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    className="mx-auto max-w-sm bg-linear-to-r from-white to-gray-400 bg-clip-text text-3xl font-bold leading-tight text-transparent sm:max-w-xl sm:text-4xl md:text-5xl"
+                    className="mx-auto max-w-sm bg-linear-to-r from-slate-950 to-slate-500 bg-clip-text text-3xl font-bold leading-tight text-transparent sm:max-w-xl sm:text-4xl md:text-5xl"
                 >
                     Let’s Connect
                 </motion.h2>
@@ -44,7 +44,7 @@ export default function ContactSection() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
-                    className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-gray-400 sm:max-w-xl sm:text-base"
+                    className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-slate-500 sm:max-w-xl sm:text-base"
                 >
                     Open to opportunities where I can contribute to scalable, reliable production systems.
                 </motion.p>
@@ -57,7 +57,7 @@ export default function ContactSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 className="relative mx-auto max-w-2xl rounded-3xl bg-linear-to-br from-indigo-500/40 via-purple-500/25 to-white/10 p-px"
             >
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-black/60 p-5 text-center backdrop-blur-xl sm:p-7">
+                <div className="relative overflow-hidden rounded-3xl border border-slate-900/10 bg-white/90 p-5 text-center backdrop-blur-xl sm:p-7">
 
                     {/* GLOW */}
                     <div
@@ -65,9 +65,9 @@ export default function ContactSection() {
                         className="pointer-events-none absolute h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/20 blur-3xl"
                     />
 
-                    <div className="relative rounded-2xl border border-white/10 bg-linear-to-br from-white/[0.07] to-white/[0.03] px-4 py-4 text-left">
+                    <div className="relative rounded-2xl border border-slate-900/10 bg-linear-to-br from-white to-indigo-50/70 px-4 py-4 text-left">
                         <div className="mb-3 flex items-center justify-between gap-3">
-                            <p className="text-sm font-semibold text-white sm:text-base">
+                            <p className="text-sm font-semibold text-slate-950 sm:text-base">
                                 Open to Opportunities
                             </p>
 
@@ -77,7 +77,7 @@ export default function ContactSection() {
                         </div>
 
                         <div>
-                            <p className="text-xs leading-relaxed text-gray-300 sm:text-sm">
+                            <p className="text-xs leading-relaxed text-slate-600 sm:text-sm">
                                 I am seeking a role where I can apply my experience in backend systems,
                                 API development, full-stack applications, and production-grade workflows.
                             </p>
@@ -92,7 +92,7 @@ export default function ContactSection() {
                                 Available for Roles
                             </span>
                         </div>
-                        <div className="rounded-xl border border-white/10 bg-white/5 px-2.5 py-2 text-gray-300">
+                        <div className="rounded-xl border border-slate-900/10 bg-white/80 px-2.5 py-2 text-slate-600">
                             <span className="whitespace-nowrap">
                                 Timely Response
                             </span>
@@ -112,14 +112,14 @@ export default function ContactSection() {
 
                     {/* EMAIL COPY */}
                     <div className="relative mt-3 flex items-center justify-center gap-2">
-                        <div className="min-w-0 flex-1 truncate rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-center text-sm text-gray-300 sm:flex-none sm:px-4">
+                        <div className="min-w-0 flex-1 truncate rounded-lg border border-slate-900/10 bg-white/80 px-3 py-2 text-center text-sm text-slate-600 sm:flex-none sm:px-4">
                             {email}
                         </div>
 
                         <button
                             onClick={copyEmail}
                             aria-label="Copy email"
-                            className="shrink-0 rounded-lg bg-white/10 p-2 hover:bg-indigo-500/20 transition"
+                            className="shrink-0 rounded-lg bg-slate-100 p-2 hover:bg-indigo-500/20 transition"
                         >
                             <FiCopy size={14} />
                         </button>
@@ -136,7 +136,7 @@ export default function ContactSection() {
                             href={`mailto:${email}`}
                             aria-label="Email"
                             className="flex items-center justify-center rounded-xl px-3 py-2 text-sm 
-                            bg-white/5 border border-white/10 hover:bg-white/10 transition"
+                            bg-white/80 border border-slate-900/10 hover:bg-slate-100 transition"
                         >
                             <FiMail className="text-indigo-400" />
                         </a>
@@ -145,7 +145,7 @@ export default function ContactSection() {
                             href="tel:+918299305586"
                             aria-label="Call"
                             className="flex items-center justify-center rounded-xl px-3 py-2 text-sm 
-                            bg-white/5 border border-white/10 hover:bg-white/10 transition"
+                            bg-white/80 border border-slate-900/10 hover:bg-slate-100 transition"
                         >
                             <FiPhone className="text-indigo-400" />
                         </a>
@@ -156,7 +156,7 @@ export default function ContactSection() {
                             rel="noopener noreferrer"
                             aria-label="GitHub"
                             className="flex items-center justify-center rounded-xl px-3 py-2 text-sm 
-                            bg-white/5 border border-white/10 hover:bg-white/10 transition"
+                            bg-white/80 border border-slate-900/10 hover:bg-slate-100 transition"
                         >
                             <FaGithub className="text-indigo-400" />
                         </a>
@@ -167,7 +167,7 @@ export default function ContactSection() {
                             rel="noopener noreferrer"
                             aria-label="LinkedIn"
                             className="flex items-center justify-center rounded-xl px-3 py-2 text-sm 
-                            bg-white/5 border border-white/10 hover:bg-white/10 transition"
+                            bg-white/80 border border-slate-900/10 hover:bg-slate-100 transition"
                         >
                             <FaLinkedin className="text-indigo-400" />
                         </a>
@@ -177,7 +177,7 @@ export default function ContactSection() {
             </motion.div>
 
             {/* FOOTER */}
-            <div className="text-center text-gray-500 text-xs sm:text-sm mt-14">
+            <div className="text-center text-slate-500 text-xs sm:text-sm mt-14">
                 © {new Date().getFullYear()} Samaksh Rastogi · Engineering production systems
             </div>
 

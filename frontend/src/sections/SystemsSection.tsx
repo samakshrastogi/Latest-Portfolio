@@ -83,7 +83,7 @@ export default function SystemsSection() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl md:text-5xl"
+                    className="bg-gradient-to-r from-slate-950 to-slate-500 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl md:text-5xl"
                 >
                     Systems & Impact
                 </motion.h2>
@@ -94,7 +94,7 @@ export default function SystemsSection() {
                     whileInView="visible"
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 }}
-                    className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-gray-400 sm:text-base"
+                    className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-slate-500 sm:text-base"
                 >
                     Practical backend architecture, APIs, and product systems shipped with measurable outcomes.
                 </motion.p>
@@ -112,8 +112,8 @@ export default function SystemsSection() {
                         <div className="mb-2 flex justify-center text-xl text-indigo-400">
                             {stat.icon}
                         </div>
-                        <p className="text-3xl font-semibold text-white">{stat.value}</p>
-                        <p className="mt-1 text-sm text-gray-500">{stat.label}</p>
+                        <p className="text-3xl font-semibold text-slate-950">{stat.value}</p>
+                        <p className="mt-1 text-sm text-slate-500">{stat.label}</p>
                     </motion.div>
                 ))}
             </motion.div>
@@ -123,16 +123,16 @@ export default function SystemsSection() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="mx-auto mb-12 max-w-3xl rounded-2xl border border-white/10 bg-white/[0.04] p-4 sm:mb-14 sm:p-6"
+                className="mx-auto mb-12 max-w-3xl rounded-2xl border border-slate-900/10 bg-white/80 p-4 sm:mb-14 sm:p-6"
             >
                 <h3 className="mb-5 text-center text-lg font-semibold text-indigo-300">
                     System Flow
                 </h3>
 
-                <div className="mx-auto flex max-w-sm flex-wrap items-center justify-center gap-2 text-xs text-gray-300 sm:max-w-none sm:flex-nowrap sm:gap-3 sm:text-sm">
+                <div className="mx-auto flex max-w-sm flex-wrap items-center justify-center gap-2 text-xs text-slate-600 sm:max-w-none sm:flex-nowrap sm:gap-3 sm:text-sm">
                     {systemFlow.map((node, index) => (
                         <div key={node} className="flex items-center gap-2">
-                            <div className="rounded-lg border border-white/10 bg-white/10 px-3 py-2 font-medium sm:min-w-24 sm:px-4">
+                            <div className="rounded-lg border border-slate-900/10 bg-slate-100 px-3 py-2 font-medium sm:min-w-24 sm:px-4">
                                 {node}
                             </div>
 
@@ -161,7 +161,7 @@ function SystemCard({ index, title, subtitle, icon, items }: SystemCardProps) {
             whileInView="visible"
             viewport={{ once: true }}
             whileHover={{ y: -6 }}
-            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-5 transition duration-300 sm:p-6"
+            className="group relative overflow-hidden rounded-2xl border border-slate-900/10 bg-white/80 p-5 transition duration-300 sm:p-6"
         >
             <div className="absolute inset-0 bg-indigo-500/10 opacity-0 blur-xl transition duration-500 group-hover:opacity-100" />
 
@@ -177,11 +177,11 @@ function SystemCard({ index, title, subtitle, icon, items }: SystemCardProps) {
                     <h3 className="pr-12 text-xl font-semibold">{title}</h3>
                 </div>
 
-                <p className="mb-6 text-sm leading-relaxed text-gray-400">
+                <p className="mb-6 text-sm leading-relaxed text-slate-500">
                     {subtitle}
                 </p>
 
-                <ul className="space-y-3 text-sm text-gray-100">
+                <ul className="space-y-3 text-sm text-slate-700">
                     {items.map((item) => (
                         <li key={item} className="flex items-start gap-3">
                             <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-emerald-400/10 text-xs text-emerald-300">
