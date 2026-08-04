@@ -1,9 +1,9 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import SectionWrapper from "../components/SectionWrapper";
 import { useState, type ReactNode } from "react";
 import { skills as skillData, type SkillGroup } from "../lib/constants";
 
-// 🔥 ICONS
+// ICONS
 import {
     SiReact,
     SiNodedotjs,
@@ -86,7 +86,7 @@ const coreStack = [
 const INITIAL_VISIBLE_SKILLS = 8;
 
 const iconMap: Record<string, ReactNode> = {
-    // 🔥 FRONTEND
+    // FRONTEND
     react: <SiReact className="text-cyan-600" />,
     typescript: <SiTypescript className="text-blue-500" />,
     javascript: <SiJavascript className="text-yellow-400" />,
@@ -95,7 +95,7 @@ const iconMap: Record<string, ReactNode> = {
     bootstrap: <SiBootstrap className="text-violet-600" />,
     djangotemplates: <SiDjango className="text-emerald-600" />,
 
-    // 🔥 BACKEND
+    // BACKEND
     python: <SiPython className="text-yellow-300" />,
     nodejs: <SiNodedotjs className="text-green-500" />,
     "node.js": <SiNodedotjs className="text-green-500" />,
@@ -108,14 +108,14 @@ const iconMap: Record<string, ReactNode> = {
     apscheduler: <FaServer className="text-indigo-700" />,
     "paramiko/asyncssh": <FaServer className="text-blue-300" />,
 
-    // 🔥 DATABASE
+    // DATABASE
     mongodb: <SiMongodb className="text-green-500" />,
     postgresql: <SiPostgresql className="text-blue-400" />,
     sqlite: <FaDatabase className="text-slate-500" />,
     sqlite3: <FaDatabase className="text-slate-500" />,
     redis: <SiRedis className="text-red-400" />,
 
-    // 🔥 CLOUD
+    // CLOUD
     aws: <FaAws className="text-orange-400" />,
     "awss3": <FaAws className="text-orange-400" />,
     "s3/storageintegrations": <FaAws className="text-orange-400" />,
@@ -124,7 +124,7 @@ const iconMap: Record<string, ReactNode> = {
     azuresso: <FaMicrosoft className="text-blue-500" />,
     googlesso: <SiGoogle className="text-red-400" />,
 
-    // 🔥 DEVOPS
+    // DEVOPS
     vercel: <SiVercel className="text-slate-950" />,
     netlify: <SiNetlify className="text-cyan-600" />,
     render: <SiRender className="text-violet-600" />,
@@ -132,7 +132,7 @@ const iconMap: Record<string, ReactNode> = {
     gunicorn: <FaServer className="text-green-600" />,
     whitenoise: <FaCloud className="text-slate-600" />,
 
-    // 🔥 AI
+    // AI
     ai: <FaBrain className="text-violet-600" />,
     "ai/ml": <FaBrain className="text-violet-600" />,
     llms: <FaBrain className="text-violet-600" />,
@@ -147,14 +147,14 @@ const iconMap: Record<string, ReactNode> = {
     "sentence-transformers": <FaBrain className="text-violet-600" />,
     pytorch: <SiPytorch className="text-orange-400" />,
 
-    // 🔥 DATA
+    // DATA
     pandas: <SiPandas className="text-blue-300" />,
     numpy: <SiNumpy className="text-blue-400" />,
     openpyxl: <FaChartLine className="text-emerald-700" />,
     plotly: <SiPlotly className="text-cyan-600" />,
     matplotlib: <FaChartLine className="text-yellow-300" />,
 
-    // 🔥 APIS / REALTIME
+    // APIS / REALTIME
     playwright: <FaCodeBranch className="text-emerald-600" />,
     sse: <FaCodeBranch className="text-indigo-700" />,
     "socket.io": <SiSocketdotio className="text-slate-950" />,
@@ -162,15 +162,15 @@ const iconMap: Record<string, ReactNode> = {
     gmailapi: <SiGoogle className="text-red-400" />,
     mermaid: <SiMermaid className="text-pink-300" />,
 
-    // 🔥 TOOLS
+    // TOOLS
     ffmpeg: <FaServer className="text-slate-500" />,
     nodemailer: <FaServer className="text-slate-500" />,
 
-    // 🔥 SECURITY
+    // SECURITY
     datamasking: <FaLock className="text-red-400" />,
     encryption: <FaLock className="text-red-400" />,
 
-    // 🔥 SYSTEM
+    // SYSTEM
     spritesheets: <FaServer className="text-slate-500" />,
     virtualenvironments: <FaServer className="text-slate-500" />,
 };
@@ -196,8 +196,8 @@ function SkillChip({
 }) {
     const className =
         variant === "core"
-            ? "flex items-center gap-2 rounded-xl border border-indigo-300/25 bg-indigo-500/15 px-3 py-2 text-xs font-medium text-indigo-50 transition duration-300 hover:border-indigo-300/45 hover:bg-indigo-500/25 sm:text-sm"
-            : "flex items-center gap-2 rounded-lg border border-slate-900/10 bg-white/80 px-2.5 py-1.5 text-xs text-slate-700 transition duration-300 hover:border-indigo-400/40 hover:bg-indigo-500/20 sm:px-3 sm:text-sm";
+            ? "flex items-center gap-2 rounded-xl border border-indigo-200 bg-white/90 px-3 py-2 text-xs font-semibold text-slate-700 shadow-sm transition-[transform,border-color,background-color,box-shadow] duration-300 ease-out hover:-translate-y-0.5 hover:border-indigo-300 hover:bg-indigo-50 hover:shadow-md sm:text-sm"
+            : "flex items-center gap-2 rounded-lg border border-slate-900/10 bg-white/80 px-2.5 py-1.5 text-xs text-slate-700 transition-[transform,border-color,background-color,box-shadow] duration-300 ease-out hover:-translate-y-0.5 hover:border-indigo-300 hover:bg-indigo-50 hover:shadow-sm sm:px-3 sm:text-sm";
 
     return (
         <div className={className}>

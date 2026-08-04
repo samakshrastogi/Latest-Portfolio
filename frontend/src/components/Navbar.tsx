@@ -48,8 +48,12 @@ export default function Navbar() {
     const scrollTo = (id: string) => {
         const section = document.getElementById(id);
         if (!section) return;
-        const y = section.getBoundingClientRect().top + window.scrollY - 92;
-        window.scrollTo({ top: y, behavior: "smooth" });
+        if (document.documentElement.classList.contains("lenis")) {
+            window.dispatchEvent(new CustomEvent("portfolio:scroll-to", { detail: { id } }));
+        } else {
+            const y = section.getBoundingClientRect().top + window.scrollY - 92;
+            window.scrollTo({ top: y, behavior: "smooth" });
+        }
         setOpen(false);
     };
 
