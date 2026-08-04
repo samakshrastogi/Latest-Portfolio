@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Mail, Menu, X } from "lucide-react";
+import { Download, Mail, Menu, X } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import logo from "../assets/logo.png";
 
@@ -10,6 +10,7 @@ const navItems = [
     { label: "Projects", id: "projects" },
     { label: "Experience", id: "experience" },
     { label: "Systems", id: "systems" },
+    { label: "Resume", id: "resume" },
     { label: "Contact", id: "contact" },
 ];
 
@@ -54,7 +55,7 @@ export default function Navbar() {
 
     return (
         <>
-            <header className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${scrolled ? "border-slate-900/10 bg-white/85 shadow-[0_12px_40px_rgba(15,23,42,0.08)] backdrop-blur-2xl" : "border-transparent bg-white/60 backdrop-blur-xl"}`}>
+            <header data-gsap-topbar className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${scrolled ? "border-slate-900/10 bg-white/85 shadow-[0_12px_40px_rgba(15,23,42,0.08)] backdrop-blur-2xl" : "border-transparent bg-white/60 backdrop-blur-xl"}`}>
                 <div className="mx-auto flex h-16 max-w-[1500px] items-center gap-3 px-4 sm:px-6">
                     <button type="button" onClick={() => scrollTo("hero")} className="flex min-w-fit items-center gap-2.5" aria-label="Go to portfolio home">
                         <img src={logo} alt="" className="h-9 w-9 rounded-xl object-cover shadow-sm" />
@@ -75,6 +76,9 @@ export default function Navbar() {
                     </nav>
 
                     <div className="ml-auto flex items-center gap-2 lg:ml-0">
+                        <a href="/Samaksh-Rastogi-Resume.pdf" download="Samaksh-Rastogi-Resume.pdf" className="hidden items-center gap-2 rounded-2xl bg-slate-950 px-4 py-2.5 text-xs font-black text-white shadow-sm transition hover:bg-indigo-600 md:inline-flex">
+                            <Download size={15} /> Resume
+                        </a>
                         {profileActions.map((action) => (
                             <a key={action.label} href={action.href} target={action.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" aria-label={action.label} className="hidden h-10 w-10 items-center justify-center rounded-2xl border border-slate-900/10 bg-white/85 text-slate-600 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-700 sm:flex">
                                 <action.icon size={17} />

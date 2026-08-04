@@ -55,7 +55,7 @@ export default function ContactSection() {
                 onMouseMove={handleMouseMove}
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                className="relative mx-auto max-w-2xl rounded-3xl bg-linear-to-br from-indigo-500/40 via-purple-500/25 to-white/10 p-px"
+                className="gsap-card relative mx-auto max-w-2xl rounded-3xl bg-linear-to-br from-indigo-500/40 via-purple-500/25 to-white/10 p-px"
             >
                 <div className="relative overflow-hidden rounded-3xl border border-slate-900/10 bg-white/90 p-5 text-center backdrop-blur-xl sm:p-7">
 
@@ -71,7 +71,7 @@ export default function ContactSection() {
                                 Open to Opportunities
                             </p>
 
-                            <span className="shrink-0 rounded-full border border-indigo-400/20 bg-indigo-500/10 px-3 py-1 text-xs font-medium text-indigo-300">
+                            <span className="shrink-0 rounded-full border border-indigo-400/20 bg-indigo-500/10 px-3 py-1 text-xs font-medium text-indigo-700">
                                 Full-stack
                             </span>
                         </div>
@@ -86,7 +86,7 @@ export default function ContactSection() {
 
                     {/* STATUS */}
                     <div className="relative mt-3 grid grid-cols-[1.15fr_1fr] gap-2 text-xs min-[380px]:text-sm">
-                        <div className="flex min-w-0 items-center justify-center gap-2 rounded-xl border border-emerald-400/15 bg-emerald-400/10 px-2.5 py-2 text-emerald-300">
+                        <div className="flex min-w-0 items-center justify-center gap-2 rounded-xl border border-emerald-400/15 bg-emerald-400/10 px-2.5 py-2 text-emerald-700">
                             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
                             <span className="whitespace-nowrap">
                                 Available for Roles
@@ -125,7 +125,7 @@ export default function ContactSection() {
                         </button>
 
                         {copied && (
-                            <span className="shrink-0 text-green-400 text-xs">Copied</span>
+                            <span className="shrink-0 text-emerald-600 text-xs">Copied</span>
                         )}
                     </div>
 
@@ -138,7 +138,7 @@ export default function ContactSection() {
                             className="flex items-center justify-center rounded-xl px-3 py-2 text-sm 
                             bg-white/80 border border-slate-900/10 hover:bg-slate-100 transition"
                         >
-                            <FiMail className="text-indigo-400" />
+                            <FiMail className="text-indigo-600" />
                         </a>
 
                         <a
@@ -147,7 +147,7 @@ export default function ContactSection() {
                             className="flex items-center justify-center rounded-xl px-3 py-2 text-sm 
                             bg-white/80 border border-slate-900/10 hover:bg-slate-100 transition"
                         >
-                            <FiPhone className="text-indigo-400" />
+                            <FiPhone className="text-indigo-600" />
                         </a>
 
                         <a
@@ -158,7 +158,7 @@ export default function ContactSection() {
                             className="flex items-center justify-center rounded-xl px-3 py-2 text-sm 
                             bg-white/80 border border-slate-900/10 hover:bg-slate-100 transition"
                         >
-                            <FaGithub className="text-indigo-400" />
+                            <FaGithub className="text-indigo-600" />
                         </a>
 
                         <a
@@ -169,7 +169,7 @@ export default function ContactSection() {
                             className="flex items-center justify-center rounded-xl px-3 py-2 text-sm 
                             bg-white/80 border border-slate-900/10 hover:bg-slate-100 transition"
                         >
-                            <FaLinkedin className="text-indigo-400" />
+                            <FaLinkedin className="text-indigo-600" />
                         </a>
 
                     </div>

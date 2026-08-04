@@ -10,9 +10,13 @@ import ProjectsSection from "./sections/ProjectsSection";
 import ExperienceSection from "./sections/ExperienceSection";
 import SystemsSection from "./sections/SystemsSection";
 import ContactSection from "./sections/ContactSection";
+import ResumeSection from "./sections/ResumeSection";
+import { useGsapAnimations } from "./hooks/useGsapAnimations";
 
 // Main portfolio layout
 export default function App() {
+  useGsapAnimations();
+
   useEffect(() => {
     const favicon = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
     if (!favicon) return;
@@ -45,8 +49,8 @@ export default function App() {
 
       <div className="fixed inset-0 -z-50 bg-gradient-to-br from-slate-50 via-white to-indigo-50" />
       <div className="fixed inset-0 -z-40 bg-gradient-to-r from-cyan-300/15 via-transparent to-indigo-300/20" />
-      <div className="fixed top-[-150px] left-[-150px] w-[500px] h-[500px] bg-cyan-300/25 rounded-full blur-[140px] -z-30" />
-      <div className="fixed bottom-[-150px] right-[-100px] w-[500px] h-[500px] bg-indigo-300/25 rounded-full blur-[140px] -z-30" />
+      <div data-gsap-orb="left" className="fixed top-[-150px] left-[-150px] w-[500px] h-[500px] bg-cyan-300/25 rounded-full blur-[140px] -z-30" />
+      <div data-gsap-orb="right" className="fixed bottom-[-150px] right-[-100px] w-[500px] h-[500px] bg-indigo-300/25 rounded-full blur-[140px] -z-30" />
       <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-violet-300/15 rounded-full blur-[160px] -z-30" />
       <div className="fixed inset-0 -z-20 opacity-[0.35] bg-[linear-gradient(to_right,rgba(15,23,42,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.08)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
@@ -59,6 +63,7 @@ export default function App() {
         <ProjectsSection />
         <ExperienceSection />
         <SystemsSection />
+        <ResumeSection />
         <ContactSection />
       </main>
     </div>

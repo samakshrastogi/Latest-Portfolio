@@ -109,7 +109,7 @@ export default function SystemsSection() {
             >
                 {stats.map((stat) => (
                     <motion.div key={stat.label} variants={fadeUp}>
-                        <div className="mb-2 flex justify-center text-xl text-indigo-400">
+                        <div className="mb-2 flex justify-center text-xl text-indigo-600">
                             {stat.icon}
                         </div>
                         <p className="text-3xl font-semibold text-slate-950">{stat.value}</p>
@@ -125,7 +125,7 @@ export default function SystemsSection() {
                 viewport={{ once: true }}
                 className="mx-auto mb-12 max-w-3xl rounded-2xl border border-slate-900/10 bg-white/80 p-4 sm:mb-14 sm:p-6"
             >
-                <h3 className="mb-5 text-center text-lg font-semibold text-indigo-300">
+                <h3 className="mb-5 text-center text-lg font-semibold text-indigo-700">
                     System Flow
                 </h3>
 
@@ -137,7 +137,7 @@ export default function SystemsSection() {
                             </div>
 
                             {index < systemFlow.length - 1 && (
-                                <FaArrowRight className="text-indigo-400/80" />
+                                <FaArrowRight className="text-indigo-600/80" />
                             )}
                         </div>
                     ))}
@@ -161,16 +161,16 @@ function SystemCard({ index, title, subtitle, icon, items }: SystemCardProps) {
             whileInView="visible"
             viewport={{ once: true }}
             whileHover={{ y: -6 }}
-            className="group relative overflow-hidden rounded-2xl border border-slate-900/10 bg-white/80 p-5 transition duration-300 sm:p-6"
+            className="gsap-card group relative overflow-hidden rounded-2xl border border-slate-900/10 bg-white/80 p-5 transition duration-300 sm:p-6"
         >
             <div className="absolute inset-0 bg-indigo-500/10 opacity-0 blur-xl transition duration-500 group-hover:opacity-100" />
 
-            <div className="absolute right-4 top-4 rounded-full border border-indigo-400/20 bg-indigo-500/10 px-2.5 py-1 text-xs font-semibold text-indigo-300">
+            <div className="absolute right-4 top-4 rounded-full border border-indigo-400/20 bg-indigo-500/10 px-2.5 py-1 text-xs font-semibold text-indigo-700">
                 {index}
             </div>
 
             <div className="relative">
-                <div className="mb-3 flex items-center gap-3 text-indigo-300">
+                <div className="mb-3 flex items-center gap-3 text-indigo-700">
                     <span className="grid h-10 w-10 place-items-center rounded-xl bg-indigo-500/15 text-sm">
                         {icon}
                     </span>
@@ -184,7 +184,7 @@ function SystemCard({ index, title, subtitle, icon, items }: SystemCardProps) {
                 <ul className="space-y-3 text-sm text-slate-700">
                     {items.map((item) => (
                         <li key={item} className="flex items-start gap-3">
-                            <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-emerald-400/10 text-xs text-emerald-300">
+                            <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-emerald-400/10 text-xs text-emerald-700">
                                 <FaCheck />
                             </span>
                             <span className="leading-relaxed">{item}</span>

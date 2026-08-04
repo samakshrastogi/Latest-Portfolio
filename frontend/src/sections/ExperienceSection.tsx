@@ -144,7 +144,7 @@ export default function ExperienceSection() {
 
                         <div className="mb-3 flex flex-col gap-3 sm:mb-5 sm:flex-row sm:items-start sm:justify-between">
                             <div>
-                                <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-indigo-300 sm:text-xs sm:tracking-[0.24em]">
+                                <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-indigo-700 sm:text-xs sm:tracking-[0.24em]">
                                     Work Experience
                                 </p>
                                 <h3 className="max-w-xl text-lg font-semibold leading-tight text-slate-950 min-[380px]:text-xl sm:text-3xl">
@@ -154,16 +154,16 @@ export default function ExperienceSection() {
                                     <span className="rounded-full border border-slate-900/10 bg-white/80 px-2.5 py-1 text-slate-600 sm:px-3">
                                         Aug 2025 - June 2026
                                     </span>
-                                    <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1 text-emerald-300 sm:px-3">
+                                    <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1 text-emerald-700 sm:px-3">
                                         Production system
                                     </span>
-                                    <span className="w-fit rounded-full border border-indigo-400/20 bg-indigo-500/10 px-2.5 py-1 font-medium text-indigo-300 sm:hidden">
+                                    <span className="w-fit rounded-full border border-indigo-400/20 bg-indigo-500/10 px-2.5 py-1 font-medium text-indigo-700 sm:hidden">
                                         Internship
                                     </span>
                                 </div>
                             </div>
 
-                            <span className="hidden w-fit rounded-full border border-indigo-400/20 bg-indigo-500/10 px-3 py-1 text-xs font-medium text-indigo-300 sm:inline-flex">
+                            <span className="hidden w-fit rounded-full border border-indigo-400/20 bg-indigo-500/10 px-3 py-1 text-xs font-medium text-indigo-700 sm:inline-flex">
                                 Internship
                             </span>
                         </div>
@@ -187,17 +187,17 @@ export default function ExperienceSection() {
                                         )}
                                     </div>
 
-                                    <div className="flex flex-1 flex-col rounded-2xl border border-slate-900/10 bg-white/80 p-4 transition duration-300 hover:border-indigo-400/30 hover:bg-white/85 sm:p-5">
+                                    <div className="gsap-card flex flex-1 flex-col rounded-2xl border border-slate-900/10 bg-white/80 p-4 transition duration-300 hover:border-indigo-400/30 hover:bg-white/85 sm:p-5">
                                         <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                                             <div className="flex min-w-0 items-start gap-3">
-                                                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-indigo-400/20 bg-indigo-500/15 text-indigo-300">
+                                                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-indigo-400/20 bg-indigo-50 text-indigo-700">
                                                     {project.icon}
                                                 </span>
                                                 <div className="min-w-0">
                                                     <h4 className="text-base font-semibold text-slate-950 sm:text-xl">
                                                         {project.title}
                                                     </h4>
-                                                    <p className="text-xs font-medium uppercase tracking-[0.16em] text-indigo-300">
+                                                    <p className="text-xs font-medium uppercase tracking-[0.16em] text-indigo-700">
                                                         {project.subtitle}
                                                     </p>
                                                 </div>
@@ -207,7 +207,7 @@ export default function ExperienceSection() {
                                                 <span className="w-fit rounded-full border border-slate-900/10 bg-slate-100 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-600">
                                                     Project {project.phase}
                                                 </span>
-                                                <span className="w-fit rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald-200">
+                                                <span className="w-fit rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald-700">
                                                     {project.date}
                                                 </span>
                                             </div>
@@ -236,7 +236,7 @@ export default function ExperienceSection() {
                                                 {project.tech.map((tech) => (
                                                     <span
                                                         key={tech}
-                                                        className="rounded border border-indigo-400/15 bg-indigo-500/10 px-1.5 py-0.5 text-[10px] font-medium text-indigo-100"
+                                                        className="rounded border border-indigo-400/15 bg-indigo-50 px-1.5 py-0.5 text-[10px] font-medium text-indigo-700"
                                                     >
                                                         {tech}
                                                     </span>

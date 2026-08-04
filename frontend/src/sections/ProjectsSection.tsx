@@ -72,7 +72,7 @@ function FeaturedProject({ project }: { project: Project }) {
             initial={{ opacity: 0, y: 36 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="group relative mb-10 overflow-hidden rounded-[2rem] border border-slate-900/10 bg-white/85 shadow-[0_28px_90px_rgba(15,23,42,0.12)] backdrop-blur-xl sm:mb-12"
+            className="gsap-card group relative mb-10 overflow-hidden rounded-[2rem] border border-slate-900/10 bg-white/85 shadow-[0_28px_90px_rgba(15,23,42,0.12)] backdrop-blur-xl sm:mb-12"
         >
             <div className="grid lg:grid-cols-[1.08fr_0.92fr]">
                 <ProjectVisual project={project} preview={preview} featured />
@@ -95,7 +95,7 @@ function ProjectCard({ project }: { project: Project }) {
         <motion.article
             variants={{ hidden: { opacity: 0, y: 28 }, visible: { opacity: 1, y: 0 } }}
             whileHover={{ y: -5 }}
-            className="group flex h-full flex-col overflow-hidden rounded-[1.65rem] border border-slate-900/10 bg-white/80 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-shadow hover:shadow-[0_24px_70px_rgba(79,70,229,0.14)]"
+            className="gsap-card group flex h-full flex-col overflow-hidden rounded-[1.65rem] border border-slate-900/10 bg-white/80 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-shadow hover:shadow-[0_24px_70px_rgba(79,70,229,0.14)]"
         >
             <ProjectVisual project={project} preview={preview} />
             <div className="flex flex-1 flex-col p-5 sm:p-6">

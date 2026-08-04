@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import MagneticButton from "../components/MagneticButton";
+import { Download } from "lucide-react";
 import { TypeAnimation } from "react-type-animation";
 import {
     SiReact,
@@ -42,7 +43,7 @@ export default function HeroSection() {
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-purple-500/10 blur-3xl" />
 
             <div className="relative z-20 mx-auto grid w-full max-w-7xl items-center gap-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(340px,0.85fr)] lg:gap-16">
-                <div className="order-2 max-w-3xl text-left lg:order-1">
+                <div data-gsap-hero className="order-2 max-w-3xl text-left lg:order-1">
                     <motion.h1
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -55,7 +56,7 @@ export default function HeroSection() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.3 }}
-                        className="mt-5 text-xl font-medium text-indigo-400 sm:text-2xl md:text-3xl"
+                        className="mt-5 text-xl font-medium text-indigo-600 sm:text-2xl md:text-3xl"
                     >
                         <TypeAnimation
                             sequence={[
@@ -85,7 +86,7 @@ export default function HeroSection() {
                                 key={tech.name}
                                 className="flex min-w-0 items-center justify-center gap-2 rounded-xl border border-slate-900/10 bg-white/85 px-3 py-2 text-sm text-slate-700 transition hover:scale-[1.03] hover:border-indigo-400/40 hover:bg-indigo-500/10 sm:justify-start sm:rounded-full sm:px-4"
                             >
-                                <span className="text-base text-indigo-400">
+                                <span className="text-base text-indigo-600">
                                     {tech.icon}
                                 </span>
                                 <span className="truncate">
@@ -95,7 +96,7 @@ export default function HeroSection() {
                         ))}
                     </div>
 
-                    <div className="mt-6 flex items-start gap-3 text-sm text-emerald-400 sm:items-center sm:text-base">
+                    <div className="mt-6 flex items-start gap-3 text-sm text-emerald-700 sm:items-center sm:text-base">
                         <span className="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse sm:mt-0"></span>
                         <span>
                             Currently building: SK CrawlPulse (AI-powered QA and website analysis platform)
@@ -113,6 +114,13 @@ export default function HeroSection() {
                         </MagneticButton>
 
                         <a
+                            href="/Samaksh-Rastogi-Resume.pdf"
+                            download="Samaksh-Rastogi-Resume.pdf"
+                            className="inline-flex min-w-0 flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-xl border border-slate-900/10 bg-white px-3 py-3 text-center text-sm font-bold text-slate-700 shadow-sm transition hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-700 min-[380px]:px-4 sm:flex-none sm:rounded-2xl sm:px-6 sm:py-4 sm:text-base"
+                        >
+                            <Download size={17} /> Resume
+                        </a>
+                        <a
                             href="#contact"
                             className="min-w-0 flex-1 whitespace-nowrap rounded-xl border border-slate-900/10 bg-white/75 px-3 py-3 text-center text-sm font-medium text-slate-950 transition hover:bg-indigo-50 min-[380px]:px-4 sm:flex-none sm:rounded-2xl sm:px-8 sm:py-4 sm:text-lg"
                         >
@@ -122,21 +130,21 @@ export default function HeroSection() {
 
                     <div className="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                         <div className="flex items-center gap-3 rounded-2xl border border-slate-900/10 bg-white/80 px-4 py-3">
-                            <TbBrain className="text-sm text-purple-400" />
+                            <TbBrain className="text-sm text-violet-600" />
                             <span className="whitespace-nowrap text-sm text-slate-600">
                                 3 Nokia Internal Systems
                             </span>
                         </div>
 
                         <div className="flex items-center gap-3 rounded-2xl border border-slate-900/10 bg-white/80 px-4 py-3">
-                            <FaServer className="text-sm text-indigo-400" />
+                            <FaServer className="text-sm text-indigo-600" />
                             <span className="whitespace-nowrap text-sm text-slate-600">
                                 100+ Backend Endpoints
                             </span>
                         </div>
 
                         <div className="flex items-center gap-3 rounded-2xl border border-slate-900/10 bg-white/80 px-4 py-3">
-                            <FaChartLine className="text-sm text-green-400" />
+                            <FaChartLine className="text-sm text-emerald-600" />
                             <span className="whitespace-nowrap text-sm text-slate-600">
                                 AI, Analytics & Reports
                             </span>

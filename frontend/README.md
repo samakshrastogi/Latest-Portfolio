@@ -11,9 +11,9 @@ The application is built as a single-page portfolio. Most visible content is dri
 - Vite
 - Tailwind CSS
 - Framer Motion
+- GSAP with ScrollTrigger
 - React Icons
 - React Type Animation
-- Three.js with `@react-three/fiber` and `@react-three/drei`
 
 ## Main Features
 
@@ -26,6 +26,8 @@ The application is built as a single-page portfolio. Most visible content is dri
 - Skills section with a highlighted core stack and expandable skill groups.
 - Systems and impact section with portfolio metrics and architecture thinking.
 - Contact section focused on opportunities and role availability.
+- Recruiter-ready two-page PDF resume with view and download actions.
+- Lazy-loaded GSAP entrance, scroll reveal, card stagger, and ambient background animations with reduced-motion support.
 
 ## System Flow
 
@@ -95,7 +97,8 @@ The portfolio is organized into dedicated page sections:
 - `ScrollProgress.tsx`: top scroll progress indicator.
 - `CursorGlow.tsx`: pointer-based ambient effect.
 - `MagneticButton.tsx`: hover interaction wrapper for primary actions.
-- `ThemeToggle.tsx`: theme control component.
+- `ThemeToggle.tsx`: light-appearance indicator component.
+- `useGsapAnimations.ts`: shared, lazy-loaded GSAP animation orchestration.
 
 ## Content Model
 
@@ -237,4 +240,10 @@ The production build runs TypeScript project build first, then Vite:
 tsc -b && vite build
 ```
 
-If the build reports a large chunk warning, it is not a compile failure. It means the JavaScript bundle is larger than Vite's default warning threshold. Future optimization options include code splitting the 3D/profile visual or lazy-loading heavier visual libraries.
+GSAP and ScrollTrigger are loaded as separate asynchronous chunks so the core portfolio remains below Vite's initial chunk warning threshold.
+
+Regenerate the resume PDF after editing `scripts/generate_resume.py`:
+
+```bash
+python scripts/generate_resume.py
+```

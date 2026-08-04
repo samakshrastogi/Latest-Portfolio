@@ -87,25 +87,25 @@ const INITIAL_VISIBLE_SKILLS = 8;
 
 const iconMap: Record<string, ReactNode> = {
     // 🔥 FRONTEND
-    react: <SiReact className="text-cyan-400" />,
+    react: <SiReact className="text-cyan-600" />,
     typescript: <SiTypescript className="text-blue-500" />,
     javascript: <SiJavascript className="text-yellow-400" />,
     html: <SiHtml5 className="text-orange-500" />,
     css: <FaCss3Alt className="text-blue-400" />,
-    bootstrap: <SiBootstrap className="text-purple-400" />,
-    djangotemplates: <SiDjango className="text-green-400" />,
+    bootstrap: <SiBootstrap className="text-violet-600" />,
+    djangotemplates: <SiDjango className="text-emerald-600" />,
 
     // 🔥 BACKEND
     python: <SiPython className="text-yellow-300" />,
     nodejs: <SiNodedotjs className="text-green-500" />,
     "node.js": <SiNodedotjs className="text-green-500" />,
     node: <SiNodedotjs className="text-green-500" />,
-    django: <SiDjango className="text-green-400" />,
-    djangorestframework: <SiDjango className="text-green-400" />,
+    django: <SiDjango className="text-emerald-600" />,
+    djangorestframework: <SiDjango className="text-emerald-600" />,
     express: <SiExpress className="text-slate-600" />,
-    "restapis": <FaServer className="text-indigo-400" />,
-    celery: <FaServer className="text-green-400" />,
-    apscheduler: <FaServer className="text-indigo-300" />,
+    "restapis": <FaServer className="text-indigo-600" />,
+    celery: <FaServer className="text-emerald-600" />,
+    apscheduler: <FaServer className="text-indigo-700" />,
     "paramiko/asyncssh": <FaServer className="text-blue-300" />,
 
     // 🔥 DATABASE
@@ -126,37 +126,37 @@ const iconMap: Record<string, ReactNode> = {
 
     // 🔥 DEVOPS
     vercel: <SiVercel className="text-slate-950" />,
-    netlify: <SiNetlify className="text-cyan-400" />,
-    render: <SiRender className="text-purple-400" />,
+    netlify: <SiNetlify className="text-cyan-600" />,
+    render: <SiRender className="text-violet-600" />,
     pemdeployment: <FaLock className="text-amber-400" />,
-    gunicorn: <FaServer className="text-green-300" />,
+    gunicorn: <FaServer className="text-green-600" />,
     whitenoise: <FaCloud className="text-slate-600" />,
 
     // 🔥 AI
-    ai: <FaBrain className="text-purple-400" />,
-    "ai/ml": <FaBrain className="text-purple-400" />,
-    llms: <FaBrain className="text-purple-400" />,
-    whisper: <FaBrain className="text-purple-400" />,
-    "faster-whisper": <FaBrain className="text-purple-400" />,
-    "whisper/faster-whisper": <FaBrain className="text-purple-400" />,
-    ollama: <FaBrain className="text-purple-400" />,
-    langchain: <FaBrain className="text-emerald-300" />,
-    langgraph: <FaBrain className="text-emerald-300" />,
+    ai: <FaBrain className="text-violet-600" />,
+    "ai/ml": <FaBrain className="text-violet-600" />,
+    llms: <FaBrain className="text-violet-600" />,
+    whisper: <FaBrain className="text-violet-600" />,
+    "faster-whisper": <FaBrain className="text-violet-600" />,
+    "whisper/faster-whisper": <FaBrain className="text-violet-600" />,
+    ollama: <FaBrain className="text-violet-600" />,
+    langchain: <FaBrain className="text-emerald-700" />,
+    langgraph: <FaBrain className="text-emerald-700" />,
     "opencv/pillow": <FaBrain className="text-blue-300" />,
-    spacy: <FaBrain className="text-cyan-300" />,
-    "sentence-transformers": <FaBrain className="text-purple-300" />,
+    spacy: <FaBrain className="text-cyan-600" />,
+    "sentence-transformers": <FaBrain className="text-violet-600" />,
     pytorch: <SiPytorch className="text-orange-400" />,
 
     // 🔥 DATA
     pandas: <SiPandas className="text-blue-300" />,
     numpy: <SiNumpy className="text-blue-400" />,
-    openpyxl: <FaChartLine className="text-emerald-300" />,
-    plotly: <SiPlotly className="text-cyan-300" />,
+    openpyxl: <FaChartLine className="text-emerald-700" />,
+    plotly: <SiPlotly className="text-cyan-600" />,
     matplotlib: <FaChartLine className="text-yellow-300" />,
 
     // 🔥 APIS / REALTIME
-    playwright: <FaCodeBranch className="text-green-400" />,
-    sse: <FaCodeBranch className="text-indigo-300" />,
+    playwright: <FaCodeBranch className="text-emerald-600" />,
+    sse: <FaCodeBranch className="text-indigo-700" />,
     "socket.io": <SiSocketdotio className="text-slate-950" />,
     bullmq: <FaCodeBranch className="text-red-300" />,
     gmailapi: <SiGoogle className="text-red-400" />,
@@ -258,7 +258,7 @@ export default function SkillsSection() {
             >
                 <div className="mb-3 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
                     <div>
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-indigo-300 sm:text-xs">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-indigo-700 sm:text-xs">
                             Core Stack
                         </p>
                         <p className="mt-1 text-xs leading-relaxed text-slate-500 sm:text-sm">
@@ -308,7 +308,7 @@ export default function SkillsSection() {
                         whileHover={{ y: -6 }}
                         className="group relative rounded-2xl p-[1px] bg-gradient-to-br from-indigo-400/25 via-white/10 to-transparent"
                     >
-                        <div className="relative h-full overflow-hidden rounded-2xl border border-slate-900/10 bg-white/80 p-5 backdrop-blur-xl transition duration-300 sm:p-6">
+                        <div className="gsap-card relative h-full overflow-hidden rounded-2xl border border-slate-900/10 bg-white/80 p-5 backdrop-blur-xl transition duration-300 sm:p-6">
 
                             {/* Glow */}
                             <div className="absolute inset-0 rounded-2xl bg-indigo-500/10 opacity-0 group-hover:opacity-100 blur-xl transition duration-500"></div>
@@ -317,10 +317,10 @@ export default function SkillsSection() {
                             {/* Category */}
                             <div className="relative mb-5 flex items-start justify-between gap-4">
                                 <div className="flex items-center gap-3">
-                                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-indigo-500/15 text-lg text-indigo-300 ring-1 ring-white/10">
+                                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-indigo-500/15 text-lg text-indigo-700 ring-1 ring-white/10">
                                         {meta.icon}
                                     </span>
-                                    <h3 className="text-lg font-semibold text-indigo-300 sm:text-xl">
+                                    <h3 className="text-lg font-semibold text-indigo-700 sm:text-xl">
                                         {group.category}
                                     </h3>
                                 </div>
@@ -342,7 +342,7 @@ export default function SkillsSection() {
                                     type="button"
                                     aria-expanded={isExpanded}
                                     onClick={() => toggleGroup(group.id)}
-                                    className="relative mt-5 inline-flex min-h-9 items-center justify-center rounded-lg border border-slate-900/10 bg-white/80 px-3 py-2 text-xs font-medium text-indigo-200 transition hover:border-indigo-400/40 hover:bg-indigo-500/15"
+                                    className="relative mt-5 inline-flex min-h-9 items-center justify-center rounded-lg border border-slate-900/10 bg-white/80 px-3 py-2 text-xs font-medium text-indigo-700 transition hover:border-indigo-400/40 hover:bg-indigo-500/15"
                                 >
                                     {isExpanded
                                         ? "Show less"
