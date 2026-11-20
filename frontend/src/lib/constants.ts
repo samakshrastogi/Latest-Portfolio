@@ -139,6 +139,7 @@ export const projects: Project[] = [
                 tags: ["Campaign Creation", "Content Generation", "Acquisition Strategies"],
             },
         ],
+        image: "/images/sk-control-preview.png",
         live: "https://sk-control.onrender.com/",
         status: "Active",
         featured: true,
