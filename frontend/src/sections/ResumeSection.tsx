@@ -2,15 +2,15 @@
 import SectionWrapper from "../components/SectionWrapper";
 
 const strengths = [
-    "Production backend and full-stack delivery",
-    "Django, Node.js, REST APIs, MongoDB and Redis",
-    "Realtime systems with Socket.IO and WebRTC",
-    "AI workflows, media processing and analytics",
+    "Enterprise backend services & REST APIs with Django & Node.js",
+    "Secure authentication, RBAC & Google OAuth integrations",
+    "Workflow automation & background job processing",
+    "AI-powered workspaces, video processing & diagnostics",
 ];
 
 const highlights = [
-    { value: "8", label: "SK products", icon: Layers3 },
-    { value: "3", label: "Nokia systems", icon: BriefcaseBusiness },
+    { value: "3", label: "AI Workspaces", icon: Layers3 },
+    { value: "11 Mos", label: "Nokia Experience", icon: BriefcaseBusiness },
     { value: "100+", label: "Backend endpoints", icon: Award },
 ];
 
@@ -29,7 +29,7 @@ export default function ResumeSection() {
                         </div>
                         <p className="mt-8 text-xs font-black uppercase tracking-[0.2em] text-indigo-700">Professional resume</p>
                         <h3 className="mt-2 text-2xl font-black tracking-tight text-slate-950 sm:text-3xl">Samaksh Rastogi</h3>
-                        <p className="mt-2 text-sm font-bold text-slate-500">Full-Stack Developer · Backend Engineer · AI Systems Builder</p>
+                        <p className="mt-2 text-sm font-bold text-slate-500">Software Engineer · Full Stack & Backend Developer</p>
                         <div className="mt-6 grid grid-cols-3 gap-2">
                             {highlights.map((item) => (
                                 <div key={item.label} className="rounded-xl border border-slate-900/10 bg-slate-50 p-3 text-center">
@@ -50,7 +50,7 @@ export default function ResumeSection() {
                         A concise resume built around measurable engineering work
                     </h2>
                     <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
-                        The resume summarizes production experience at Nokia, the SK ecosystem, core technical strengths, and selected systems without inflated claims or unnecessary visual noise.
+                        The resume summarizes 11 months of production engineering at Nokia, the SK Control AI orchestration platform, core technical strengths, and backend systems without inflated claims or unnecessary visual noise.
                     </p>
                     <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                         {strengths.map((strength) => (

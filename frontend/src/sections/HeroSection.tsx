@@ -9,20 +9,21 @@ import {
     SiMongodb,
     SiPython,
     SiTypescript,
+    SiRedis,
 } from "react-icons/si";
-import { FaAws, FaBrain, FaCodeBranch, FaDatabase, FaServer, FaChartLine } from "react-icons/fa";
+import { FaBrain, FaCodeBranch, FaDatabase, FaServer, FaChartLine } from "react-icons/fa";
 import { TbBrain } from "react-icons/tb";
 
 const techStack = [
+    { name: "Python", icon: <SiPython /> },
+    { name: "Django / DRF", icon: <SiDjango /> },
+    { name: "Node.js", icon: <SiNodedotjs /> },
     { name: "TypeScript", icon: <SiTypescript /> },
     { name: "React", icon: <SiReact /> },
-    { name: "Python", icon: <SiPython /> },
-    { name: "Node.js", icon: <SiNodedotjs /> },
-    { name: "Django", icon: <SiDjango /> },
+    { name: "SQL", icon: <FaDatabase /> },
     { name: "MongoDB", icon: <SiMongodb /> },
-    { name: "SQLite", icon: <FaDatabase /> },
-    { name: "AWS S3", icon: <FaAws /> },
-    { name: "AI / ML", icon: <FaBrain /> },
+    { name: "Redis", icon: <SiRedis /> },
+    { name: "Workflow Automation", icon: <FaBrain /> },
     { name: "REST APIs", icon: <FaCodeBranch /> },
 ];
 
@@ -60,15 +61,13 @@ export default function HeroSection() {
                     >
                         <TypeAnimation
                             sequence={[
-                                "Full-Stack Developer",
+                                "Software Engineer",
                                 2000,
-                                "Backend Engineer",
+                                "Full Stack & Backend Developer",
                                 2000,
-                                "Django & REST API Developer",
+                                "Django & REST API Specialist",
                                 2000,
-                                "AI Product Builder",
-                                2000,
-                                "Production Systems Developer",
+                                "AI Workflows & Automation Builder",
                                 2000,
                             ]}
                             speed={50}
@@ -77,7 +76,7 @@ export default function HeroSection() {
                     </motion.div>
 
                     <p className="mt-6 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
-                        Building full-stack platforms, Django-based internal tools, and AI-powered products across support workflows, media systems, automation, and analytics.
+                        Software Engineer with enterprise backend experience at Nokia, delivering scalable REST APIs, secure authentication, automated workflows, and AI-driven platforms.
                     </p>
 
                     <div className="mt-8 grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:gap-3">
@@ -99,7 +98,7 @@ export default function HeroSection() {
                     <div className="mt-6 flex items-start gap-3 text-sm text-emerald-700 sm:items-center sm:text-base">
                         <span className="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse sm:mt-0"></span>
                         <span>
-                            Currently building: SK CrawlPulse (AI-powered QA and website analysis platform)
+                            Currently building: SK Control (AI Agent Orchestration & Automation Platform)
                         </span>
                     </div>
 
@@ -132,7 +131,7 @@ export default function HeroSection() {
                         <div className="flex items-center gap-3 rounded-2xl border border-slate-900/10 bg-white/80 px-4 py-3">
                             <TbBrain className="text-sm text-violet-600" />
                             <span className="whitespace-nowrap text-sm text-slate-600">
-                                3 Nokia Internal Systems
+                                11 Mos Nokia Experience
                             </span>
                         </div>
 
@@ -146,7 +145,7 @@ export default function HeroSection() {
                         <div className="flex items-center gap-3 rounded-2xl border border-slate-900/10 bg-white/80 px-4 py-3">
                             <FaChartLine className="text-sm text-emerald-600" />
                             <span className="whitespace-nowrap text-sm text-slate-600">
-                                AI, Analytics & Reports
+                                AI Workspaces & Automation
                             </span>
                         </div>
                     </div>

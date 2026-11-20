@@ -27,6 +27,8 @@ import {
     SiNumpy,
     SiPlotly,
     SiPytorch,
+    SiVite,
+    SiTailwindcss,
 } from "react-icons/si";
 
 import {
@@ -44,6 +46,21 @@ import {
 } from "react-icons/fa";
 
 const categoryMeta: Record<string, { icon: ReactNode }> = {
+    "programming-languages": {
+        icon: <FaCodeBranch />,
+    },
+    "backend-apis": {
+        icon: <FaServer />,
+    },
+    "databases-caching": {
+        icon: <FaDatabase />,
+    },
+    "frontend-technologies": {
+        icon: <SiReact />,
+    },
+    "engineering-automation": {
+        icon: <FaBrain />,
+    },
     frontend: {
         icon: <SiReact />,
     },
@@ -73,47 +90,68 @@ const categoryMeta: Record<string, { icon: ReactNode }> = {
 const coreStack = [
     "Python",
     "Django",
-    "Django REST Framework",
-    "React",
-    "TypeScript",
+    "Django REST Framework (DRF)",
     "Node.js",
+    "TypeScript",
+    "React.js",
+    "SQL",
     "MongoDB",
-    "SQLite",
-    "AWS S3",
-    "AI / ML",
+    "Redis",
+    "Workflow Automation",
 ];
 
 const INITIAL_VISIBLE_SKILLS = 8;
 
 const iconMap: Record<string, ReactNode> = {
-    // FRONTEND
-    react: <SiReact className="text-cyan-600" />,
+    // PROGRAMMING LANGUAGES
+    python: <SiPython className="text-yellow-300" />,
     typescript: <SiTypescript className="text-blue-500" />,
     javascript: <SiJavascript className="text-yellow-400" />,
+    sql: <FaDatabase className="text-blue-400" />,
+
+    // FRONTEND
+    react: <SiReact className="text-cyan-600" />,
+    "react.js": <SiReact className="text-cyan-600" />,
+    vite: <SiVite className="text-purple-500" />,
+    tailwindcss: <SiTailwindcss className="text-cyan-500" />,
+    "tailwind css": <SiTailwindcss className="text-cyan-500" />,
     html: <SiHtml5 className="text-orange-500" />,
+    html5: <SiHtml5 className="text-orange-500" />,
     css: <FaCss3Alt className="text-blue-400" />,
+    css3: <FaCss3Alt className="text-blue-400" />,
     bootstrap: <SiBootstrap className="text-violet-600" />,
     djangotemplates: <SiDjango className="text-emerald-600" />,
 
     // BACKEND
-    python: <SiPython className="text-yellow-300" />,
     nodejs: <SiNodedotjs className="text-green-500" />,
     "node.js": <SiNodedotjs className="text-green-500" />,
     node: <SiNodedotjs className="text-green-500" />,
     django: <SiDjango className="text-emerald-600" />,
     djangorestframework: <SiDjango className="text-emerald-600" />,
+    "djangorestframework(drf)": <SiDjango className="text-emerald-600" />,
+    drf: <SiDjango className="text-emerald-600" />,
     express: <SiExpress className="text-slate-600" />,
+    "express.js": <SiExpress className="text-slate-600" />,
     "restapis": <FaServer className="text-indigo-600" />,
+    "restfulapis": <FaServer className="text-indigo-600" />,
     celery: <FaServer className="text-emerald-600" />,
     apscheduler: <FaServer className="text-indigo-700" />,
     "paramiko/asyncssh": <FaServer className="text-blue-300" />,
 
-    // DATABASE
+    // DATABASE & CACHING
     mongodb: <SiMongodb className="text-green-500" />,
     postgresql: <SiPostgresql className="text-blue-400" />,
     sqlite: <FaDatabase className="text-slate-500" />,
     sqlite3: <FaDatabase className="text-slate-500" />,
     redis: <SiRedis className="text-red-400" />,
+
+    // ENGINEERING & AUTOMATION
+    workflowautomation: <FaCodeBranch className="text-indigo-600" />,
+    backgroundjobprocessing: <FaServer className="text-emerald-600" />,
+    dataprocessing: <FaChartLine className="text-blue-500" />,
+    jwtauthentication: <FaLock className="text-amber-500" />,
+    "role-basedaccesscontrol(rbac)": <FaLock className="text-indigo-600" />,
+    googleoauth: <SiGoogle className="text-red-400" />,
 
     // CLOUD
     aws: <FaAws className="text-orange-400" />,

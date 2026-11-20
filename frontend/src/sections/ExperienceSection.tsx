@@ -145,17 +145,20 @@ export default function ExperienceSection() {
                         <div className="mb-3 flex flex-col gap-3 sm:mb-5 sm:flex-row sm:items-start sm:justify-between">
                             <div>
                                 <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-indigo-700 sm:text-xs sm:tracking-[0.24em]">
-                                    Work Experience
+                                    Professional Experience
                                 </p>
                                 <h3 className="max-w-xl text-lg font-semibold leading-tight text-slate-950 min-[380px]:text-xl sm:text-3xl">
-                                    Nokia — Student Intern
+                                    Nokia Solutions and Networks India Pvt. Ltd.
                                 </h3>
+                                <p className="mt-1 text-sm font-medium text-indigo-700 sm:text-base">
+                                    Software Engineering Intern · Gurugram, India
+                                </p>
                                 <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] sm:mt-3 sm:gap-2 sm:text-xs">
                                     <span className="rounded-full border border-slate-900/10 bg-white/80 px-2.5 py-1 text-slate-600 sm:px-3">
-                                        Aug 2025 - June 2026
+                                        08/2025 – 06/2026 (11 Months)
                                     </span>
                                     <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1 text-emerald-700 sm:px-3">
-                                        Production system
+                                        Enterprise Platforms
                                     </span>
                                     <span className="w-fit rounded-full border border-indigo-400/20 bg-indigo-500/10 px-2.5 py-1 font-medium text-indigo-700 sm:hidden">
                                         Internship
@@ -164,8 +167,33 @@ export default function ExperienceSection() {
                             </div>
 
                             <span className="hidden w-fit rounded-full border border-indigo-400/20 bg-indigo-500/10 px-3 py-1 text-xs font-medium text-indigo-700 sm:inline-flex">
-                                Internship
+                                Software Engineering Intern
                             </span>
+                        </div>
+
+                        {/* ENTERPRISE IMPACT BULLETS */}
+                        <div className="mb-6 rounded-2xl border border-indigo-100 bg-indigo-50/60 p-4 sm:p-5">
+                            <p className="mb-2.5 text-xs font-bold uppercase tracking-wider text-indigo-700">
+                                Enterprise Scope & Core Responsibilities
+                            </p>
+                            <ul className="grid gap-2.5 sm:grid-cols-2">
+                                <li className="flex items-start gap-2 text-xs leading-5 text-slate-700">
+                                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-600" />
+                                    <span>Developed Python and Django REST Framework (DRF) backend services and REST APIs supporting network operations, issue management, and media management.</span>
+                                </li>
+                                <li className="flex items-start gap-2 text-xs leading-5 text-slate-700">
+                                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-600" />
+                                    <span>Implemented secure authentication, Role-Based Access Control (RBAC), approval workflows, and automated notifications to support controlled access.</span>
+                                </li>
+                                <li className="flex items-start gap-2 text-xs leading-5 text-slate-700">
+                                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-600" />
+                                    <span>Built data-processing workflows, analytics dashboards, and reporting modules to improve operational visibility, issue tracking, and internal productivity.</span>
+                                </li>
+                                <li className="flex items-start gap-2 text-xs leading-5 text-slate-700">
+                                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-600" />
+                                    <span>Contributed to enterprise application architecture and backend integration across internal support and operational systems.</span>
+                                </li>
+                            </ul>
                         </div>
 
                         <div className="relative mb-5 space-y-4 sm:mb-7 sm:space-y-5">
@@ -248,6 +276,39 @@ export default function ExperienceSection() {
                             ))}
                         </div>
 
+                    </div>
+                </div>
+            </motion.div>
+
+            {/* EDUCATION CARD */}
+            <motion.div
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="mt-8 group relative mx-auto max-w-6xl overflow-hidden rounded-3xl border border-indigo-400/20 bg-gradient-to-br from-indigo-500/25 via-purple-500/15 to-white/[0.05] p-px"
+            >
+                <div className="relative rounded-3xl bg-white/80 p-5 backdrop-blur-xl sm:p-7">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                        <div>
+                            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-indigo-700 sm:text-xs">
+                                Education
+                            </p>
+                            <h3 className="mt-1 text-lg font-bold text-slate-950 sm:text-2xl">
+                                Bachelor of Technology in Information Technology
+                            </h3>
+                            <p className="mt-1 text-xs text-slate-600 sm:text-sm">
+                                Chandigarh Engineering College, CGC Landran · Punjab, India
+                            </p>
+                        </div>
+                        <div className="flex flex-wrap items-center gap-2">
+                            <span className="rounded-full border border-slate-900/10 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-600">
+                                08/2022 – 06/2026
+                            </span>
+                            <span className="rounded-full border border-emerald-400/30 bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700">
+                                CGPA: 8.04 / 10
+                            </span>
+                        </div>
                     </div>
                 </div>
             </motion.div>

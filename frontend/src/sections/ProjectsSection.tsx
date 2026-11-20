@@ -25,20 +25,20 @@ export default function ProjectsSection() {
 
     return (
         <SectionWrapper id="projects" variant="purple">
-            <div className="mb-12 text-center sm:mb-16">
+            <div className="mb-10 text-center sm:mb-14">
                 <motion.span
                     initial={{ opacity: 0, y: 14 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-indigo-700"
                 >
-                    <Layers3 size={14} /> SK product ecosystem
+                    <Layers3 size={14} /> AI Agent Orchestration & Automation
                 </motion.span>
                 <motion.h2
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     className="mt-4 bg-gradient-to-r from-slate-950 via-indigo-950 to-slate-600 bg-clip-text text-3xl font-black text-transparent sm:text-4xl md:text-5xl"
                 >
-                    Production work, connected by design
+                    Featured Project
                 </motion.h2>
                 <motion.p
                     initial={{ opacity: 0, y: 16 }}
@@ -46,21 +46,23 @@ export default function ProjectsSection() {
                     transition={{ delay: 0.08 }}
                     className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base"
                 >
-                    Independent products sharing identity, realtime infrastructure, analytics, security standards, and a consistent SK experience.
+                    Centralized platform managing three specialized AI-powered workspaces for video generation, website diagnostics, and digital marketing.
                 </motion.p>
             </div>
 
             {featured ? <FeaturedProject project={featured} /> : null}
 
-            <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.08 }}
-                variants={{ visible: { transition: { staggerChildren: 0.06 } } }}
-                className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3"
-            >
-                {rest.map((project) => <ProjectCard key={project.id} project={project} />)}
-            </motion.div>
+            {rest.length > 0 && (
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.08 }}
+                    variants={{ visible: { transition: { staggerChildren: 0.06 } } }}
+                    className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3"
+                >
+                    {rest.map((project) => <ProjectCard key={project.id} project={project} />)}
+                </motion.div>
+            )}
         </SectionWrapper>
     );
 }
@@ -85,6 +87,60 @@ function FeaturedProject({ project }: { project: Project }) {
                     <ProjectActions project={project} />
                 </div>
             </div>
+
+            {project.workspaces && project.workspaces.length > 0 && (
+                <div className="border-t border-slate-900/10 bg-gradient-to-b from-slate-50/80 to-white/90 p-6 sm:p-9 lg:p-10">
+                    <div className="mb-6 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+                        <div>
+                            <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-indigo-700">
+                                <Layers3 size={15} /> 3 Integrated AI Workspaces
+                            </span>
+                            <p className="mt-1 text-xs text-slate-500 sm:text-sm">
+                                Core specialized modules orchestrated seamlessly within the SK Control platform.
+                            </p>
+                        </div>
+                        <span className="w-fit rounded-full border border-indigo-200 bg-indigo-50/80 px-2.5 py-1 text-xs font-bold text-indigo-700">
+                            3 Workspaces
+                        </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+                        {project.workspaces.map((ws, idx) => (
+                            <div
+                                key={ws.title}
+                                className="group/ws rounded-2xl border border-slate-900/10 bg-white/90 p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-indigo-300 hover:bg-indigo-50/20 hover:shadow-md"
+                            >
+                                <div className="flex items-center justify-between gap-2">
+                                    <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-indigo-600 text-xs font-black text-white shadow-sm">
+                                        0{idx + 1}
+                                    </span>
+                                    <span className="rounded-full border border-indigo-100 bg-indigo-50/80 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700">
+                                        {ws.subtitle}
+                                    </span>
+                                </div>
+                                <h4 className="mt-3 text-base font-black text-slate-950 transition-colors group-hover/ws:text-indigo-600">
+                                    {ws.title}
+                                </h4>
+                                <p className="mt-2 text-xs leading-5 text-slate-600">
+                                    {ws.description}
+                                </p>
+                                {ws.tags && ws.tags.length > 0 && (
+                                    <div className="mt-4 flex flex-wrap gap-1.5">
+                                        {ws.tags.map((tag) => (
+                                            <span
+                                                key={tag}
+                                                className="rounded-md border border-slate-200/80 bg-slate-50 px-2 py-0.5 text-[10px] font-semibold text-slate-600"
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
         </motion.article>
     );
 }
@@ -167,22 +223,35 @@ function TechList({ project }: { project: Project }) {
 }
 
 function ProjectActions({ project }: { project: Project }) {
+    if (!project.live && !project.github) return null;
     return (
-        <div className="mt-6 flex gap-3">
+        <div className="mt-6 flex flex-wrap gap-3">
             {project.live ? (
-                <a href={project.live} target="_blank" rel="noopener noreferrer" className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-slate-950 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-indigo-600">
-                    Open product <ArrowUpRight size={16} />
+                <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-950 px-6 py-3 text-sm font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-indigo-600 sm:text-base"
+                >
+                    Visit & Open Platform <ArrowUpRight size={18} />
                 </a>
             ) : null}
-            <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-slate-900/10 bg-white px-4 py-2.5 text-sm font-bold text-slate-700 transition hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-700">
-                <FaGithub size={16} /> Source
-            </a>
+            {project.github ? (
+                <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-900/10 bg-white px-4 py-2.5 text-sm font-bold text-slate-700 transition hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-700"
+                >
+                    <FaGithub size={16} /> Source
+                </a>
+            ) : null}
         </div>
     );
 }
 
 function ProjectStatusBadge({ status }: { status: string }) {
-    const live = status.toLowerCase() === "live";
+    const live = ["live", "active"].includes(status.toLowerCase());
     return (
         <span className={`absolute right-4 top-4 z-10 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] backdrop-blur-md ${live ? "border-emerald-200 bg-white/90 text-emerald-700" : "border-amber-200 bg-white/90 text-amber-700"}`}>
             <span className={`h-2 w-2 rounded-full ${live ? "bg-emerald-500" : "bg-amber-500"}`} />
