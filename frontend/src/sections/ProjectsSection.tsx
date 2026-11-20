@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Layers3, Video, Globe, TrendingUp } from "lucide-react";
 import SectionWrapper from "../components/SectionWrapper";
@@ -96,46 +97,9 @@ function FeaturedProject({ project }: { project: Project }) {
             className="gsap-card group relative mx-auto max-w-6xl overflow-hidden rounded-2xl border border-slate-900/10 bg-white/90 p-3 sm:p-5 shadow-lg backdrop-blur-xl"
         >
             <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-4 sm:gap-6 items-center">
-                {/* LEFT: BROWSER MOCKUP PREVIEW */}
+                {/* LEFT: LIVE PREVIEW IN DESKTOP FORMAT (NO ABOVE BAR) */}
                 <div className="flex flex-col justify-center">
-                    <div className="group/browser relative overflow-hidden rounded-xl border border-slate-900/15 bg-slate-950 shadow-md">
-                        {/* Browser Topbar */}
-                        <div className="flex items-center justify-between border-b border-slate-800 bg-slate-900/95 px-3 py-1.5 sm:px-3.5 sm:py-2">
-                            <div className="flex items-center gap-1.5">
-                                <span className="h-2 w-2 rounded-full bg-red-400/90 sm:h-2.5 sm:w-2.5" />
-                                <span className="h-2 w-2 rounded-full bg-amber-400/90 sm:h-2.5 sm:w-2.5" />
-                                <span className="h-2 w-2 rounded-full bg-emerald-400/90 sm:h-2.5 sm:w-2.5" />
-                            </div>
-                            <div className="flex items-center gap-1.5 rounded-md bg-slate-950/80 px-2.5 py-0.5 text-[10px] font-mono text-slate-400 sm:text-xs">
-                                <span className="text-[10px] text-emerald-400">🔒</span>
-                                <span className="truncate max-w-[150px] sm:max-w-[200px]">sk-control.onrender.com</span>
-                            </div>
-                            <div className="flex items-center gap-1.5">
-                                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                                <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400">Live</span>
-                            </div>
-                        </div>
-
-                        {/* Preview Viewport */}
-                        <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
-                            {preview ? (
-                                <img
-                                    src={preview}
-                                    alt="SK Control live platform preview"
-                                    loading="lazy"
-                                    className="h-full w-full object-cover object-top transition duration-500 group-hover/browser:scale-[1.02]"
-                                />
-                            ) : (
-                                <div className="grid h-full place-items-center p-6 text-center text-white">
-                                    <div>
-                                        <span className="mx-auto grid h-10 w-10 place-items-center rounded-xl bg-indigo-600 text-sm font-black text-white shadow-lg">SK</span>
-                                        <p className="mt-2 text-xs font-bold text-slate-200">{project.title}</p>
-                                        <p className="mt-0.5 text-[10px] text-slate-400">Preview loading...</p>
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-                    </div>
+                    <ProjectVisual project={project} preview={preview} />
                 </div>
 
                 {/* RIGHT: COMPACT DETAILS & 3 WORKSPACES */}
@@ -215,5 +179,64 @@ function FeaturedProject({ project }: { project: Project }) {
                 </div>
             </div>
         </motion.article>
+    );
+}
+
+function ProjectVisual({ project, preview }: { project: Project; preview?: string }) {
+    const [iframeLoaded, setIframeLoaded] = useState(false);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [scale, setScale] = useState(0.4);
+
+    useEffect(() => {
+        const updateScale = () => {
+            if (containerRef.current) {
+                const width = containerRef.current.clientWidth;
+                if (width > 0) {
+                    setScale(width / 1280);
+                }
+            }
+        };
+        updateScale();
+        window.addEventListener("resize", updateScale);
+        return () => window.removeEventListener("resize", updateScale);
+    }, []);
+
+    return (
+        <div className="p-2 sm:p-3">
+            <div
+                ref={containerRef}
+                className="group/browser relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-slate-900/15 bg-slate-950 shadow-md"
+            >
+                {/* Fallback & instant desktop screenshot */}
+                {preview && (
+                    <img
+                        src={preview}
+                        alt="SK Control live platform preview"
+                        className={`absolute inset-0 h-full w-full object-cover object-top transition-opacity duration-700 ${
+                            iframeLoaded ? "opacity-0 pointer-events-none" : "opacity-100"
+                        }`}
+                    />
+                )}
+
+                {/* Live Desktop iframe */}
+                {project.live && (
+                    <iframe
+                        src={project.live}
+                        title="SK Control Live Desktop Preview"
+                        loading="lazy"
+                        onLoad={() => setIframeLoaded(true)}
+                        className={`absolute top-0 left-0 border-0 transition-opacity duration-700 ${
+                            iframeLoaded ? "opacity-100" : "opacity-0 pointer-events-none"
+                        }`}
+                        style={{
+                            width: "1280px",
+                            height: "800px",
+                            transform: `scale(${scale})`,
+                            transformOrigin: "top left",
+                        }}
+                    />
+                )}
+            </div>
+        </div>
     );
 }
